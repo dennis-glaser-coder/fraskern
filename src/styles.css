@@ -590,3 +590,29 @@ footer{background:var(--ink);color:white;padding:30px 0}
   .hero-visual--catalog{min-height:320px}
   .spec-rail{display:none}
 }
+
+/* Clean manufacturer product imagery */
+.catalog-hero-card{
+  background:#fff;
+  padding:28px 34px;
+}
+.catalog-hero-card img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+}
+.category-artwork-wrap--photo{
+  background:#fff;
+}
+.category-artwork-wrap--photo img{
+  object-fit:contain;
+  padding:10px 14px;
+  filter:none;
+}
+.catalog-product-image{
+  object-fit:contain;
+  padding:22px;
+  filter:none;
+}
