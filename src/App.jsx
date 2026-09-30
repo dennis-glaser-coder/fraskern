@@ -172,12 +172,34 @@ function Collection({query,setQuery,shape,setShape,openProduct}){
 
 function ProductDetail({product,onBack,addToCart}){
   const [variantIndex,setVariantIndex]=useState(0)
+  const [zoomed,setZoomed]=useState(false)
+  const [zoomPos,setZoomPos]=useState({x:50,y:50})
   const v=product.variants[variantIndex]
+
+  const moveZoom=e=>{
+    const rect=e.currentTarget.getBoundingClientRect()
+    const x=Math.max(0,Math.min(100,((e.clientX-rect.left)/rect.width)*100))
+    const y=Math.max(0,Math.min(100,((e.clientY-rect.top)/rect.height)*100))
+    setZoomPos({x,y})
+  }
+
   return <div className="product-page container">
     <button className="back-link" onClick={onBack}><ArrowLeft size={16}/> Zurück zu den Fräsern</button>
     <div className="product-detail-grid">
       <div className="detail-gallery">
-        <div className="detail-main-image"><img src={product.image} alt={product.name}/></div>
+        <div
+          className={`detail-main-image ${zoomed?'is-zoomed':''}`}
+          onMouseEnter={()=>setZoomed(true)}
+          onMouseLeave={()=>{setZoomed(false);setZoomPos({x:50,y:50})}}
+          onMouseMove={moveZoom}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            style={{transformOrigin:`${zoomPos.x}% ${zoomPos.y}%`}}
+          />
+          <span className="zoom-hint">Zum Zoomen über das Bild bewegen</span>
+        </div>
       </div>
       <div className="detail-info">
         <span className="detail-brand">FRÄSKERN · {product.series}</span>
