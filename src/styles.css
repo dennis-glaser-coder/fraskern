@@ -208,3 +208,51 @@ footer{background:var(--ink);color:#fff;padding:30px 0}.footer-inner{display:fle
 .gallery-thumbs img{
   object-fit:contain;
 }
+
+
+/* High-resolution HRC45 photos, with supplier branding hidden consistently */
+.product-photo-box{
+  background:#fff!important;
+}
+.brand-mask-art{
+  inset:8px!important;
+  background-size:contain!important;
+  background-position:center center!important;
+  mix-blend-mode:normal!important;
+  filter:none!important;
+}
+.brand-mask-art::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:42%;
+  height:18%;
+  background:#fff;
+  pointer-events:none;
+}
+.detail-main-image.brand-mask-detail{
+  background:#fff;
+}
+.detail-main-image.brand-mask-detail::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:37%;
+  height:17%;
+  background:#fff;
+  z-index:6;
+  pointer-events:none;
+}
+.detail-main-image.brand-mask-detail img{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  padding:0!important;
+}
+.detail-main-image.brand-mask-detail.is-zoomed img{
+  transform:scale(1.55);
+}
