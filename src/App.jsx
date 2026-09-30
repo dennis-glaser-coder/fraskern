@@ -84,7 +84,7 @@ function Home({openCollection,openProduct}){
       <div className="hero-overlay"/>
       <div className="hero-shop-inner container">
         <div className="hero-copy">
-          <span className="eyebrow eyebrow-light">VHM-FRÄSER · PROFESSIONELLE ZERSPANUNG</span>
+          <span className="eyebrow eyebrow-light">FRÄSKERN · VHM-FRÄSER</span>
           <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
           <p>Hochwertige VHM-Fräser für die professionelle Zerspanung. Klare technische Daten. Faire Preise.</p>
           <div className="hero-actions">
@@ -95,22 +95,7 @@ function Home({openCollection,openProduct}){
     </section>
 
 
-    <section className="quickfinder-section" id="quickfinder">
-      <div className="container quickfinder">
-        <div className="quickfinder-copy">
-          <span className="quickfinder-label">Werkstoff</span>
-          <h2>Fräser auswählen</h2>
-        </div>
-        <div className="material-grid">
-          {materialShortcuts.map(material=>
-            <button key={material} onClick={()=>openCollection('Alle',material)}>
-              <span>{material==='Aluminium'?'Aluminium & NE-Metalle':material}</span>
-              <ArrowRight size={17}/>
-            </button>
-          )}
-        </div>
-      </div>
-    </section>
+
 
     <section className="home-categories container">
       <div className="section-head section-head-row">
@@ -140,6 +125,23 @@ function Home({openCollection,openProduct}){
             <ArrowRight size={18}/>
           </button>
         })}
+      </div>
+    </section>
+
+    <section className="quickfinder-section" id="quickfinder">
+      <div className="container quickfinder">
+        <div className="quickfinder-copy">
+          <span className="quickfinder-label">Werkstoff wählen</span>
+          <h2>Passende Fräser anzeigen</h2>
+        </div>
+        <div className="material-grid">
+          {materialShortcuts.map(material=>
+            <button key={material} onClick={()=>openCollection('Alle',material)}>
+              <span>{material==='Aluminium'?'Aluminium & NE-Metalle':material}</span>
+              <ArrowRight size={17}/>
+            </button>
+          )}
+        </div>
       </div>
     </section>
 
