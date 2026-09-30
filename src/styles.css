@@ -20,3 +20,49 @@ footer{background:var(--ink);color:#fff;padding:30px 0}.footer-inner{display:fle
 @media(max-width:1100px){.category-grid{grid-template-columns:repeat(3,1fr)}.category-card:nth-child(3){border-right:0}.featured-grid,.collection-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.header-main{grid-template-columns:1fr auto}.search-box{grid-column:1/-1;grid-row:2}.main-nav nav{overflow:auto}.hero-photo-bg{width:100%}.hero-overlay{background:linear-gradient(90deg,rgba(7,18,26,.98),rgba(7,18,26,.9) 55%,rgba(7,18,26,.45))}.collection-layout{grid-template-columns:1fr}.filter-panel{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.filter-title{grid-column:1/-1}.product-detail-grid{grid-template-columns:1fr}.detail-main-image{height:400px}.benefit-strip{grid-template-columns:1fr;gap:18px}.benefit-strip>div,.benefit-strip>div:first-child{padding:0;border:0}}
 @media(max-width:650px){.container{width:min(var(--max),calc(100% - 24px))}.master-logo-frame--header{width:185px;height:54px}.master-logo-frame--header .master-logo{width:190px}.header-cart{font-size:0}.hero-copy h1{font-size:52px}.category-grid,.featured-grid,.collection-grid{grid-template-columns:1fr}.category-card{border-right:0;border-top:1px solid var(--line)}.category-card:first-child{border-top:0}.section-head.row,.collection-hero{display:block}.text-link{margin-top:12px}.filter-panel{grid-template-columns:1fr}.filter-title{grid-column:auto}.collection-toolbar{align-items:flex-start;height:auto;padding:12px 0;gap:10px;flex-direction:column}.product-page h1{font-size:42px}.detail-main-image{height:320px}.detail-boxes{grid-template-columns:1fr}.detail-boxes div+div{border-left:0;border-top:1px solid var(--line)}.tr{grid-template-columns:1fr}.tr.head{display:none}.tr span{border-right:0;border-bottom:1px solid var(--line)}.cart-row{grid-template-columns:76px 1fr auto}.cart-row img{width:76px;height:76px}.cart-price{grid-column:2}.footer-inner{flex-direction:column;align-items:flex-start;gap:18px}}
+
+
+/* Hard containment fix for supplier product artwork */
+.category-image,
+.product-image{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden !important;
+}
+.contained-product-art{
+  position:absolute;
+  inset:12px 16px 8px;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:contain;
+  pointer-events:none;
+}
+.contained-product-art--card{
+  inset:26px 28px 18px;
+}
+.product-body{
+  position:relative;
+  z-index:3;
+  background:#fff;
+}
+.product-image{
+  height:220px;
+  min-height:220px;
+  max-height:220px;
+  contain:layout paint;
+  clip-path:inset(0);
+}
+.category-image{
+  height:140px;
+  min-height:140px;
+  max-height:140px;
+  contain:layout paint;
+  clip-path:inset(0);
+}
+/* Hide any legacy image node in these boxes if a stale render mixes markup/CSS */
+.product-image>img,
+.category-image>img{
+  max-width:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+}
