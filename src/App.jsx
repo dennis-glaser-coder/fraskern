@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import {
-  ArrowLeft, ArrowRight, BadgeCheck, Check, ChevronDown, ChevronLeft, ChevronRight,
-  Gauge, Layers3, Minus, Plus, Ruler, Search, ShoppingCart, SlidersHorizontal, Trash2
+  ArrowLeft, ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight,
+  Layers3, Minus, Plus, Ruler, Search, ShoppingCart, SlidersHorizontal, Trash2
 } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
@@ -31,13 +31,6 @@ function formatVariant(v){
 
 function Header({query,setQuery,onSearch,onHome,onCollection,onCart,cartCount}){
   return <header className="site-header">
-    <div className="topline">
-      <div className="container topline-inner">
-        <span>FRÄSKERN · CUTTING TOOLS</span>
-        <span>VHM-Fräser für professionelle Zerspanung</span>
-      </div>
-    </div>
-
     <div className="header-main container">
       <button className="logo-button" onClick={onHome} aria-label="FRÄSKERN Startseite">
         <span className="master-logo-frame master-logo-frame--header">
@@ -66,7 +59,7 @@ function Header({query,setQuery,onSearch,onHome,onCollection,onCart,cartCount}){
       <nav className="container">
         <button className="nav-strong" onClick={()=>onCollection('Alle')}>Alle Fräser</button>
         {categories.map(c=><button key={c.value} onClick={()=>onCollection(c.value)}>{c.label}</button>)}
-        <button className="nav-tech" onClick={()=>onCollection('Alle','Alle')}>Technische Auswahl</button>
+
       </nav>
     </div>
   </header>
@@ -94,21 +87,12 @@ function Home({openCollection,openProduct}){
       </div>
     </section>
 
-    <section className="proofbar">
-      <div className="container proofbar-grid">
-        <div><BadgeCheck size={19}/><span><strong>VHM-Fräser</strong><small>für professionelle Anwendungen</small></span></div>
-        <div><Ruler size={19}/><span><strong>Technische Maße</strong><small>Dc, Lc, Ds und Gesamtlänge</small></span></div>
-        <div><Layers3 size={19}/><span><strong>Produktvarianten</strong><small>Abmessungen direkt vergleichbar</small></span></div>
-        <div><Gauge size={19}/><span><strong>Werkstoffauswahl</strong><small>Stahl, Edelstahl, Alu, Guss, HRC</small></span></div>
-      </div>
-    </section>
 
     <section className="quickfinder-section" id="quickfinder">
       <div className="container quickfinder">
         <div className="quickfinder-copy">
-          <span className="eyebrow">FRÄSERAUSWAHL</span>
-          <h2>Passender Fräser für deinen Werkstoff</h2>
-          <p>Nach Werkstoff filtern und geeignete Fräser vergleichen.</p>
+          <span className="eyebrow">NACH WERKSTOFF</span>
+          <h2>Fräser auswählen</h2>
         </div>
         <div className="material-grid">
           {materialShortcuts.map(material=>
@@ -516,27 +500,19 @@ function Footer({onCollection}){
     <div className="container footer-grid">
       <div className="footer-brand">
         <span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo"/></span>
-        <p>VHM-Fräser für professionelle Zerspanung. Technisch klar. Fair kalkuliert.</p>
+        <p>VHM-Fräser für die professionelle Zerspanung.</p>
       </div>
       <div>
         <strong>Sortiment</strong>
         <button onClick={()=>onCollection('Alle')}>Alle Fräser</button>
         <button onClick={()=>onCollection('Schaftfräser')}>Schaftfräser</button>
         <button onClick={()=>onCollection('Kugelfräser')}>Kugelfräser</button>
+        <button onClick={()=>onCollection('Torusfräser')}>Torusfräser</button>
+      </div>
+      <div>
+        <strong>Weitere Fräser</strong>
         <button onClick={()=>onCollection('Aluminiumfräser')}>Aluminiumfräser</button>
-      </div>
-      <div>
-        <strong>Auswahl</strong>
-        <span>Werkstoff</span>
-        <span>Bauform</span>
-        <span>Beschichtung</span>
-        <span>Abmessungen</span>
-      </div>
-      <div>
-        <strong>FRÄSKERN</strong>
-        <span>Cutting Tools</span>
-        <span>Fokus: VHM-Fräser</span>
-        <span>Shop im Aufbau</span>
+        <button onClick={()=>onCollection('Schruppfräser')}>Schruppfräser</button>
       </div>
     </div>
     <div className="container footer-bottom">FRÄSKERN · CUTTING TOOLS</div>
