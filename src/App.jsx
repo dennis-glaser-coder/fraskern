@@ -80,7 +80,7 @@ export default function App() {
       </header>
 
       <main id="top">
-        <section className="hero hero--dark">
+        <section className="hero hero--photo">
           <div className="hero-grid container">
             <div className="hero-copy">
               <span className="kicker kicker--light">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
@@ -98,12 +98,10 @@ export default function App() {
               </div>
             </div>
 
-            <div className="hero-media" aria-label="VHM-Fräser Produktdarstellung">
-              <div className="hero-media__glow"/>
-              <img src={productImages.hard} alt="Beschichtete VHM-Fräser" className="hero-media__image" />
+            <div className="hero-photo-space" aria-hidden="true">
               <div className="hero-media__label">
-                <small>FRÄSKERN</small>
-                <strong>VHM · 4Z · HRC</strong>
+                <small>PRÄZISIONSBEARBEITUNG</small>
+                <strong>VHM · CNC · METALL</strong>
               </div>
             </div>
           </div>
