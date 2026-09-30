@@ -176,7 +176,7 @@ function ProductDetail({product,onBack,addToCart}){
   const [zoomPos,setZoomPos]=useState({x:50,y:50})
   const [galleryIndex,setGalleryIndex]=useState(0)
   const v=product.variants[variantIndex]
-  const gallery=[product.detailImage,product.image].filter(Boolean)
+  const gallery=[...new Set([product.image,product.detailImage].filter(Boolean))]
   const currentImage=gallery[galleryIndex] || product.image
 
   const moveZoom=e=>{
