@@ -29,6 +29,14 @@ function formatVariant(v){
   return out.join(' · ')
 }
 
+function diameterRange(product){
+  const values=product.variants.map(v=>Number(v.diameter)).filter(Number.isFinite)
+  if(!values.length) return '—'
+  const min=Math.min(...values)
+  const max=Math.max(...values)
+  return min===max ? `Ø ${min} mm` : `Ø ${min}–${max} mm`
+}
+
 function Header({query,setQuery,onSearch,onHome,onCollection,onCart,cartCount}){
   return <header className="site-header">
     <div className="header-main container">
@@ -80,8 +88,7 @@ function Home({openCollection,openProduct}){
           <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
           <p>Hochwertige VHM-Fräser für die professionelle Zerspanung. Klare technische Daten. Faire Preise.</p>
           <div className="hero-actions">
-            <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Alle Fräser <ArrowRight size={18}/></button>
-            <button className="btn btn-ghost" onClick={()=>document.querySelector('#quickfinder')?.scrollIntoView({behavior:'smooth'})}>Nach Werkstoff wählen</button>
+            <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Fräser entdecken <ArrowRight size={18}/></button>
           </div>
         </div>
       </div>
@@ -91,7 +98,7 @@ function Home({openCollection,openProduct}){
     <section className="quickfinder-section" id="quickfinder">
       <div className="container quickfinder">
         <div className="quickfinder-copy">
-          <span className="eyebrow">NACH WERKSTOFF</span>
+          <span className="quickfinder-label">Werkstoff</span>
           <h2>Fräser auswählen</h2>
         </div>
         <div className="material-grid">
@@ -108,7 +115,6 @@ function Home({openCollection,openProduct}){
     <section className="home-categories container">
       <div className="section-head section-head-row">
         <div>
-          <span className="eyebrow">SORTIMENT</span>
           <h2>Fräser nach Bauform</h2>
         </div>
         <button className="text-link" onClick={()=>openCollection('Alle')}>Gesamtes Sortiment <ArrowRight size={16}/></button>
@@ -128,7 +134,6 @@ function Home({openCollection,openProduct}){
               />
             </div>
             <div className="category-copy">
-              <span className="category-note">{cat.note}</span>
               <strong>{cat.label}</strong>
               <small>{count} Produktserie{count===1?'':'n'}</small>
             </div>
@@ -142,7 +147,6 @@ function Home({openCollection,openProduct}){
       <div className="container">
         <div className="section-head section-head-row">
           <div>
-            <span className="eyebrow">PRODUKTE</span>
             <h2>VHM-Fräser</h2>
           </div>
           <button className="text-link" onClick={()=>openCollection('Alle')}>Alle Produkte <ArrowRight size={16}/></button>
@@ -169,21 +173,19 @@ function ProductCard({product,onOpen}){
         />
       </div>
       <div className="product-body">
-        <div className="product-topline">
-          <span>{product.shape}</span>
-          <span>{product.flutes} Schneiden</span>
-        </div>
+        <div className="product-kicker">{product.shape}</div>
         <h3>{product.name}</h3>
-        <div className="product-spec-row">
+        <div className="product-facts">
+          <span>{diameterRange(product)}</span>
+          <span>{product.flutes} Schneiden</span>
           <span>{product.coating}</span>
-          <span>{product.variants.length} Varianten</span>
         </div>
         <div className="product-materials">
-          <small>Geeignet für</small>
+          <small>Werkstoffe</small>
           <strong>{product.materials.join(' · ')}</strong>
         </div>
         <div className="product-bottom">
-          <span className="product-cta">Varianten ansehen <ArrowRight size={16}/></span>
+          <span className="product-cta">{product.variants.length} Varianten ansehen <ArrowRight size={16}/></span>
         </div>
       </div>
     </button>
