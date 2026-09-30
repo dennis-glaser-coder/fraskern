@@ -1,8 +1,7 @@
-import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart, PackageCheck } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart, Layers3, Wrench, Factory } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
-
-const materials = ['Stahl', 'Edelstahl', 'Aluminium', 'Guss', 'Hochfeste Stähle']
 
 const productImages = {
   universal: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E5%B0%8F%E5%BE%84%E5%B9%B3%E5%88%80.png',
@@ -11,42 +10,54 @@ const productImages = {
   rough: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E7%B2%97%E7%9A%AE%E5%88%80.png',
 }
 
-const categories = [
-  { code:'01', name:'Universalfräser', short:'Vielseitig. Präzise. Effizient.', text:'VHM-Schaftfräser für Stahl und Guss.', image:productImages.universal },
-  { code:'02', name:'Hochleistungsfräser', short:'Für maximale Performance.', text:'Für hochfeste Werkstoffe und anspruchsvolle Bearbeitung.', image:productImages.hard },
-  { code:'03', name:'Aluminiumfräser', short:'Optimiert für NE-Metalle.', text:'Scharfe Geometrien und große Spanräume.', image:productImages.alu },
-  { code:'04', name:'Schruppfräser', short:'Für hohe Zerspanvolumen.', text:'Schruppgeometrie für hohen Materialabtrag.', image:productImages.rough },
+const materials = [
+  { code:'P', name:'Stahl', text:'Allgemeine und legierte Stähle' },
+  { code:'M', name:'Edelstahl', text:'Korrosionsbeständige Werkstoffe' },
+  { code:'N', name:'Aluminium', text:'Aluminium und NE-Metalle' },
+  { code:'K', name:'Guss', text:'Gusswerkstoffe' },
+  { code:'H', name:'Hochfeste Stähle', text:'Anspruchsvolle harte Werkstoffe' },
 ]
 
-function ProductCard({ product }) {
+const categories = [
+  { code:'01', key:'universal', name:'Universalfräser', short:'Vielseitig. Präzise. Effizient.', text:'VHM-Schaftfräser für Stahl und Guss.', image:productImages.universal },
+  { code:'02', key:'hard', name:'Hochleistungsfräser', short:'Für anspruchsvolle Werkstoffe.', text:'Beschichtete VHM-Fräser für hochfeste Werkstoffe und Edelstahl.', image:productImages.hard },
+  { code:'03', key:'alu', name:'Aluminiumfräser', short:'Optimiert für NE-Metalle.', text:'Scharfe Geometrien und große Spanräume für Aluminium.', image:productImages.alu },
+  { code:'04', key:'rough', name:'Schruppfräser', short:'Für hohen Materialabtrag.', text:'Schruppgeometrie für Stahl und Guss.', image:productImages.rough },
+]
+
+const applications = ['Universal', 'Schlichten', 'Schruppen', 'Nuten']
+
+function ProductRow({ product }) {
   return (
-    <article className="product-card">
-      <div className="product-card__top">
-        <span className="badge">{product.badge}</span>
-        <img className="catalog-product-image" src={product.image} alt={product.name} />
-        <span className="product-quality-tag">VHM</span>
+    <article className="series-row">
+      <div className="series-row__image">
+        <img src={product.image} alt={product.name} />
       </div>
-      <div className="product-card__body">
-        <p className="eyebrow">{product.subtitle}</p>
+      <div className="series-row__main">
+        <span className="eyebrow">{product.subtitle}</span>
         <h3>{product.name}</h3>
-        <div className="spec-row">
-          <span>{product.flutes}</span>
-          <span>{product.coating}</span>
-        </div>
-        <p className="muted">{product.materials.join(' · ')}</p>
-        <div className="product-card__footer">
-          <div>
-            <strong>Preis folgt</strong>
-            <small>nach finaler Kalkulation</small>
-          </div>
-          <button className="icon-btn" aria-label="Produkt vormerken"><ShoppingCart size={18}/></button>
-        </div>
+        <p>{product.materials.join(' · ')}</p>
       </div>
+      <div className="series-row__specs">
+        <span>{product.flutes}</span>
+        <span>{product.coating}</span>
+      </div>
+      <a className="series-row__link" href="#finder">Zur Auswahl <ArrowRight size={16}/></a>
     </article>
   )
 }
 
 export default function App() {
+  const [selectedMaterial, setSelectedMaterial] = useState('Stahl')
+  const [selectedApplication, setSelectedApplication] = useState('Universal')
+
+  const recommendation = useMemo(() => {
+    if (selectedMaterial === 'Aluminium') return categories.find(c => c.key === 'alu')
+    if (selectedApplication === 'Schruppen') return categories.find(c => c.key === 'rough')
+    if (selectedMaterial === 'Edelstahl' || selectedMaterial === 'Hochfeste Stähle') return categories.find(c => c.key === 'hard')
+    return categories.find(c => c.key === 'universal')
+  }, [selectedMaterial, selectedApplication])
+
   return (
     <div className="site-shell">
       <header className="header-shell">
@@ -70,11 +81,11 @@ export default function App() {
 
         <div className="header-nav">
           <nav className="nav container">
-            <a href="#kategorien">Fräser</a>
-            <a href="#produkte">Produkte</a>
+            <a href="#werkstoff">Werkstoff</a>
+            <a href="#familien">Fräser</a>
+            <a href="#serien">Serien</a>
             <a href="#finder">Fräserfinder</a>
             <a href="#wissen">Qualität</a>
-            <a href="#wissen">Service</a>
           </nav>
         </div>
       </header>
@@ -89,81 +100,130 @@ export default function App() {
               <span className="kicker kicker--light">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
               <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
               <p>Hochwertige VHM-Fräser für professionelle Anwendungen. Klar ausgewählt, technisch sauber beschrieben und fair kalkuliert.</p>
-
               <div className="hero-actions">
-                <a className="btn btn-primary hero-cta" href="#kategorien">Fräser entdecken <ArrowRight size={18}/></a>
+                <a className="btn btn-primary hero-cta" href="#werkstoff">Passenden Fräser finden <ArrowRight size={18}/></a>
               </div>
-
               <div className="hero-facts hero-facts--dark">
-                <span><BadgeCheck size={18}/> Hochwertige Werkzeugqualität</span>
-                <span><PackageCheck size={18}/> Klar kuratiertes Sortiment</span>
-                <span><Gauge size={18}/> Technische Daten transparent</span>
+                <span><BadgeCheck size={18}/> VHM-Qualität</span>
+                <span><Gauge size={18}/> Klare technische Daten</span>
+                <span><Layers3 size={18}/> Fokus auf Fräser</span>
               </div>
             </div>
-
-            <div className="hero-photo-space" aria-hidden="true">
-              <div className="hero-media__label">
-                <small>PRÄZISIONSBEARBEITUNG</small>
-                <strong>VHM · CNC · METALL</strong>
-              </div>
-            </div>
+            <div className="hero-photo-space" aria-hidden="true"/>
           </div>
         </section>
 
-        <section className="category-strip container" id="kategorien">
-          {categories.map(category => (
-            <a className="category-tile" href="#produkte" key={category.name}>
-              <div className="category-tile__image">
-                <img src={category.image} alt={category.name} />
-              </div>
-              <div className="category-tile__body">
-                <span className="category-code">{category.code}</span>
-                <h3>{category.name}</h3>
-                <p>{category.short}</p>
-                <ArrowRight size={19}/>
-              </div>
-            </a>
-          ))}
-        </section>
-
-        <section className="trust-strip container">
-          <div><BadgeCheck size={25}/><span><strong>VHM-Qualität</strong><small>Für professionelle Anwendungen</small></span></div>
-          <div><PackageCheck size={25}/><span><strong>Klares Sortiment</strong><small>Fräser statt Vollsortiment</small></span></div>
-          <div><Gauge size={25}/><span><strong>Technische Daten</strong><small>Für sichere Auswahl</small></span></div>
-          <div><Search size={25}/><span><strong>Fräserfinder</strong><small>Werkstoff zuerst auswählen</small></span></div>
-        </section>
-
-        <section className="products-section container" id="produkte">
-          <div className="section-heading row">
+        <section className="material-section container" id="werkstoff">
+          <div className="section-heading material-heading">
             <div>
-              <span className="kicker">AUSGEWÄHLTE FRÄSER</span>
-              <h2>Für die tägliche Fertigung.</h2>
+              <span className="kicker">1 · WERKSTOFF WÄHLEN</span>
+              <h2>Was möchtest du bearbeiten?</h2>
             </div>
-            <span className="catalog-note">Technische Varianten werden aktuell aufbereitet.</span>
+            <p>Starte beim Werkstoff. So kommst du schneller zur passenden Fräserfamilie, statt dich durch ein Vollsortiment zu klicken.</p>
           </div>
 
-          <div className="product-grid product-grid--mills">
-            {products.map(product => <ProductCard key={product.id} product={product}/>)}
+          <div className="material-cards">
+            {materials.map(material => (
+              <button
+                key={material.name}
+                className={selectedMaterial === material.name ? 'material-card active' : 'material-card'}
+                onClick={() => setSelectedMaterial(material.name)}
+              >
+                <span className="material-card__code">{material.code}</span>
+                <strong>{material.name}</strong>
+                <small>{material.text}</small>
+                <ArrowRight size={17}/>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="families-section" id="familien">
+          <div className="container">
+            <div className="section-heading family-heading">
+              <div>
+                <span className="kicker">2 · FRÄSERFAMILIE</span>
+                <h2>Für Material und Anwendung.</h2>
+              </div>
+              <p>Vier klar getrennte Fräserfamilien für die wichtigsten Anwendungen zum Start.</p>
+            </div>
+
+            <div className="category-strip category-strip--embedded">
+              {categories.map(category => (
+                <a className="category-tile" href="#serien" key={category.name}>
+                  <div className="category-tile__image">
+                    <img src={category.image} alt={category.name} />
+                  </div>
+                  <div className="category-tile__body">
+                    <span className="category-code">{category.code}</span>
+                    <h3>{category.name}</h3>
+                    <p>{category.short}</p>
+                    <ArrowRight size={19}/>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="series-section container" id="serien">
+          <div className="section-heading series-heading">
+            <div>
+              <span className="kicker">3 · PRODUKTSERIEN</span>
+              <h2>Technisch klar statt doppelt gezeigt.</h2>
+            </div>
+            <p>Die Produktserien werden hier kompakt mit Einsatzbereich und Kerndaten dargestellt. Einzelne Durchmesser und Schnittdaten ergänzen wir erst mit belastbaren Herstellerdaten.</p>
+          </div>
+
+          <div className="series-list">
+            {products.map(product => <ProductRow key={product.id} product={product}/>)}
           </div>
         </section>
 
         <section className="finder-section" id="finder">
-          <div className="container finder-card">
-            <div className="section-heading compact">
-              <span className="kicker">FRÄSERFINDER</span>
-              <h2>Vom Werkstoff zum passenden Fräser.</h2>
-              <p>Werkstoff auswählen und anschließend Geometrie, Bearbeitung und Durchmesser eingrenzen.</p>
+          <div className="container finder-card finder-card--guided">
+            <div className="finder-intro">
+              <span className="kicker">4 · FRÄSERFINDER</span>
+              <h2>In zwei Schritten zur Vorauswahl.</h2>
+              <p>Werkstoff und Anwendung auswählen. Daraus leiten wir die passende Fräserfamilie ab.</p>
             </div>
 
-            <div className="material-grid">
-              {materials.map((material, i) => (
-                <button key={material} className={i===0 ? 'material active' : 'material'}>
-                  <span>{['P','M','N','K','H'][i]}</span>{material}
-                </button>
-              ))}
+            <div className="finder-control">
+              <small>WERKSTOFF</small>
+              <div className="finder-options">
+                {materials.map(material => (
+                  <button
+                    key={material.name}
+                    className={selectedMaterial === material.name ? 'finder-option active' : 'finder-option'}
+                    onClick={() => setSelectedMaterial(material.name)}
+                  >
+                    <b>{material.code}</b>{material.name}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <button className="btn btn-primary finder-next">Auswahl starten <ArrowRight size={18}/></button>
+            <div className="finder-control">
+              <small>ANWENDUNG</small>
+              <div className="finder-options">
+                {applications.map(application => (
+                  <button
+                    key={application}
+                    className={selectedApplication === application ? 'finder-option active' : 'finder-option'}
+                    onClick={() => setSelectedApplication(application)}
+                  >
+                    {application}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="finder-result">
+              <span>VORAUSWAHL</span>
+              <strong>{recommendation.name}</strong>
+              <p>{recommendation.text}</p>
+              <a href="#serien">Serie ansehen <ArrowRight size={16}/></a>
+            </div>
           </div>
         </section>
 
