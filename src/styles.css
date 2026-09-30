@@ -1008,37 +1008,6 @@ footer{
 .hero-actions .btn-primary:hover svg{
   transform:translateX(4px);
 }
-.hero-tech-meta{
-  display:flex;
-  align-items:flex-start;
-  margin-top:24px;
-  padding-top:14px;
-  max-width:455px;
-  border-top:1px solid rgba(255,255,255,.16);
-}
-.hero-tech-meta span{
-  min-width:122px;
-  margin-right:20px;
-  padding-right:20px;
-  border-right:1px solid rgba(255,255,255,.12);
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-.hero-tech-meta span:last-child{
-  border-right:0;
-  margin-right:0;
-  padding-right:0;
-}
-.hero-tech-meta b{
-  color:#fff;
-  font-size:11px;
-  letter-spacing:.04em;
-}
-.hero-tech-meta small{
-  color:#8ea7b4;
-  font-size:8px;
-}
 
 /* Headings feel designed, not templated */
 .section-head h2{
