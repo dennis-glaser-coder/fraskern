@@ -81,6 +81,9 @@ export default function App() {
 
       <main id="top">
         <section className="hero hero--photo">
+          <div className="hero-photo-bg" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/10406128/pexels-photo-10406128.jpeg?cs=srgb&fm=jpg" alt="" />
+          </div>
           <div className="hero-grid container">
             <div className="hero-copy">
               <span className="kicker kicker--light">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
