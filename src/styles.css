@@ -742,3 +742,7 @@ footer{background:var(--ink);color:#fff;padding:30px 0}
   }
   .finder-options{grid-template-columns:1fr}
 }
+
+
+/* Remove numeric/category step styling from the storefront */
+.category-code{display:none!important}
