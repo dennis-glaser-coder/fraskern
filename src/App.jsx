@@ -116,7 +116,7 @@ export default function App() {
         <section className="material-section container" id="werkstoff">
           <div className="section-heading material-heading">
             <div>
-              <span className="kicker">1 · WERKSTOFF WÄHLEN</span>
+              <span className="kicker">WERKSTOFF</span>
               <h2>Was möchtest du bearbeiten?</h2>
             </div>
             <p>Starte beim Werkstoff. So kommst du schneller zur passenden Fräserfamilie, statt dich durch ein Vollsortiment zu klicken.</p>
@@ -142,7 +142,7 @@ export default function App() {
           <div className="container">
             <div className="section-heading family-heading">
               <div>
-                <span className="kicker">2 · FRÄSERFAMILIE</span>
+                <span className="kicker">FRÄSERFAMILIEN</span>
                 <h2>Für Material und Anwendung.</h2>
               </div>
               <p>Vier klar getrennte Fräserfamilien für die wichtigsten Anwendungen zum Start.</p>
@@ -155,7 +155,6 @@ export default function App() {
                     <img src={category.image} alt={category.name} />
                   </div>
                   <div className="category-tile__body">
-                    <span className="category-code">{category.code}</span>
                     <h3>{category.name}</h3>
                     <p>{category.short}</p>
                     <ArrowRight size={19}/>
@@ -169,7 +168,7 @@ export default function App() {
         <section className="series-section container" id="serien">
           <div className="section-heading series-heading">
             <div>
-              <span className="kicker">3 · PRODUKTSERIEN</span>
+              <span className="kicker">PRODUKTSERIEN</span>
               <h2>Technisch klar statt doppelt gezeigt.</h2>
             </div>
             <p>Die Produktserien werden hier kompakt mit Einsatzbereich und Kerndaten dargestellt. Einzelne Durchmesser und Schnittdaten ergänzen wir erst mit belastbaren Herstellerdaten.</p>
@@ -183,7 +182,7 @@ export default function App() {
         <section className="finder-section" id="finder">
           <div className="container finder-card finder-card--guided">
             <div className="finder-intro">
-              <span className="kicker">4 · FRÄSERFINDER</span>
+              <span className="kicker">FRÄSERFINDER</span>
               <h2>In zwei Schritten zur Vorauswahl.</h2>
               <p>Werkstoff und Anwendung auswählen. Daraus leiten wir die passende Fräserfamilie ab.</p>
             </div>
