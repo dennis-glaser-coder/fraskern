@@ -5,11 +5,13 @@
 **FRÄSKERN**  
 **CUTTING TOOLS**
 
-Die aktuell freigegebene Masterversion ist das Blau/Stahl-Logo in `public/assets/fraeskern-logo-master.png`.
+Die freigegebene Masterversion ist das zuvor festgelegte Blau/Stahl-Logo. Diese Bilddatei ist die visuelle Quelle der Wahrheit.
 
 ### Regel
 
 Das Masterlogo, dessen Blau/Stahl-Farbwelt und die Wortmarke werden **nicht eigenständig geändert**. Änderungen erfolgen nur nach ausdrücklicher Freigabe des Auftraggebers.
+
+> Hinweis: Im aktuellen Website-Prototyp wird bis zur sauberen Einbindung der binären Masterdatei ein technisch nachgebauter Platzhalter im Header verwendet. Dieser ersetzt das Masterlogo ausdrücklich nicht.
 
 ## Kernfarben
 
