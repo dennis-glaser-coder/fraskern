@@ -66,7 +66,7 @@ function Home({openCollection,openProduct}){
         {categories.map(cat=>{
           const item=products.find(p=>p.shape===cat.value)
           return <button className="category-card" key={cat.value} onClick={()=>openCollection(cat.value)}>
-            <div className="category-image"><img src={item?.image} alt={cat.label}/></div>
+            <div className="category-image"><div className="contained-product-art" style={{backgroundImage:`url("${item?.image}")`}} role="img" aria-label={cat.label}/></div>
             <div className="category-copy"><strong>{cat.label}</strong><span>{products.filter(p=>p.shape===cat.value).length} Produktserien</span></div>
             <ArrowRight size={18}/>
           </button>
@@ -96,7 +96,7 @@ function ProductCard({product,onOpen}){
     <button className="product-card-click" onClick={onOpen}>
       <div className="product-image">
         <span className="series-badge">{product.series}</span>
-        <img src={product.image} alt={product.name}/>
+        <div className="contained-product-art contained-product-art--card" style={{backgroundImage:`url("${product.image}")`}} role="img" aria-label={product.name}/>
       </div>
       <div className="product-body">
         <span className="product-meta">{product.shape} · {product.flutes}Z</span>
