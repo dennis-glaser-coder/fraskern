@@ -479,3 +479,114 @@ footer{background:var(--ink);color:white;padding:30px 0}
   .value-section{padding:60px 0}
   .footer-inner{align-items:flex-start;gap:20px;flex-direction:column}
 }
+
+
+/* FRÄSKERN Fräser-only catalog pass */
+.hero-visual--catalog{
+  min-height:520px;
+  justify-content:flex-end;
+  padding-right:105px;
+}
+.catalog-hero-card{
+  width:min(600px,100%);
+  height:390px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#f7fafb,#e8eff2);
+  border:1px solid #dce5e9;
+  box-shadow:0 28px 60px rgba(17,34,43,.12);
+  overflow:hidden;
+  position:relative;
+}
+.catalog-hero-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  box-shadow:inset 0 0 55px rgba(255,255,255,.32);
+  pointer-events:none;
+}
+.catalog-hero-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.9) contrast(1.04);
+}
+
+.category-grid--mills{
+  grid-template-columns:repeat(4,1fr);
+}
+.category-grid--mills .category-card:nth-child(n){
+  border-top:0;
+}
+.category-grid--mills .category-card:last-child{
+  border-right:0;
+}
+.category-artwork-wrap--photo{
+  height:150px;
+  margin:12px -8px 8px;
+  background:#f2f6f8;
+  overflow:hidden;
+}
+.category-artwork-wrap--photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:transform .25s ease;
+}
+.category-card:hover .category-artwork-wrap--photo img{
+  transform:scale(1.035);
+}
+
+.product-grid--mills{
+  grid-template-columns:repeat(4,1fr);
+}
+.catalog-product-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:18px;
+  display:block;
+  filter:saturate(.92) contrast(1.03);
+}
+.catalog-note{
+  font-size:11px;
+  color:var(--steel);
+  max-width:260px;
+  text-align:right;
+  line-height:1.5;
+}
+.product-card__footer strong{
+  font-size:17px;
+}
+.product-card__footer small{
+  max-width:130px;
+  line-height:1.4;
+}
+
+@media(max-width:1120px){
+  .category-grid--mills{grid-template-columns:repeat(2,1fr)}
+  .category-grid--mills .category-card{border-top:1px solid var(--line)}
+  .category-grid--mills .category-card:nth-child(-n+2){border-top:0}
+  .category-grid--mills .category-card:nth-child(2n){border-right:0}
+  .product-grid--mills{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:950px){
+  .hero-visual--catalog{padding-right:0}
+  .catalog-hero-card{width:min(620px,88%);height:360px}
+}
+
+@media(max-width:650px){
+  .category-grid--mills{grid-template-columns:1fr}
+  .category-grid--mills .category-card{border-right:0;border-top:1px solid var(--line)}
+  .category-grid--mills .category-card:first-child{border-top:0}
+  .product-grid--mills{grid-template-columns:1fr}
+  .catalog-note{display:none}
+  .catalog-hero-card{width:100%;height:270px}
+  .hero-visual--catalog{min-height:320px}
+  .spec-rail{display:none}
+}
