@@ -15,11 +15,11 @@ const categories = [
 ]
 
 const materialShortcuts = [
-  {label:'Stahl', code:'P'},
-  {label:'Edelstahl', code:'M'},
-  {label:'Aluminium', code:'N'},
-  {label:'Guss', code:'K'},
-  {label:'Hochfeste Stähle', code:'H'},
+  'Stahl',
+  'Edelstahl',
+  'Aluminium',
+  'Guss',
+  'Hochfeste Stähle',
 ]
 
 function formatVariant(v){
@@ -96,10 +96,10 @@ function Home({openCollection,openProduct}){
 
     <section className="proofbar">
       <div className="container proofbar-grid">
-        <div><BadgeCheck size={19}/><span><strong>VHM im Fokus</strong><small>konzentriertes Sortiment</small></span></div>
-        <div><Ruler size={19}/><span><strong>Abmessungen klar</strong><small>Ø, Lc, Ds und Gesamtlänge</small></span></div>
-        <div><Layers3 size={19}/><span><strong>Varianten sichtbar</strong><small>direkt am Produkt</small></span></div>
-        <div><Gauge size={19}/><span><strong>Anwendung zuerst</strong><small>Werkstoff & Geometrie</small></span></div>
+        <div><BadgeCheck size={19}/><span><strong>VHM-Fräser</strong><small>für professionelle Anwendungen</small></span></div>
+        <div><Ruler size={19}/><span><strong>Technische Maße</strong><small>Dc, Lc, Ds und Gesamtlänge</small></span></div>
+        <div><Layers3 size={19}/><span><strong>Produktvarianten</strong><small>Abmessungen direkt vergleichbar</small></span></div>
+        <div><Gauge size={19}/><span><strong>Werkstoffauswahl</strong><small>Stahl, Edelstahl, Alu, Guss, HRC</small></span></div>
       </div>
     </section>
 
@@ -111,10 +111,9 @@ function Home({openCollection,openProduct}){
           <p>Nach Werkstoff filtern und geeignete Fräser vergleichen.</p>
         </div>
         <div className="material-grid">
-          {materialShortcuts.map(m=>
-            <button key={m.label} onClick={()=>openCollection('Alle',m.label)}>
-              <b>{m.code}</b>
-              <span>{m.label}</span>
+          {materialShortcuts.map(material=>
+            <button key={material} onClick={()=>openCollection('Alle',material)}>
+              <span>{material==='Aluminium'?'Aluminium & NE-Metalle':material}</span>
               <ArrowRight size={17}/>
             </button>
           )}
@@ -159,8 +158,8 @@ function Home({openCollection,openProduct}){
       <div className="container">
         <div className="section-head section-head-row">
           <div>
-            <span className="eyebrow">VHM-FRÄSER</span>
-            <h2>Für die tägliche Fertigung</h2>
+            <span className="eyebrow">PRODUKTE</span>
+            <h2>VHM-Fräser</h2>
           </div>
           <button className="text-link" onClick={()=>openCollection('Alle')}>Alle Produkte <ArrowRight size={16}/></button>
         </div>
@@ -170,19 +169,6 @@ function Home({openCollection,openProduct}){
       </div>
     </section>
 
-    <section className="positioning-section">
-      <div className="container positioning-grid">
-        <div>
-          <span className="eyebrow eyebrow-light">FRÄSKERN PRINZIP</span>
-          <h2>Weniger Katalog.<br/>Mehr Klarheit.</h2>
-        </div>
-        <div className="positioning-points">
-          <div><b>01</b><span><strong>Passende Bauform finden</strong><small>Schaft, Kugel, Torus, Alu oder Schruppen.</small></span></div>
-          <div><b>02</b><span><strong>Technik vergleichen</strong><small>Beschichtung, Schneidenzahl und Werkstoffe direkt sichtbar.</small></span></div>
-          <div><b>03</b><span><strong>Abmessung wählen</strong><small>Konkrete Varianten erst auf der Produktseite auswählen.</small></span></div>
-        </div>
-      </div>
-    </section>
   </>
 }
 
@@ -213,8 +199,7 @@ function ProductCard({product,onOpen}){
           <strong>{product.materials.join(' · ')}</strong>
         </div>
         <div className="product-bottom">
-          <span className="price-prep"><small>Preis</small><strong>in Vorbereitung</strong></span>
-          <span className="product-cta">Details <ArrowRight size={16}/></span>
+          <span className="product-cta">Varianten ansehen <ArrowRight size={16}/></span>
         </div>
       </div>
     </button>
@@ -412,11 +397,6 @@ function ProductDetail({product,onBack,addToCart}){
         </div>
 
         <div className="purchase-box">
-          <div className="purchase-price">
-            <small>Preis</small>
-            <strong>in Vorbereitung</strong>
-          </div>
-
           <label className="variant-label">
             <span>Abmessung wählen</span>
             <div className="select-wrap">
@@ -524,8 +504,8 @@ function CartPage({cart,setCart,onCollection}){
           </div>)}
         </div>
         <div className="cart-summary">
-          <strong>Shop-Checkout wird im nächsten Schritt angebunden.</strong>
-          <span>Produkte, Varianten und Warenkorbstruktur sind bereits vorbereitet.</span>
+          <strong>Warenkorb</strong>
+          <span>Preise und Checkout werden mit dem finalen Shopsystem ergänzt.</span>
         </div>
       </>}
   </div>
