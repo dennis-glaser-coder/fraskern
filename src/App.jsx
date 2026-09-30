@@ -85,7 +85,7 @@ function Home({openCollection,openProduct}){
         <div className="hero-copy">
           <span className="eyebrow eyebrow-light">VHM-FRÄSER · PROFESSIONELLE ZERSPANUNG</span>
           <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
-          <p>Hochwertige VHM-Fräser für die professionelle Zerspanung – technisch sauber beschrieben und fair kalkuliert.</p>
+          <p>Hochwertige VHM-Fräser für die professionelle Zerspanung. Klare technische Daten. Faire Preise.</p>
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Alle Fräser <ArrowRight size={18}/></button>
             <button className="btn btn-ghost" onClick={()=>document.querySelector('#quickfinder')?.scrollIntoView({behavior:'smooth'})}>Nach Werkstoff wählen</button>
