@@ -1173,3 +1173,106 @@ footer{
   transform:scaleX(-1) scale(1);
   animation:none;
 }
+
+
+/* FINAL MOBILE LAYOUT GUARD */
+html,body,#root{max-width:100%;overflow-x:hidden}
+img,svg{max-width:100%}
+
+@media(max-width:900px){
+  .container{width:calc(100% - 28px);max-width:100%}
+  .site-header{position:relative}
+  .header-main{
+    width:calc(100% - 28px);
+    min-height:auto;
+    padding:10px 0 12px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:10px 12px;
+    align-items:center;
+  }
+  .logo-button{min-width:0;overflow:hidden}
+  .master-logo-frame--header{width:178px;max-width:100%;height:50px}
+  .master-logo-frame--header .master-logo{width:182px}
+  .header-cart{width:auto;min-width:44px;max-width:100%;padding:0 12px}
+  .search-box{grid-column:1/-1;grid-row:2;width:100%;min-width:0}
+  .search-box input{width:100%;min-width:0}
+  .main-nav{width:100%;overflow:hidden}
+  .main-nav nav{
+    width:calc(100% - 28px);
+    max-width:100%;
+    height:42px;
+    gap:22px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .main-nav nav::-webkit-scrollbar{display:none}
+  .hero--shop{width:100%;height:430px;overflow:hidden}
+  .hero-photo-bg{inset:0;width:100%;max-width:100%}
+  .hero-photo-bg img{
+    width:100%;
+    max-width:none;
+    height:100%;
+    object-fit:cover;
+    object-position:42% 48%;
+    transform:scaleX(-1);
+  }
+  .hero-overlay{
+    width:100%;
+    background:linear-gradient(90deg,rgba(7,18,26,.98) 0%,rgba(7,18,26,.91) 52%,rgba(7,18,26,.58) 76%,rgba(7,18,26,.28) 100%);
+  }
+  .hero-shop-inner{width:calc(100% - 28px)}
+  .hero-copy{width:100%;max-width:520px;min-width:0}
+  .hero-copy h1{font-size:clamp(48px,11vw,60px)}
+  .hero-copy p{max-width:440px}
+  .home-categories,.featured-section,.quickfinder-section,footer{max-width:100%;overflow:hidden}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .category-card{min-width:0;border-top:1px solid var(--line)}
+  .category-card:nth-child(odd){border-right:1px solid var(--line)!important}
+  .category-card:nth-child(even){border-right:0!important}
+  .material-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .material-grid button{min-width:0}
+  .featured-grid,.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .collection-layout,.product-detail-grid,.tech-layout{grid-template-columns:minmax(0,1fr)}
+  .detail-info,.filter-panel{position:static}
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:650px){
+  .container,.header-main,.main-nav nav,.hero-shop-inner{width:calc(100% - 22px)}
+  .master-logo-frame--header{width:158px;height:46px}
+  .master-logo-frame--header .master-logo{width:162px}
+  .header-cart{height:42px;padding:0 10px}
+  .header-cart span{display:none}
+  .search-box{height:43px}
+  .main-nav nav{gap:20px}
+  .hero--shop{height:405px}
+  .hero-photo-bg img{object-position:35% 48%}
+  .hero-overlay{
+    background:linear-gradient(90deg,rgba(7,18,26,.99) 0%,rgba(7,18,26,.94) 62%,rgba(7,18,26,.60) 100%);
+  }
+  .hero-copy::before{left:-10px}
+  .hero-copy h1{font-size:clamp(46px,14vw,56px)}
+  .hero-copy p{font-size:12px;max-width:330px}
+  .section-head-row{display:flex;align-items:flex-end;gap:12px}
+  .section-head-row>div{min-width:0}
+  .section-head-row .text-link{margin:0 0 2px auto;flex:0 0 auto}
+  .section-head h2{font-size:24px}
+  .category-grid,.featured-grid,.collection-grid,.material-grid{grid-template-columns:minmax(0,1fr)}
+  .category-card,.category-card:nth-child(odd),.category-card:nth-child(even){border-right:0!important}
+  .category-image{height:150px}
+  .quickfinder{grid-template-columns:minmax(0,1fr);gap:16px}
+  .product-card{width:100%;min-width:0}
+  .product-image{height:220px}
+  .collection-title-row,.collection-controls,.cart-title-row{width:100%;max-width:100%}
+  .filter-panel{display:grid;grid-template-columns:minmax(0,1fr)}
+  .selected-specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .buy-row{grid-template-columns:88px minmax(0,1fr)}
+  .tech-table{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .variant-table{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cart-row{width:100%;grid-template-columns:64px minmax(0,1fr) auto}
+  .cart-row img{width:64px;height:64px}
+  .footer-grid{grid-template-columns:minmax(0,1fr)}
+}
