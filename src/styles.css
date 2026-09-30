@@ -1111,3 +1111,26 @@ footer{
   .hero-actions .btn-primary,.hero-actions .btn-primary svg,
   .category-card>svg,.product-cta svg,.text-link svg{transition:none!important}
 }
+
+
+/* New FRÄSKERN hero image — composed for text left / machining right */
+.hero-photo-bg img{
+  object-position:center center;
+  transform:scaleX(-1) scale(1.035);
+  filter:saturate(.78) contrast(1.08) brightness(.83);
+  animation:fkHeroNewSettle 1.25s cubic-bezier(.2,.75,.2,1) both;
+}
+@keyframes fkHeroNewSettle{
+  from{transform:scaleX(-1) scale(1.075)}
+  to{transform:scaleX(-1) scale(1.035)}
+}
+.hero-overlay{
+  background:
+    linear-gradient(90deg,
+      rgba(7,18,26,.99) 0%,
+      rgba(7,18,26,.96) 25%,
+      rgba(7,18,26,.80) 43%,
+      rgba(7,18,26,.38) 61%,
+      rgba(7,18,26,.10) 82%,
+      rgba(7,18,26,.03) 100%);
+}
