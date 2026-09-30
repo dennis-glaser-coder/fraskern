@@ -401,3 +401,35 @@ footer{background:var(--ink);color:#fff;padding:48px 0 20px}
 .purchase-box{
   padding-top:20px;
 }
+
+
+/* Screenshot-driven layout refinement */
+.header-main{min-height:74px}
+.master-logo-frame--header{height:56px}
+.main-nav nav{height:42px;gap:26px}
+.main-nav button{padding:13px 0}
+.hero--shop{height:440px}
+.hero-copy{width:560px}
+.hero-copy h1{font-size:68px}
+.hero-copy p{font-size:14px;line-height:1.55;margin:20px 0 24px}
+.quickfinder-section{padding:30px 0 0}
+.quickfinder{padding:24px 28px;grid-template-columns:260px 1fr;gap:28px}
+.quickfinder-copy h2{font-size:30px;margin-bottom:0}
+.quickfinder-copy p{display:none}
+.material-grid button{height:52px}
+.home-categories{padding:48px 0 52px}
+.section-head{margin-bottom:18px}
+.section-head h2{font-size:42px}
+.category-image{height:130px}
+.category-copy{padding:14px 34px 15px 14px}
+.category-copy strong{font-size:22px}
+.featured-section{padding:48px 0 56px}
+.product-image{height:205px}
+.product-body{padding:15px}
+.product-body h3{font-size:22px;margin:6px 0 10px}
+.product-spec-row span{padding:5px 6px}
+.product-materials{margin-top:10px;padding-top:9px}
+.product-bottom{margin-top:12px}
+footer{padding:34px 0 18px}
+.footer-grid{grid-template-columns:1.6fr 1fr 1fr;gap:60px}
+.footer-bottom{margin-top:26px}
