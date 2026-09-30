@@ -1,8 +1,16 @@
-import { ArrowRight, BadgeCheck, Gauge, PackageCheck, Search, ShoppingCart } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
 
 const materials = ['Stahl', 'Edelstahl', 'Aluminium', 'Guss', 'Kunststoff', 'Gehärtet']
+
+const categories = [
+  { code: '01', name: 'Fräsen', text: 'VHM-Schaftfräser für Stahl, Edelstahl und Aluminium.' },
+  { code: '02', name: 'Bohren', text: 'Präzisionsbohrer für prozesssichere Bohrungen.' },
+  { code: '03', name: 'Gewinden', text: 'Werkzeuge für saubere und reproduzierbare Gewinde.' },
+  { code: '04', name: 'Senken', text: 'Senker für gratfreie, maßhaltige Ergebnisse.' },
+  { code: '05', name: 'Reiben', text: 'Reibwerkzeuge für hohe Maß- und Oberflächengüte.' },
+]
 
 function ProductCard({ product }) {
   return (
@@ -28,7 +36,6 @@ function ProductCard({ product }) {
 export default function App() {
   return (
     <div className="site-shell">
-      <div className="topbar">Versandkostenfrei ab 75 € · Lagerware schnell verfügbar · Faire Preise für professionelle Werkzeuge</div>
       <header className="header container">
         <a className="brand brand--master" href="#top" aria-label="FRÄSKERN Startseite">
           <span className="master-logo-frame master-logo-frame--header">
@@ -36,40 +43,87 @@ export default function App() {
           </span>
         </a>
         <nav className="nav">
-          <a href="#produkte">Werkzeuge</a><a href="#finder">Werkzeugfinder</a><a href="#wissen">Qualität</a>
+          <a href="#kategorien">Sortiment</a>
+          <a href="#produkte">Werkzeuge</a>
+          <a href="#finder">Werkzeugfinder</a>
+          <a href="#wissen">Qualität</a>
         </nav>
-        <div className="header-actions"><button className="plain-btn"><Search size={19}/></button><button className="cart-btn"><ShoppingCart size={18}/> Warenkorb</button></div>
+        <div className="header-actions">
+          <button className="plain-btn" aria-label="Suche"><Search size={19}/></button>
+          <button className="cart-btn"><ShoppingCart size={18}/> Warenkorb</button>
+        </div>
       </header>
 
       <main id="top">
         <section className="hero">
           <div className="hero-grid container">
             <div className="hero-copy">
-              <span className="kicker">WERKZEUGQUALITÄT FÜR PROFESSIONELLE ZERSPANUNG</span>
+              <span className="kicker">PRÄZISIONSWERKZEUGE FÜR PROFESSIONELLE ZERSPANUNG</span>
               <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
-              <p>Hochwertige Zerspanungswerkzeuge für professionelle Anwendungen. Klar ausgewählt, technisch sauber beschrieben und fair kalkuliert.</p>
-              <div className="hero-actions"><a className="btn btn-primary" href="#produkte">Werkzeuge entdecken <ArrowRight size={18}/></a><a className="btn btn-secondary" href="#finder">Passendes Werkzeug finden</a></div>
-              <div className="trust-row"><span><BadgeCheck/> Qualität im Fokus</span><span><Gauge/> Klare technische Daten</span><span><PackageCheck/> Faire Kalkulation</span></div>
+              <p>Hochwertige Zerspanungswerkzeuge für professionelle Anwendungen. Technisch klar beschrieben, zuverlässig ausgewählt und fair kalkuliert.</p>
+              <div className="hero-actions">
+                <a className="btn btn-primary hero-cta" href="#kategorien">Sortiment entdecken <ArrowRight size={18}/></a>
+              </div>
+              <div className="hero-facts">
+                <span><BadgeCheck size={17}/> Qualität im Fokus</span>
+                <span><Gauge size={17}/> Klare technische Daten</span>
+                <span className="hero-fact-price">Fair kalkuliert</span>
+              </div>
             </div>
-            <div className="hero-visual" aria-label="Stilisierter Fräser">
-              <div className="halo"/><div className="cutter"><span/><span/><span/><span/></div>
-              <div className="technical-label label-a"><small>VHM</small><strong>Ø 10</strong></div>
-              <div className="technical-label label-b"><small>COATING</small><strong>AlTiN</strong></div>
+
+            <div className="hero-visual" aria-label="VHM-Fräser als technisches Produktmotiv">
+              <div className="engineering-ring engineering-ring--outer"/>
+              <div className="engineering-ring engineering-ring--inner"/>
+              <div className="cutter cutter--refined"><span/><span/><span/><span/></div>
+              <div className="spec-rail">
+                <div><small>WERKSTOFF</small><strong>VHM</strong></div>
+                <div><small>Ø</small><strong>10 mm</strong></div>
+                <div><small>SCHNEIDEN</small><strong>4 Z</strong></div>
+                <div><small>BESCHICHTUNG</small><strong>AlTiN</strong></div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="finder-section" id="finder">
-          <div className="container finder-card">
-            <div className="section-heading compact"><span className="kicker">WERKZEUGFINDER</span><h2>Was möchtest du bearbeiten?</h2><p>Material auswählen. Anwendung eingrenzen. Passendes Werkzeug finden.</p></div>
-            <div className="material-grid">{materials.map((material, i)=><button key={material} className={i===0?'material active':'material'}><span>{['P','M','N','K','X','H'][i]}</span>{material}</button>)}</div>
-            <button className="btn btn-primary finder-next">Weiter zur Anwendung <ArrowRight size={18}/></button>
+        <section className="category-section container" id="kategorien">
+          <div className="section-heading category-heading">
+            <div>
+              <span className="kicker">SORTIMENT</span>
+              <h2>Direkt zum Werkzeug.</h2>
+            </div>
+            <p>Klare Produktgruppen statt unnötiger Umwege. Wähle zuerst den Bearbeitungsprozess.</p>
+          </div>
+          <div className="category-grid">
+            {categories.map(category => (
+              <a className="category-card" href="#produkte" key={category.name}>
+                <span className="category-code">{category.code}</span>
+                <div className="category-icon" aria-hidden="true"><i/><i/><i/></div>
+                <h3>{category.name}</h3>
+                <p>{category.text}</p>
+                <span className="category-link">Werkzeuge ansehen <ArrowRight size={15}/></span>
+              </a>
+            ))}
           </div>
         </section>
 
         <section className="products-section container" id="produkte">
-          <div className="section-heading row"><div><span className="kicker">AUSGEWÄHLTE WERKZEUGE</span><h2>Qualität für die tägliche Fertigung.</h2></div><a href="#produkte">Alle Werkzeuge <ArrowRight size={16}/></a></div>
+          <div className="section-heading row">
+            <div><span className="kicker">AUSGEWÄHLTE WERKZEUGE</span><h2>Qualität für die tägliche Fertigung.</h2></div>
+            <a href="#produkte">Alle Werkzeuge <ArrowRight size={16}/></a>
+          </div>
           <div className="product-grid">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div>
+        </section>
+
+        <section className="finder-section" id="finder">
+          <div className="container finder-card">
+            <div className="section-heading compact">
+              <span className="kicker">WERKZEUGFINDER</span>
+              <h2>Vom Werkstoff zum passenden Werkzeug.</h2>
+              <p>Material auswählen, Anwendung eingrenzen und die Auswahl sinnvoll reduzieren.</p>
+            </div>
+            <div className="material-grid">{materials.map((material, i)=><button key={material} className={i===0?'material active':'material'}><span>{['P','M','N','K','X','H'][i]}</span>{material}</button>)}</div>
+            <button className="btn btn-primary finder-next">Auswahl starten <ArrowRight size={18}/></button>
+          </div>
         </section>
 
         <section className="value-section container" id="wissen">
@@ -79,7 +133,14 @@ export default function App() {
         </section>
       </main>
 
-      <footer><div className="container footer-inner"><a className="brand brand--footer" href="#top" aria-label="FRÄSKERN Startseite"><span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" /></span></a><p>Frontend-Prototyp · Checkout noch nicht aktiv</p></div></footer>
+      <footer>
+        <div className="container footer-inner">
+          <a className="brand brand--footer" href="#top" aria-label="FRÄSKERN Startseite">
+            <span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" /></span>
+          </a>
+          <p>Frontend-Prototyp · Checkout noch nicht aktiv</p>
+        </div>
+      </footer>
     </div>
   )
 }
