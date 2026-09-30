@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
+import heroImage from '../pexels-daniel-smyth-83914874-8956445.jpg'
 
 const categories = [
   {label:'Schaftfräser', value:'Schaftfräser', note:'Universal & Performance'},
@@ -79,7 +80,7 @@ function Home({openCollection,openProduct}){
   return <>
     <section className="hero hero--shop">
       <div className="hero-photo-bg">
-        <img src="https://images.pexels.com/photos/10406128/pexels-photo-10406128.jpeg?cs=srgb&fm=jpg" alt="CNC-Bearbeitung"/>
+        <img src={heroImage} alt="CNC-Fräsbearbeitung mit Kühlschmierstoff"/>
       </div>
       <div className="hero-overlay"/>
       <div className="hero-shop-inner container">
