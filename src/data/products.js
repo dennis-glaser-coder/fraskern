@@ -62,22 +62,22 @@ const images = {
 export const products = [
   {
     id:'h45-2z-standard', name:'VHM Schaftfräser HRC45 2Z', series:'HRC45', shape:'Schaftfräser',
-    flutes:2, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_2z, variants:square2z,
+    flutes:2, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_2z, detailImage:'https://image.made-in-china.com/202f0j00OIFvbDuhbTqf/Handerk-High-Performance-Cutting-Tools-Keyway-End-Mill-HRC45-Milling-Cutter.webp', variants:square2z,
     description:'2-schneidiger VHM-Schaftfräser für Stahl und Guss. Standardlänge, 35° Drall.',
   },
   {
     id:'h45-4z-standard', name:'VHM Schaftfräser HRC45 4Z', series:'HRC45', shape:'Schaftfräser',
-    flutes:4, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_4z, variants:square4z,
+    flutes:4, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_4z, detailImage:'https://image.made-in-china.com/202f0j00luZvEQcFZjkP/Handerk-HRC45-4flute-CNC-Router-Bits-Cemented-Carbide-Flat-End-Mill-Fir-Cutting-Tool.webp', variants:square4z,
     description:'4-schneidiger VHM-Schaftfräser für Stahl und Guss. Standardlänge, universelle Geometrie.',
   },
   {
     id:'h45-ball-standard', name:'VHM Kugelfräser HRC45 2Z', series:'HRC45', shape:'Kugelfräser',
-    flutes:2, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_ball, variants:ball,
+    flutes:2, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_ball, detailImage:'https://image.made-in-china.com/2f0j00GHfMcYqUVRbo/Handerk-Good-Wear-Resistance-Ball-Nose-End-Mill-45HRC-Cutting-Tools.jpg', variants:ball,
     description:'VHM-Kugelfräser für Konturen, 3D-Bearbeitung und Schlichtoperationen.',
   },
   {
     id:'h45-corner-standard', name:'VHM Torusfräser HRC45 4Z', series:'HRC45', shape:'Torusfräser',
-    flutes:4, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_corner, variants:corner,
+    flutes:4, coating:'AlTiN', materials:['Stahl','Guss'], image:images.h45_corner, detailImage:'https://image.made-in-china.com/2f0j00WLbCFZonLUkf/Handerk-Solid-Carbide-End-Mill-4-Flute-Cutting-Tools-Corner-Raidus-End-Mill-HRC45.jpg', variants:corner,
     description:'VHM-Torusfräser mit Eckenradius für stabile Kanten und universelle Bearbeitung.',
   },
   {
