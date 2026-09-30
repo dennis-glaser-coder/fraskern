@@ -1,259 +1,379 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
-:root{--ink:#0a1620;--blue:#0d79b4;--blue2:#2aa5df;--steel:#6a7b85;--line:#d9e2e7;--ice:#eef3f6;--max:1320px;font-family:Inter,system-ui,sans-serif;color:var(--ink)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.container{width:min(var(--max),calc(100% - 40px));margin:auto}
-.info-bar{background:#0b1720;color:#dce7ed;text-align:center;padding:7px 12px;font-size:10px;letter-spacing:.03em}.header-main{min-height:80px;display:grid;grid-template-columns:auto minmax(360px,1fr) auto;gap:24px;align-items:center}.logo-button{border:0;background:none;padding:0}.master-logo-frame{display:block;position:relative;overflow:hidden;background:#fff}.master-logo-frame--header{width:225px;height:60px}.master-logo{position:absolute;left:50%;top:50%;width:232px;max-width:none;transform:translate(-50%,-50%)}.search-box{height:44px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;border:1px solid #d6e0e5;background:#fafcfd;padding-left:14px}.search-box input{border:0;outline:0;background:transparent;font-size:12px}.search-box>button{height:100%;width:46px;border:0;background:var(--blue);color:#fff;display:grid;place-items:center}.header-cart{border:0;background:var(--ink);color:#fff;padding:13px 17px;font-weight:800;display:flex;gap:8px;align-items:center;border-radius:2px}.header-cart b{background:var(--blue);width:20px;height:20px;border-radius:10px;display:grid;place-items:center;font-size:10px}.main-nav{border-top:1px solid #edf1f3;border-bottom:1px solid #dfe6ea}.main-nav nav{display:flex;gap:28px;min-height:45px;align-items:center}.main-nav button{border:0;background:none;font-size:11px;font-weight:700;padding:14px 0}.main-nav button:hover{color:var(--blue)}
 
-.hero--shop{position:relative;min-height:520px;background:#07121a;overflow:hidden}.hero-photo-bg{position:absolute;right:0;top:0;bottom:0;width:65%}.hero-photo-bg img{width:100%;height:100%;object-fit:cover;object-position:52% 48%}.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,#07121a 0%,#07121a 29%,rgba(7,18,26,.94) 40%,rgba(7,18,26,.62) 56%,rgba(7,18,26,.12) 78%,rgba(7,18,26,0))}.hero-shop-inner{min-height:520px;display:flex;align-items:center;position:relative;z-index:2}.hero-copy{max-width:610px;color:#fff}.kicker{display:block;font-size:10px;letter-spacing:.18em;font-weight:800;color:var(--blue);margin-bottom:14px}.kicker--light{color:#8ec9e8}.hero-copy h1,.section-head h2,.collection-hero h1,.product-page h1,.cart-page h1{font:800 64px/.95 "Barlow Condensed",sans-serif;margin:0}.hero-copy h1 span{color:var(--blue2)}.hero-copy p{font-size:15px;line-height:1.65;color:#d6e0e5;max-width:560px;margin:22px 0 27px}.primary-btn{border:0;background:var(--blue);color:#fff;padding:15px 20px;font-size:12px;font-weight:800;display:inline-flex;gap:8px;align-items:center}
-
-.home-categories{padding:58px 0 66px}.section-head{margin-bottom:24px}.section-head h2{font-size:50px}.section-head.row{display:flex;justify-content:space-between;align-items:end}.text-link{border:0;background:none;color:var(--blue);font-size:11px;font-weight:800;display:flex;align-items:center;gap:6px}.category-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}.category-card{border:0;border-right:1px solid var(--line);background:#fff;text-align:left;position:relative;padding:0;min-height:240px}.category-card:last-child{border-right:0}.category-card:hover{background:#f7fafb}.category-image{height:145px;background:#eef3f5;overflow:hidden;display:grid;place-items:center}.category-image img{width:100%;height:100%;object-fit:contain;padding:12px}.category-copy{padding:15px}.category-copy strong{display:block;font:700 24px "Barlow Condensed";margin-bottom:4px}.category-copy span{font-size:10px;color:var(--steel)}.category-card>svg{position:absolute;right:15px;bottom:16px;color:var(--blue)}
-
-.featured-section{background:#f4f7f8;border-top:1px solid #e2e8eb;border-bottom:1px solid #e2e8eb;padding:58px 0 72px}.featured-grid,.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product-card{background:#fff;border:1px solid var(--line);overflow:hidden}.product-card-click{width:100%;height:100%;padding:0;border:0;background:#fff;text-align:left}.product-image{height:230px;background:#eaf0f3;position:relative;display:grid;place-items:center;overflow:hidden}.product-image img{width:100%;height:100%;object-fit:contain;padding:22px;display:block}.series-badge{position:absolute;top:12px;left:12px;background:#fff;border:1px solid #d4dee3;padding:6px 8px;font-size:9px;font-weight:800;z-index:2}.product-body{padding:18px}.product-meta{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#75858e}.product-body h3{font:700 27px "Barlow Condensed";margin:5px 0 8px}.product-body p{font-size:10px;line-height:1.5;color:#687983;min-height:44px}.product-tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 10px}.product-tags span{background:#edf2f4;padding:6px 8px;font-size:9px;font-weight:700}.product-materials{border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:#65757e}.product-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.product-bottom strong{font-size:13px}.product-bottom span{display:flex;gap:5px;align-items:center;color:var(--blue);font-size:10px;font-weight:800}.benefit-strip{padding:35px 0 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}.benefit-strip>div{padding:0 28px;border-right:1px solid var(--line)}.benefit-strip>div:first-child{padding-left:0}.benefit-strip>div:last-child{border:0}.benefit-strip strong{display:block;font:700 23px "Barlow Condensed";margin-bottom:4px}.benefit-strip span{font-size:10px;color:var(--steel)}
-
-.collection-page{background:#f6f8f9;padding-bottom:70px;min-height:70vh}.collection-hero{padding:42px 0 26px;display:flex;align-items:end;justify-content:space-between;gap:40px}.collection-hero h1{font-size:54px}.collection-hero p{max-width:470px;font-size:12px;line-height:1.6;color:var(--steel);margin:0 0 4px}.collection-toolbar{height:54px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:11px}.collection-toolbar label{display:flex;align-items:center;gap:10px}.collection-toolbar select{height:34px;border:1px solid #ccd8de;background:#fff;padding:0 30px 0 10px}.collection-layout{display:grid;grid-template-columns:230px 1fr;gap:35px;padding-top:28px}.filter-panel{background:#fff;border:1px solid var(--line);padding:20px;height:max-content}.filter-title{display:flex;justify-content:space-between;align-items:center;padding-bottom:15px;border-bottom:1px solid var(--line);margin-bottom:16px}.filter-title button{border:0;background:none;color:var(--blue);font-size:9px;font-weight:800}.filter-panel label{display:block;font-size:10px;font-weight:800;margin-bottom:16px}.filter-panel select{display:block;width:100%;height:40px;margin-top:7px;border:1px solid #ced9df;background:#fff;padding:0 9px;font-size:11px}.empty{background:#fff;border:1px solid var(--line);padding:70px;text-align:center}.empty strong{display:block;font:700 28px "Barlow Condensed";margin-bottom:15px}.empty button{border:0;background:var(--blue);color:#fff;padding:11px 15px}
-
-.product-page{padding:35px 0 80px}.back-link{border:0;background:none;color:var(--steel);font-size:11px;display:flex;gap:6px;align-items:center;margin-bottom:25px}.product-detail-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px}.detail-main-image{height:590px;background:#eef3f5;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line)}.detail-main-image img{width:100%;height:100%;object-fit:contain;padding:45px}.detail-info{padding-top:12px}.detail-brand{font-size:10px;letter-spacing:.12em;color:var(--steel);font-weight:700}.product-page h1{font-size:52px;margin:8px 0 8px}.detail-sub{font-size:12px;color:#63747e}.price-line{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:24px 0;padding:17px 0;display:flex;flex-direction:column;gap:3px}.price-line strong{font-size:22px}.price-line span{font-size:9px;color:var(--steel)}.variant-label{font-size:11px;font-weight:800}.select-wrap{position:relative;margin-top:8px}.select-wrap select{width:100%;height:50px;appearance:none;border:1px solid #bdcbd2;background:#fff;padding:0 42px 0 12px;font-size:11px}.select-wrap svg{position:absolute;right:13px;top:16px}.availability-note{display:flex;gap:7px;align-items:center;color:#2c6d4b;font-size:10px;margin:13px 0}.add-to-cart{width:100%;border:0;background:var(--ink);color:#fff;padding:15px;font-weight:800;display:flex;justify-content:center;align-items:center;gap:8px}.detail-boxes{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:22px}.detail-boxes div{padding:16px}.detail-boxes div+div{border-left:1px solid var(--line)}.detail-boxes strong{display:block;font-size:10px;margin-bottom:5px}.detail-boxes span{font-size:9px;color:var(--steel)}.product-description{margin-top:55px;border-top:1px solid var(--line);padding-top:32px;max-width:1000px}.product-description h2{font:700 31px "Barlow Condensed";margin:28px 0 10px}.product-description p{font-size:12px;color:#62737d;line-height:1.7}.dimensions-table{border:1px solid var(--line);font-size:10px}.tr{display:grid;grid-template-columns:repeat(5,1fr)}.tr span{padding:12px;border-right:1px solid var(--line)}.tr span:last-child{border-right:0}.tr.head{background:#eef3f5;font-weight:800}.all-variants{display:flex;flex-wrap:wrap;gap:7px}.all-variants button{border:1px solid #cfdae0;background:#fff;padding:8px 10px;font-size:9px}.all-variants button.active{border-color:var(--blue);background:#edf7fc;color:#075f8e}
-
-.cart-page{padding:50px 0 85px;min-height:65vh}.cart-page h1{font-size:55px;margin-bottom:30px}.empty-cart{border:1px solid var(--line);padding:70px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:15px}.empty-cart strong{font:700 28px "Barlow Condensed"}.empty-cart button{border:0;background:var(--blue);color:#fff;padding:12px 16px;font-weight:800}.cart-list{border-top:1px solid var(--line)}.cart-row{display:grid;grid-template-columns:100px 1fr auto auto;gap:20px;align-items:center;border-bottom:1px solid var(--line);padding:15px 0}.cart-row img{width:100px;height:100px;object-fit:contain;background:#eef3f5}.cart-row>div{display:flex;flex-direction:column;gap:6px}.cart-row>div strong{font-size:13px}.cart-row>div span{font-size:9px;color:var(--steel)}.cart-price{font-size:11px}.cart-row>button{border:0;background:none}.cart-summary{margin-top:20px;margin-left:auto;max-width:420px;background:#f4f7f8;padding:20px;display:flex;flex-direction:column;gap:5px}.cart-summary span{font-size:10px;color:var(--steel)}
-
-footer{background:var(--ink);color:#fff;padding:30px 0}.footer-inner{display:flex;justify-content:space-between;align-items:center}.master-logo-frame--footer{width:205px;height:58px}.master-logo-frame--footer .master-logo{width:210px}.footer-inner p{font-size:10px;color:#83939c}
-
-@media(max-width:1100px){.category-grid{grid-template-columns:repeat(3,1fr)}.category-card:nth-child(3){border-right:0}.featured-grid,.collection-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:850px){.header-main{grid-template-columns:1fr auto}.search-box{grid-column:1/-1;grid-row:2}.main-nav nav{overflow:auto}.hero-photo-bg{width:100%}.hero-overlay{background:linear-gradient(90deg,rgba(7,18,26,.98),rgba(7,18,26,.9) 55%,rgba(7,18,26,.45))}.collection-layout{grid-template-columns:1fr}.filter-panel{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.filter-title{grid-column:1/-1}.product-detail-grid{grid-template-columns:1fr}.detail-main-image{height:400px}.benefit-strip{grid-template-columns:1fr;gap:18px}.benefit-strip>div,.benefit-strip>div:first-child{padding:0;border:0}}
-@media(max-width:650px){.container{width:min(var(--max),calc(100% - 24px))}.master-logo-frame--header{width:185px;height:54px}.master-logo-frame--header .master-logo{width:190px}.header-cart{font-size:0}.hero-copy h1{font-size:52px}.category-grid,.featured-grid,.collection-grid{grid-template-columns:1fr}.category-card{border-right:0;border-top:1px solid var(--line)}.category-card:first-child{border-top:0}.section-head.row,.collection-hero{display:block}.text-link{margin-top:12px}.filter-panel{grid-template-columns:1fr}.filter-title{grid-column:auto}.collection-toolbar{align-items:flex-start;height:auto;padding:12px 0;gap:10px;flex-direction:column}.product-page h1{font-size:42px}.detail-main-image{height:320px}.detail-boxes{grid-template-columns:1fr}.detail-boxes div+div{border-left:0;border-top:1px solid var(--line)}.tr{grid-template-columns:1fr}.tr.head{display:none}.tr span{border-right:0;border-bottom:1px solid var(--line)}.cart-row{grid-template-columns:76px 1fr auto}.cart-row img{width:76px;height:76px}.cart-price{grid-column:2}.footer-inner{flex-direction:column;align-items:flex-start;gap:18px}}
-
-
-/* Hard containment fix for supplier product artwork */
-.category-image,
-.product-image{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden !important;
-}
-.contained-product-art{
-  position:absolute;
-  inset:12px 16px 8px;
-  background-repeat:no-repeat;
-  background-position:center center;
-  background-size:contain;
-  pointer-events:none;
-}
-.contained-product-art--card{
-  inset:26px 28px 18px;
-}
-.product-body{
-  position:relative;
-  z-index:3;
+:root{
+  --ink:#0b1720;
+  --ink-2:#132632;
+  --blue:#0b78b5;
+  --blue-2:#27a4df;
+  --blue-soft:#e9f5fb;
+  --steel:#687984;
+  --muted:#8b9aa3;
+  --line:#dce4e8;
+  --ice:#f3f6f7;
+  --paper:#ffffff;
+  --max:1360px;
+  font-family:Inter,system-ui,sans-serif;
+  color:var(--ink);
   background:#fff;
 }
-.product-image{
-  height:220px;
-  min-height:220px;
-  max-height:220px;
-  contain:layout paint;
-  clip-path:inset(0);
-}
-.category-image{
-  height:140px;
-  min-height:140px;
-  max-height:140px;
-  contain:layout paint;
-  clip-path:inset(0);
-}
-/* Hide any legacy image node in these boxes if a stale render mixes markup/CSS */
-.product-image>img,
-.category-image>img{
-  max-width:100%!important;
-  max-height:100%!important;
-  overflow:hidden!important;
-}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+.eyebrow{display:block;font-size:10px;letter-spacing:.18em;font-weight:800;color:var(--blue);margin-bottom:12px}
+.eyebrow-light{color:#92d2f2}
+.btn{border:0;padding:14px 18px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#086b9f}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.36)}
+.text-link{border:0;background:none;color:var(--blue);font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:6px;padding:0}
 
+/* HEADER */
+.site-header{background:#fff;position:relative;z-index:20}
+.topline{background:var(--ink);color:#cbd7dd}
+.topline-inner{height:30px;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:.08em}
+.header-main{min-height:84px;display:grid;grid-template-columns:230px minmax(380px,1fr) auto;gap:28px;align-items:center}
+.logo-button{border:0;background:transparent;padding:0;text-align:left}
+.master-logo-frame{display:block;position:relative;overflow:hidden;background:#fff}
+.master-logo-frame--header{width:220px;height:62px}
+.master-logo{position:absolute;left:50%;top:50%;width:226px;max-width:none;transform:translate(-50%,-50%)}
+.search-box{height:46px;display:grid;grid-template-columns:auto 1fr 46px;align-items:center;gap:11px;background:#f8fafb;border:1px solid #d6e0e5;padding-left:15px}
+.search-box input{border:0;outline:0;background:transparent;font-size:12px;color:var(--ink);min-width:0}
+.search-box input::placeholder{color:#94a2aa}
+.search-box>button{height:100%;border:0;background:var(--blue);color:#fff;display:grid;place-items:center}
+.header-cart{border:0;background:var(--ink);color:#fff;height:46px;padding:0 16px;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800}
+.header-cart b{min-width:21px;height:21px;padding:0 5px;border-radius:12px;background:var(--blue);display:grid;place-items:center;font-size:9px}
+.main-nav{border-top:1px solid #edf1f3;border-bottom:1px solid var(--line)}
+.main-nav nav{height:46px;display:flex;align-items:center;gap:30px;overflow:auto;scrollbar-width:none}
+.main-nav button{border:0;background:none;padding:15px 0;white-space:nowrap;font-size:10px;font-weight:700;color:#22323b}
+.main-nav button:hover,.main-nav .nav-strong{color:var(--blue)}
+.main-nav .nav-tech{margin-left:auto;color:var(--blue)}
 
-/* Blend catalog-derived HRC45 cutouts into the unified product background */
-.is-catalog-cutout{
-  mix-blend-mode:multiply;
-  background-size:auto 118%;
-  background-position:center 48%;
-  filter:contrast(1.08);
-}
-.category-image .is-catalog-cutout{
-  background-size:auto 124%;
-}
+/* HERO */
+.hero--shop{position:relative;height:500px;background:#07131c;overflow:hidden}
+.hero-photo-bg{position:absolute;inset:0 0 0 43%}
+.hero-photo-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,#08141d 0%,#08141d 30%,rgba(8,20,29,.94) 42%,rgba(8,20,29,.52) 63%,rgba(8,20,29,.06) 86%)}
+.hero-shop-inner{height:100%;display:flex;align-items:center;position:relative;z-index:2}
+.hero-copy{width:600px;color:#fff}
+.hero-copy h1{font:800 clamp(58px,5.5vw,78px)/.91 "Barlow Condensed",sans-serif;letter-spacing:-.025em;margin:0}
+.hero-copy h1 span{color:var(--blue-2)}
+.hero-copy p{max-width:520px;font-size:15px;line-height:1.65;color:#d7e1e6;margin:24px 0 28px}
+.hero-actions{display:flex;gap:10px;align-items:center}
 
+/* PROOF BAR */
+.proofbar{border-bottom:1px solid var(--line);background:#fff}
+.proofbar-grid{min-height:78px;display:grid;grid-template-columns:repeat(4,1fr)}
+.proofbar-grid>div{display:flex;align-items:center;gap:12px;padding:0 24px;border-right:1px solid var(--line)}
+.proofbar-grid>div:first-child{padding-left:0}
+.proofbar-grid>div:last-child{border-right:0}
+.proofbar svg{color:var(--blue)}
+.proofbar span{display:flex;flex-direction:column;gap:2px}
+.proofbar strong{font-size:11px}
+.proofbar small{font-size:9px;color:var(--steel)}
 
-/* Product detail gallery: AM-like hover zoom interaction */
-.detail-main-image{
-  position:relative;
-  overflow:hidden;
-  background:#f5f7f8;
-  cursor:zoom-in;
-}
-.detail-main-image img{
-  width:auto!important;
-  height:auto!important;
-  max-width:72%!important;
-  max-height:82%!important;
-  object-fit:contain!important;
-  padding:0!important;
-  display:block;
-  transition:transform .18s ease-out;
-  will-change:transform;
-}
-.detail-main-image.is-zoomed{
-  cursor:zoom-out;
-}
-.detail-main-image.is-zoomed img{
-  transform:scale(2.05);
-}
-.zoom-hint{
-  position:absolute;
-  left:16px;
-  bottom:14px;
-  z-index:2;
-  background:rgba(255,255,255,.92);
-  border:1px solid #d9e2e7;
-  color:#60717c;
-  font-size:9px;
-  padding:7px 9px;
-  pointer-events:none;
-  transition:opacity .15s ease;
-}
-.detail-main-image.is-zoomed .zoom-hint{
-  opacity:0;
-}
-@media (hover:none){
-  .detail-main-image{cursor:default}
-  .detail-main-image.is-zoomed img{transform:none}
-  .zoom-hint{display:none}
-}
+/* QUICK FINDER */
+.quickfinder-section{padding:58px 0 0}
+.quickfinder{background:var(--ink);color:#fff;padding:34px 38px;display:grid;grid-template-columns:330px 1fr;gap:42px;align-items:center}
+.quickfinder-copy h2{font:700 36px/1 "Barlow Condensed";margin:0 0 10px}
+.quickfinder-copy p{font-size:11px;line-height:1.55;color:#aebdc5;margin:0}
+.material-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.material-grid button{height:68px;border:1px solid #354852;background:#152630;color:#fff;display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:9px;padding:0 12px;text-align:left}
+.material-grid button:hover{border-color:var(--blue);background:#173246}
+.material-grid b{width:28px;height:28px;display:grid;place-items:center;background:var(--blue);font-size:11px}
+.material-grid span{font-size:10px;font-weight:600}
+.material-grid svg{color:#7f9dab}
 
+/* SECTION HEADINGS */
+.section-head{margin-bottom:26px}
+.section-head-row{display:flex;justify-content:space-between;align-items:end}
+.section-head h2{font:800 48px/.95 "Barlow Condensed";letter-spacing:-.015em;margin:0}
 
-/* High-quality product gallery */
+/* CATEGORIES */
+.home-categories{padding:70px 0 76px}
+.category-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:#fff}
+.category-card{border:0;border-right:1px solid var(--line);background:#fff;position:relative;text-align:left;padding:0;min-width:0;transition:.2s}
+.category-card:last-child{border-right:0}
+.category-card:hover{background:#f8fafb;box-shadow:inset 0 -3px 0 var(--blue)}
+.category-image{height:150px;background:var(--ice);position:relative;overflow:hidden;isolation:isolate}
+.contained-product-art{position:absolute;inset:12px;background-repeat:no-repeat;background-position:center;background-size:contain;pointer-events:none}
+.category-copy{padding:17px 38px 18px 16px}
+.category-note{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:4px}
+.category-copy strong{display:block;font:700 24px "Barlow Condensed";margin-bottom:3px}
+.category-copy small{font-size:9px;color:var(--steel)}
+.category-card>svg{position:absolute;right:14px;bottom:20px;color:var(--blue)}
+
+/* PRODUCTS */
+.featured-section{padding:64px 0 78px;background:#f3f6f7;border-top:1px solid #e2e8eb;border-bottom:1px solid #e2e8eb}
+.featured-grid,.collection-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product-card{background:#fff;border:1px solid var(--line);min-width:0;transition:.18s}
+.product-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(18,38,50,.07)}
+.product-card-click{display:block;width:100%;height:100%;border:0;background:#fff;text-align:left;padding:0}
+.product-image{height:235px;background:#edf2f4;position:relative;overflow:hidden;isolation:isolate}
+.contained-product-art--card{inset:18px 20px}
+.series-badge{position:absolute;top:12px;left:12px;z-index:8;background:#fff;border:1px solid #d5dfe4;padding:6px 8px;font-size:8px;font-weight:800}
+.product-body{padding:17px;position:relative;z-index:3;background:#fff}
+.product-topline{display:flex;justify-content:space-between;gap:8px;font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#7a8a93}
+.product-body h3{font:700 25px/1.02 "Barlow Condensed";margin:7px 0 13px}
+.product-spec-row{display:flex;gap:6px;flex-wrap:wrap}
+.product-spec-row span{background:#edf2f4;padding:6px 7px;font-size:8px;font-weight:700}
+.product-materials{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.product-materials small{font-size:8px;color:#84939b}
+.product-materials strong{font-size:9px;font-weight:600;color:#445761}
+.product-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:17px}
+.price-prep{display:flex;flex-direction:column;gap:2px}
+.price-prep small{font-size:8px;color:#819099}
+.price-prep strong{font-size:11px}
+.product-cta{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:800;color:var(--blue)}
+
+/* POSITIONING */
+.positioning-section{background:var(--ink);color:#fff;padding:62px 0}
+.positioning-grid{display:grid;grid-template-columns:370px 1fr;gap:80px}
+.positioning-grid h2{font:800 50px/.93 "Barlow Condensed";margin:0}
+.positioning-points{display:grid;grid-template-columns:repeat(3,1fr)}
+.positioning-points>div{display:flex;gap:14px;padding:8px 25px;border-left:1px solid #31424c}
+.positioning-points b{font:700 28px "Barlow Condensed";color:#46616f}
+.positioning-points span{display:flex;flex-direction:column;gap:5px}
+.positioning-points strong{font-size:11px}
+.positioning-points small{font-size:9px;line-height:1.5;color:#9cafb9}
+
+/* COLLECTION */
+.collection-page{background:#f6f8f9;min-height:70vh;padding-bottom:80px}
+.collection-titlebar{background:#fff;border-bottom:1px solid var(--line);padding:42px 0 30px}
+.collection-title-row{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.collection-title-row h1{font:800 56px/.95 "Barlow Condensed";margin:0}
+.collection-title-row p{width:430px;font-size:11px;line-height:1.6;color:var(--steel);margin:0 0 4px}
+.collection-controls{min-height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.result-meta{display:flex;align-items:center;gap:7px;min-width:0}
+.result-meta>strong{font:700 25px "Barlow Condensed"}
+.result-meta>span{font-size:10px;color:var(--steel)}
+.active-filter-row{display:flex;align-items:center;gap:5px;margin-left:15px;flex-wrap:wrap}
+.active-filter-row span{background:#e5eef2;padding:5px 7px;font-size:8px;font-weight:700}
+.active-filter-row button{border:0;background:none;color:var(--blue);font-size:8px;font-weight:800}
+.sort-control{display:flex;align-items:center;gap:9px}
+.sort-control>span{font-size:9px;color:var(--steel)}
+.sort-control select{height:36px;border:1px solid #cad6dc;background:#fff;padding:0 30px 0 10px;font-size:10px}
+.collection-layout{display:grid;grid-template-columns:220px 1fr;gap:30px;padding-top:28px}
+.filter-panel{background:#fff;border:1px solid var(--line);padding:18px;height:max-content;position:sticky;top:18px}
+.filter-title{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:16px}
+.filter-title>span{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800}
+.filter-title button{border:0;background:none;color:var(--blue);font-size:8px;font-weight:800}
+.filter-field{display:block;margin-bottom:15px}
+.filter-field>span{display:block;font-size:9px;font-weight:800;margin-bottom:6px}
+.filter-select-wrap{position:relative}
+.filter-select-wrap select{width:100%;height:39px;border:1px solid #d0dbe0;background:#fff;appearance:none;padding:0 30px 0 10px;font-size:10px;color:#2d3e47}
+.filter-select-wrap svg{position:absolute;right:10px;top:12px;pointer-events:none;color:#6e7f88}
+.filter-help{margin-top:20px;padding:14px;background:#f1f6f8;border-left:3px solid var(--blue)}
+.filter-help strong{font-size:10px}
+.filter-help p{font-size:9px;line-height:1.55;color:#657780;margin:5px 0 0}
+.collection-grid{grid-template-columns:repeat(3,1fr)}
+.empty{background:#fff;border:1px solid var(--line);padding:80px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.empty svg{color:#93a2aa}
+.empty strong{font:700 28px "Barlow Condensed"}
+.empty p{font-size:10px;color:var(--steel);margin:0}
+.empty button{border:0;background:var(--blue);color:#fff;padding:11px 15px;font-size:10px;font-weight:800}
+
+/* PRODUCT DETAIL */
+.product-page{padding-bottom:80px}
+.breadcrumbs{height:58px;display:flex;align-items:center;gap:8px;color:#85939a;font-size:9px}
+.breadcrumbs button{border:0;background:none;padding:0;color:var(--blue);display:flex;align-items:center;gap:5px;font-size:9px}
+.breadcrumbs strong{color:#536670}
+.product-detail-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:52px;align-items:start}
 .detail-gallery{min-width:0}
-.detail-main-image{
-  height:590px;
-  background:#fff;
-  border:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.detail-main-image img{
-  max-width:86%!important;
-  max-height:86%!important;
-}
-.detail-main-image.is-photo img{
-  max-width:100%!important;
-  max-height:100%!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:contain!important;
-}
-.detail-main-image.is-zoomed img{
-  transform:scale(1.8);
-}
-.gallery-arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:44px;
-  height:44px;
-  border:1px solid #dce4e8;
-  border-radius:50%;
-  background:rgba(255,255,255,.94);
-  color:#5a6972;
-  display:grid;
-  place-items:center;
-  z-index:4;
-}
-.gallery-arrow--left{left:16px}
-.gallery-arrow--right{right:16px}
-.gallery-counter{
-  position:absolute;
-  right:18px;
-  bottom:16px;
-  z-index:4;
-  background:rgba(255,255,255,.95);
-  border:1px solid #dce4e8;
-  border-radius:20px;
-  padding:7px 10px;
-  font-size:10px;
-}
-.gallery-thumbs{
-  display:flex;
-  gap:10px;
-  margin-top:12px;
-}
-.gallery-thumbs button{
-  width:78px;
-  height:78px;
-  padding:5px;
-  background:#fff;
-  border:1px solid #dce4e8;
-}
+.detail-main-image{height:600px;border:1px solid var(--line);background:#fff;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.detail-main-image img{width:auto;height:auto;max-width:86%;max-height:86%;object-fit:contain;display:block;transition:transform .16s ease-out;will-change:transform}
+.detail-main-image.is-zoomed img{transform:scale(1.5)}
+.zoom-hint{position:absolute;left:14px;bottom:13px;z-index:7;background:rgba(255,255,255,.94);border:1px solid #d9e2e7;color:#60717c;font-size:8px;padding:6px 8px;pointer-events:none}
+.detail-main-image.is-zoomed .zoom-hint{opacity:0}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:7;width:42px;height:42px;border-radius:50%;border:1px solid #d7e1e6;background:rgba(255,255,255,.94);display:grid;place-items:center;color:#60717c}
+.gallery-arrow--left{left:14px}.gallery-arrow--right{right:14px}
+.gallery-counter{position:absolute;right:14px;bottom:13px;z-index:7;background:rgba(255,255,255,.94);border:1px solid #d7e1e6;border-radius:15px;padding:6px 9px;font-size:8px}
+.gallery-thumbs{display:flex;gap:8px;margin-top:10px}
+.gallery-thumbs button{width:72px;height:72px;border:1px solid var(--line);background:#fff;padding:4px}
 .gallery-thumbs button.active{border:2px solid var(--blue)}
 .gallery-thumbs img{width:100%;height:100%;object-fit:contain}
+.detail-info{position:sticky;top:18px;padding-top:5px}
+.detail-series-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}
+.detail-series-row span{background:#edf2f4;padding:6px 8px;font-size:8px;font-weight:800;text-transform:uppercase}
+.detail-info h1{font:800 52px/.94 "Barlow Condensed";letter-spacing:-.018em;margin:0 0 14px}
+.detail-lead{font-size:11px;line-height:1.65;color:#64757e;margin:0 0 18px}
+.detail-materials{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:15px}
+.detail-materials small{font-size:8px;color:#84939b}
+.detail-materials strong{font-size:10px}
+.purchase-box{margin-top:20px;border:1px solid var(--line);padding:20px;background:#fff}
+.purchase-price{display:flex;align-items:end;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:17px}
+.purchase-price small{font-size:9px;color:var(--steel)}
+.purchase-price strong{font-size:14px}
+.variant-label>span{display:block;font-size:9px;font-weight:800;margin-bottom:7px}
+.select-wrap{position:relative}
+.select-wrap select{width:100%;height:48px;border:1px solid #bdcbd2;background:#fff;appearance:none;padding:0 38px 0 11px;font-size:10px;font-weight:600}
+.select-wrap svg{position:absolute;right:12px;top:15px;pointer-events:none}
+.selected-specs{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-top:0;margin-bottom:16px}
+.selected-specs>div{padding:10px 8px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.selected-specs>div:last-child{border-right:0}
+.selected-specs small{font-size:7px;color:#819099}
+.selected-specs strong{font-size:9px}
+.buy-row{display:grid;grid-template-columns:104px 1fr;gap:8px}
+.qty-control{height:46px;display:grid;grid-template-columns:32px 1fr 32px;border:1px solid #cad6dc}
+.qty-control button{border:0;background:#f6f8f9;display:grid;place-items:center}
+.qty-control span{display:grid;place-items:center;font-size:10px;font-weight:700}
+.add-to-cart{height:46px;border:0;background:var(--ink);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
+.add-to-cart:hover{background:#132936}
+.catalog-status{display:flex;align-items:center;gap:7px;margin-top:12px;color:#2d7754;font-size:8px}
+.detail-benefits{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-top:0}
+.detail-benefits>div{display:flex;gap:9px;padding:14px}
+.detail-benefits>div+div{border-left:1px solid var(--line)}
+.detail-benefits svg{color:var(--blue)}
+.detail-benefits span{display:flex;flex-direction:column;gap:2px}
+.detail-benefits strong{font-size:9px}
+.detail-benefits small{font-size:8px;color:#788993}
 
+.product-tech-section{margin-top:70px;background:#f3f6f7;border-top:1px solid #e2e8eb;border-bottom:1px solid #e2e8eb;padding:50px 0}
+.tech-layout{display:grid;grid-template-columns:320px 1fr;gap:70px}
+.tech-layout h2{font:800 40px/.96 "Barlow Condensed";margin:0 0 10px}
+.tech-layout p{font-size:10px;line-height:1.6;color:var(--steel)}
+.tech-table{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #cfdbe0;border-left:1px solid #cfdbe0}
+.tech-table>div{min-height:74px;padding:14px;border-right:1px solid #cfdbe0;border-bottom:1px solid #cfdbe0;display:flex;flex-direction:column;justify-content:center;gap:5px;background:#fff}
+.tech-table span{font-size:8px;color:#74868f}
+.tech-table strong{font-size:11px}
+.all-variants-section{padding-top:62px}
+.variant-table{border:1px solid var(--line)}
+.variant-table-head,.variant-table button{display:grid;grid-template-columns:repeat(5,1fr) 110px;align-items:center}
+.variant-table-head{background:#eef3f5;min-height:38px;font-size:8px;font-weight:800;color:#5f717b}
+.variant-table-head span,.variant-table button span,.variant-table button strong{padding:0 12px}
+.variant-table button{width:100%;min-height:46px;border:0;border-top:1px solid var(--line);background:#fff;text-align:left;font-size:9px}
+.variant-table button:first-of-type{border-top:0}
+.variant-table button:hover{background:#f8fafb}
+.variant-table button.active{background:#edf7fc}
+.variant-table button strong{text-align:right;color:var(--blue);font-size:8px}
 
-/* Unified neutral FRÄSKERN product imagery */
-.detail-main-image{
-  background:#eef3f6;
+/* CART */
+.cart-page{min-height:65vh;padding:56px 0 85px}
+.cart-title-row{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px}
+.cart-title-row h1{font:800 54px/.95 "Barlow Condensed";margin:0}
+.empty-cart{border:1px solid var(--line);padding:70px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.empty-cart svg{color:#91a0a8}
+.empty-cart strong{font:700 27px "Barlow Condensed"}
+.empty-cart p{font-size:10px;color:var(--steel);margin:0}
+.empty-cart button{border:0;background:var(--blue);color:#fff;padding:11px 15px;font-size:10px;font-weight:800}
+.cart-list{border-top:1px solid var(--line)}
+.cart-row{display:grid;grid-template-columns:90px 1fr 90px 150px 36px;gap:18px;align-items:center;border-bottom:1px solid var(--line);padding:14px 0}
+.cart-row img{width:90px;height:90px;object-fit:contain;background:#eef3f5}
+.cart-product-copy{display:flex;flex-direction:column;gap:4px}
+.cart-product-copy small{font-size:8px;color:var(--blue);text-transform:uppercase}
+.cart-product-copy strong{font-size:11px}
+.cart-product-copy span,.cart-qty,.cart-price{font-size:9px;color:var(--steel)}
+.cart-remove{border:0;background:none;color:#7e8d95}
+.cart-summary{margin-top:20px;margin-left:auto;max-width:430px;padding:18px;background:#f3f6f7;display:flex;flex-direction:column;gap:5px}
+.cart-summary strong{font-size:10px}
+.cart-summary span{font-size:9px;color:var(--steel)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:48px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:70px}
+.footer-brand p{max-width:280px;font-size:9px;line-height:1.6;color:#8fa2ad;margin-top:12px}
+.master-logo-frame--footer{width:205px;height:58px}
+.master-logo-frame--footer .master-logo{width:210px}
+.footer-grid>div:not(.footer-brand){display:flex;flex-direction:column;gap:9px}
+.footer-grid>div>strong{font-size:10px;margin-bottom:5px}
+.footer-grid button,.footer-grid span{border:0;background:none;color:#8fa2ad;padding:0;text-align:left;font-size:9px}
+.footer-grid button:hover{color:#fff}
+.footer-bottom{border-top:1px solid #293b46;margin-top:36px;padding-top:17px;font-size:8px;color:#70838e;letter-spacing:.12em}
+
+/* IMAGE BRAND MASK – temporary until final clean product assets */
+.product-photo-box{background:#fff!important}
+.brand-mask-art{inset:8px!important;background-size:contain!important;background-position:center!important}
+.brand-mask-art::after{content:"";position:absolute;left:0;top:0;width:100%;height:22%;background:#fff;pointer-events:none;z-index:5}
+.detail-main-image.brand-mask-detail::before{content:"";position:absolute;left:0;top:0;width:100%;height:21%;background:#fff;z-index:6;pointer-events:none}
+.detail-main-image.brand-mask-detail img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.detail-main-image.brand-mask-detail.is-zoomed img{transform:scale(1.45)}
+
+@media(max-width:1180px){
+  .featured-grid{grid-template-columns:repeat(2,1fr)}
+  .collection-grid{grid-template-columns:repeat(2,1fr)}
+  .material-grid{grid-template-columns:repeat(3,1fr)}
+  .category-grid{grid-template-columns:repeat(3,1fr)}
+  .category-card:nth-child(3){border-right:0}
+  .category-card:nth-child(n+4){border-top:1px solid var(--line)}
+  .product-detail-grid{grid-template-columns:1fr 430px}
 }
-.detail-main-image img{
-  max-width:68%!important;
-  max-height:78%!important;
+@media(max-width:900px){
+  .container{width:min(var(--max),calc(100% - 30px))}
+  .topline-inner span:last-child{display:none}
+  .header-main{grid-template-columns:1fr auto;padding:10px 0}
+  .search-box{grid-column:1/-1;grid-row:2}
+  .main-nav nav{gap:24px}
+  .hero--shop{height:470px}
+  .hero-photo-bg{left:0}
+  .hero-overlay{background:linear-gradient(90deg,rgba(8,20,29,.98),rgba(8,20,29,.84) 58%,rgba(8,20,29,.35))}
+  .quickfinder{grid-template-columns:1fr}
+  .proofbar-grid{grid-template-columns:repeat(2,1fr)}
+  .proofbar-grid>div{min-height:65px;border-bottom:1px solid var(--line)}
+  .positioning-grid{grid-template-columns:1fr;gap:35px}
+  .collection-layout{grid-template-columns:1fr}
+  .filter-panel{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .filter-title,.filter-help{grid-column:1/-1}
+  .product-detail-grid{grid-template-columns:1fr}
+  .detail-info{position:static}
+  .detail-main-image{height:500px}
+  .tech-layout{grid-template-columns:1fr;gap:25px}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
 }
-.detail-main-image.is-zoomed img{
-  transform:scale(1.45);
-}
-.gallery-thumbs img{
-  object-fit:contain;
+@media(max-width:650px){
+  .container{width:min(var(--max),calc(100% - 22px))}
+  .master-logo-frame--header{width:180px;height:52px}
+  .master-logo-frame--header .master-logo{width:184px}
+  .header-cart span{display:none}
+  .main-nav .nav-tech{margin-left:0}
+  .hero--shop{height:500px}
+  .hero-copy{width:auto}
+  .hero-copy h1{font-size:54px}
+  .hero-actions{align-items:stretch;flex-direction:column;width:190px}
+  .proofbar-grid{grid-template-columns:1fr}
+  .proofbar-grid>div,.proofbar-grid>div:first-child{padding:14px 0;border-right:0}
+  .quickfinder-section{padding-top:35px}
+  .quickfinder{padding:28px 22px;gap:25px}
+  .material-grid{grid-template-columns:1fr}
+  .home-categories{padding:50px 0}
+  .section-head-row{display:block}
+  .section-head-row .text-link{margin-top:13px}
+  .section-head h2{font-size:40px}
+  .category-grid,.featured-grid,.collection-grid{grid-template-columns:1fr}
+  .category-card{border-right:0!important;border-top:1px solid var(--line)}
+  .category-card:first-child{border-top:0}
+  .positioning-points{grid-template-columns:1fr}
+  .positioning-points>div{border-left:0;border-top:1px solid #31424c;padding:16px 0}
+  .collection-title-row{display:block}
+  .collection-title-row h1{font-size:46px}
+  .collection-title-row p{width:auto;margin-top:12px}
+  .collection-controls{align-items:flex-start;flex-direction:column;padding:12px 0;gap:10px}
+  .active-filter-row{margin-left:0}
+  .filter-panel{grid-template-columns:1fr}
+  .filter-title,.filter-help{grid-column:auto}
+  .detail-main-image{height:370px}
+  .detail-info h1{font-size:42px}
+  .selected-specs{grid-template-columns:repeat(2,1fr)}
+  .selected-specs>div{border-bottom:1px solid var(--line)}
+  .buy-row{grid-template-columns:95px 1fr}
+  .detail-benefits{grid-template-columns:1fr}
+  .detail-benefits>div+div{border-left:0;border-top:1px solid var(--line)}
+  .tech-table{grid-template-columns:repeat(2,1fr)}
+  .variant-table{overflow:auto}
+  .variant-table-head,.variant-table button{min-width:620px}
+  .cart-title-row{display:block}
+  .cart-title-row .text-link{margin-top:12px}
+  .cart-row{grid-template-columns:70px 1fr auto}
+  .cart-row img{width:70px;height:70px}
+  .cart-qty,.cart-price{grid-column:2}
+  .cart-remove{grid-column:3;grid-row:1}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
 }
 
-
-/* High-resolution HRC45 photos, with supplier branding hidden consistently */
-.product-photo-box{
-  background:#fff!important;
-}
-.brand-mask-art{
-  inset:8px!important;
-  background-size:contain!important;
-  background-position:center center!important;
-  mix-blend-mode:normal!important;
-  filter:none!important;
-}
-.brand-mask-art::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:22%;
-  background:#fff;
-  pointer-events:none;
-  z-index:5;
-}
-.detail-main-image.brand-mask-detail{
-  background:#fff;
-}
-.detail-main-image.brand-mask-detail::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:21%;
-  background:#fff;
-  z-index:6;
-  pointer-events:none;
-}
-.detail-main-image.brand-mask-detail img{
-  width:100%!important;
-  height:100%!important;
-  max-width:100%!important;
-  max-height:100%!important;
-  object-fit:contain!important;
-  padding:0!important;
-}
-.detail-main-image.brand-mask-detail.is-zoomed img{
-  transform:scale(1.55);
+@media(hover:none){
+  .detail-main-image{cursor:default}
+  .detail-main-image.is-zoomed img{transform:none!important}
+  .zoom-hint{display:none}
 }
