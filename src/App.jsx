@@ -1,4 +1,4 @@
-import { ArrowRight, Box, Gauge, PackageCheck, Search, Settings2, ShoppingCart, Wrench } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Gauge, PackageCheck, Search, ShoppingCart } from 'lucide-react'
 import { products } from './data/products.js'
 
 const materials = ['Stahl', 'Edelstahl', 'Aluminium', 'Guss', 'Kunststoff', 'Gehärtet']
@@ -27,14 +27,14 @@ function ProductCard({ product }) {
 export default function App() {
   return (
     <div className="site-shell">
-      <div className="topbar">Versandkostenfrei ab 75 € · Lagerware schnell verfügbar · B2B auf Rechnung geplant</div>
+      <div className="topbar">Versandkostenfrei ab 75 € · Lagerware schnell verfügbar · Faire Preise für professionelle Werkzeuge</div>
       <header className="header container">
         <a className="brand" href="#top" aria-label="FRÄSKERN Startseite">
           <div className="brand-mark" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
           <div><span className="brand-name">FRÄSKERN</span><span className="brand-sub">CUTTING TOOLS</span></div>
         </a>
         <nav className="nav">
-          <a href="#produkte">Werkzeuge</a><a href="#finder">Werkzeugfinder</a><a href="#sonder">Sonderwerkzeuge</a><a href="#wissen">Know-how</a>
+          <a href="#produkte">Werkzeuge</a><a href="#finder">Werkzeugfinder</a><a href="#wissen">Qualität</a>
         </nav>
         <div className="header-actions"><button className="plain-btn"><Search size={19}/></button><button className="cart-btn"><ShoppingCart size={18}/> Warenkorb</button></div>
       </header>
@@ -43,11 +43,11 @@ export default function App() {
         <section className="hero">
           <div className="hero-grid container">
             <div className="hero-copy">
-              <span className="kicker">PRÄZISION FÜR PRODUKTIVE ZERSPANUNG</span>
-              <h1>Das richtige Werkzeug.<br/><span>Ohne Umwege.</span></h1>
-              <p>Professionelle Zerspanungswerkzeuge, verständliche Schnittdaten und digitale Werkzeugauswahl für CNC-Fertiger.</p>
-              <div className="hero-actions"><a className="btn btn-primary" href="#finder">Werkzeug finden <ArrowRight size={18}/></a><a className="btn btn-secondary" href="#produkte">Produkte ansehen</a></div>
-              <div className="trust-row"><span><PackageCheck/> Schneller Versand</span><span><Gauge/> Praxistaugliche Schnittwerte</span><span><Wrench/> Sonderwerkzeuge</span></div>
+              <span className="kicker">WERKZEUGQUALITÄT FÜR PROFESSIONELLE ZERSPANUNG</span>
+              <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
+              <p>Hochwertige Zerspanungswerkzeuge für professionelle Anwendungen. Klar ausgewählt, technisch sauber beschrieben und fair kalkuliert.</p>
+              <div className="hero-actions"><a className="btn btn-primary" href="#produkte">Werkzeuge entdecken <ArrowRight size={18}/></a><a className="btn btn-secondary" href="#finder">Passendes Werkzeug finden</a></div>
+              <div className="trust-row"><span><BadgeCheck/> Qualität im Fokus</span><span><Gauge/> Klare technische Daten</span><span><PackageCheck/> Faire Kalkulation</span></div>
             </div>
             <div className="hero-visual" aria-label="Stilisierter Fräser">
               <div className="halo"/><div className="cutter"><span/><span/><span/><span/></div>
@@ -66,21 +66,14 @@ export default function App() {
         </section>
 
         <section className="products-section container" id="produkte">
-          <div className="section-heading row"><div><span className="kicker">AUSGEWÄHLTE WERKZEUGE</span><h2>Für den täglichen Einsatz.</h2></div><a href="#produkte">Alle Werkzeuge <ArrowRight size={16}/></a></div>
+          <div className="section-heading row"><div><span className="kicker">AUSGEWÄHLTE WERKZEUGE</span><h2>Qualität für die tägliche Fertigung.</h2></div><a href="#produkte">Alle Werkzeuge <ArrowRight size={16}/></a></div>
           <div className="product-grid">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div>
         </section>
 
-        <section className="custom-section" id="sonder">
-          <div className="container custom-grid">
-            <div><span className="kicker">CUSTOM TOOLS</span><h2>Standard passt nicht?<br/>Dann bauen wir passend.</h2><p>Konfiguriere Sonderwerkzeuge digital und übermittle die wichtigsten Abmessungen direkt an uns. Später entsteht daraus eine automatisierte Angebotsstrecke.</p><button className="btn btn-light"><Settings2 size={18}/> Sonderwerkzeug konfigurieren</button></div>
-            <div className="drawing-card"><div className="drawing"><span className="dimension d1">Ø d1</span><span className="dimension d2">L2</span><span className="dimension d3">L1</span><div className="drawing-tool"/></div><div className="drawing-footer"><Box size={18}/><span>Konfiguration speichern · Angebot anfragen · später nachbestellen</span></div></div>
-          </div>
-        </section>
-
         <section className="value-section container" id="wissen">
-          <div className="value"><span>01</span><h3>Werkzeug statt Katalog</h3><p>Schneller zur richtigen Geometrie statt tausende Artikel manuell zu durchsuchen.</p></div>
-          <div className="value"><span>02</span><h3>Daten, die helfen</h3><p>Schnittwerte und Materialeignung dort, wo die Kaufentscheidung fällt.</p></div>
-          <div className="value"><span>03</span><h3>Digital gedacht</h3><p>Shopify-ready, Werkzeugfinder-ready und für B2B-Prozesse vorbereitet.</p></div>
+          <div className="value"><span>01</span><h3>Qualität im Fokus</h3><p>Maßhaltigkeit, saubere Geometrien und zuverlässige Standzeiten sind die Maßstäbe, an denen wir unser Sortiment ausrichten.</p></div>
+          <div className="value"><span>02</span><h3>Technik klar beschrieben</h3><p>Materialeignung, Geometrie, Beschichtung und Abmessungen sollen auf einen Blick verständlich sein.</p></div>
+          <div className="value"><span>03</span><h3>Fair kalkuliert</h3><p>Professionelle Zerspanungswerkzeuge mit überzeugender Qualität zu Preisen, die für die tägliche Fertigung Sinn ergeben.</p></div>
         </section>
       </main>
 
