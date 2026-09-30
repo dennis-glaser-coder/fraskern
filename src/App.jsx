@@ -1,36 +1,40 @@
 import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
-import heroCatalog from './catalog/hero.js'
-import universalCatalog from './catalog/universal.js'
-import roughingCatalog from './catalog/roughing.js'
 
 const materials = ['Stahl', 'Edelstahl', 'Aluminium', 'Guss', 'Hochfeste Stähle']
+
+const productImages = {
+  universal: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E5%B0%8F%E5%BE%84%E5%B9%B3%E5%88%80.png',
+  hard: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A865%E5%B9%B3%E5%88%80-1.png',
+  alu: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%93%9D%E7%94%A8%E4%B8%83%E5%BD%A9%E7%90%83%E5%88%80-1.png',
+  rough: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E7%B2%97%E7%9A%AE%E5%88%80.png',
+}
 
 const categories = [
   {
     code: '01',
     name: 'Universalfräser',
-    text: 'VHM-Fräser für Stahl und Guss – als Schaft-, Kugel- und Eckradiusfräser.',
-    image: universalCatalog,
+    text: 'VHM-Schaftfräser für Stahl und Guss – robust, präzise und für den täglichen Einsatz.',
+    image: productImages.universal,
   },
   {
     code: '02',
     name: 'Hochleistungsfräser',
-    text: 'Fräserfamilien für hohe Härten, Edelstahl und anspruchsvolle Bearbeitung.',
-    image: heroCatalog,
+    text: 'Beschichtete VHM-Fräser für hochfeste Werkstoffe und anspruchsvolle Bearbeitung.',
+    image: productImages.hard,
   },
   {
     code: '03',
     name: 'Aluminiumfräser',
     text: 'Scharfe Geometrien und große Spanräume für Aluminium und NE-Metalle.',
-    image: universalCatalog,
+    image: productImages.alu,
   },
   {
     code: '04',
     name: 'Schruppfräser',
-    text: 'Fräser mit Schruppgeometrie für hohen Materialabtrag bei Stahl und Guss.',
-    image: roughingCatalog,
+    text: 'Schruppgeometrie für hohen Materialabtrag bei Stahl und Guss.',
+    image: productImages.rough,
   },
 ]
 
@@ -108,7 +112,7 @@ export default function App() {
 
             <div className="hero-visual hero-visual--catalog">
               <div className="catalog-hero-card">
-                <img src={heroCatalog} alt="VHM-Fräser aus dem Herstellerkatalog" />
+                <img src={productImages.hard} alt="Beschichteter VHM-Hochleistungsfräser" />
               </div>
               <div className="spec-rail">
                 <div><small>SORTIMENT</small><strong>VHM-Fräser</strong></div>
@@ -126,7 +130,7 @@ export default function App() {
               <span className="kicker">FRÄSER-SORTIMENT</span>
               <h2>Für Material und Anwendung.</h2>
             </div>
-            <p>Zum Start konzentriert sich FRÄSKERN ausschließlich auf Fräser. Die Produktfamilien orientieren sich an den realen Serien des Herstellers.</p>
+            <p>VHM-Fräser für Stahl, Edelstahl, Aluminium, Guss und hochfeste Werkstoffe – klar nach Anwendung und Werkstoff gegliedert.</p>
           </div>
 
           <div className="category-grid category-grid--mills">
@@ -147,10 +151,10 @@ export default function App() {
         <section className="products-section container" id="produkte">
           <div className="section-heading row">
             <div>
-              <span className="kicker">ERSTE PRODUKTFAMILIEN</span>
-              <h2>Fräser statt Vollsortiment.</h2>
+              <span className="kicker">AUSGEWÄHLTE FRÄSER</span>
+              <h2>Für die tägliche Fertigung.</h2>
             </div>
-            <span className="catalog-note">Produktdaten aus Herstellerkatalog – Preise noch offen</span>
+            <span className="catalog-note">Technische Varianten werden aktuell aufbereitet.</span>
           </div>
           <div className="product-grid product-grid--mills">
             {products.map(product => <ProductCard key={product.id} product={product}/>)}
@@ -176,21 +180,9 @@ export default function App() {
         </section>
 
         <section className="value-section container" id="wissen">
-          <div className="value">
-            <span>01</span>
-            <h3>Fokus auf Fräser</h3>
-            <p>Zum Start kein aufgeblähtes Vollsortiment, sondern eine klare Auswahl an VHM-Fräsern für typische CNC-Anwendungen.</p>
-          </div>
-          <div className="value">
-            <span>02</span>
-            <h3>Technik klar beschrieben</h3>
-            <p>Werkstoffgruppe, Geometrie, Schneidenzahl, Beschichtung und Abmessungen werden nachvollziehbar aufbereitet.</p>
-          </div>
-          <div className="value">
-            <span>03</span>
-            <h3>Fair kalkuliert</h3>
-            <p>Die finale Preispositionierung bauen wir auf den tatsächlichen Einkaufspreisen und einer sauberen Marge auf.</p>
-          </div>
+          <div className="value"><span>01</span><h3>Fokus auf Fräser</h3><p>Eine klare Auswahl an VHM-Fräsern für typische CNC-Anwendungen – ohne unnötiges Vollsortiment.</p></div>
+          <div className="value"><span>02</span><h3>Technik klar beschrieben</h3><p>Werkstoffgruppe, Geometrie, Schneidenzahl, Beschichtung und Abmessungen werden nachvollziehbar aufbereitet.</p></div>
+          <div className="value"><span>03</span><h3>Fair kalkuliert</h3><p>Professionelle Werkzeugqualität mit einer Preisstruktur, die für die tägliche Fertigung sinnvoll bleibt.</p></div>
         </section>
       </main>
 
@@ -201,7 +193,7 @@ export default function App() {
               <img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" />
             </span>
           </a>
-          <p>FRÄSKERN Frontend-Prototyp · Fräser-Sortiment im Aufbau</p>
+          <p>FRÄSKERN · VHM-Fräser für professionelle Zerspanung</p>
         </div>
       </footer>
     </div>
