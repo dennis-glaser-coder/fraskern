@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, Search, ShoppingCart, Trash2, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight, Search, ShoppingCart, Trash2, X } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
 
@@ -174,7 +174,10 @@ function ProductDetail({product,onBack,addToCart}){
   const [variantIndex,setVariantIndex]=useState(0)
   const [zoomed,setZoomed]=useState(false)
   const [zoomPos,setZoomPos]=useState({x:50,y:50})
+  const [galleryIndex,setGalleryIndex]=useState(0)
   const v=product.variants[variantIndex]
+  const gallery=[product.detailImage,product.image].filter(Boolean)
+  const currentImage=gallery[galleryIndex] || product.image
 
   const moveZoom=e=>{
     const rect=e.currentTarget.getBoundingClientRect()
@@ -182,24 +185,41 @@ function ProductDetail({product,onBack,addToCart}){
     const y=Math.max(0,Math.min(100,((e.clientY-rect.top)/rect.height)*100))
     setZoomPos({x,y})
   }
+  const selectImage=i=>{
+    setGalleryIndex(i)
+    setZoomed(false)
+    setZoomPos({x:50,y:50})
+  }
+  const prevImage=()=>selectImage((galleryIndex-1+gallery.length)%gallery.length)
+  const nextImage=()=>selectImage((galleryIndex+1)%gallery.length)
 
   return <div className="product-page container">
     <button className="back-link" onClick={onBack}><ArrowLeft size={16}/> Zurück zu den Fräsern</button>
     <div className="product-detail-grid">
       <div className="detail-gallery">
         <div
-          className={`detail-main-image ${zoomed?'is-zoomed':''}`}
+          className={`detail-main-image ${zoomed?'is-zoomed':''} ${product.detailImage && galleryIndex===0?'is-photo':''}`}
           onMouseEnter={()=>setZoomed(true)}
           onMouseLeave={()=>{setZoomed(false);setZoomPos({x:50,y:50})}}
           onMouseMove={moveZoom}
         >
           <img
-            src={product.image}
+            src={currentImage}
             alt={product.name}
             style={{transformOrigin:`${zoomPos.x}% ${zoomPos.y}%`}}
           />
-          <span className="zoom-hint">Zum Zoomen über das Bild bewegen</span>
+          {gallery.length>1&&<>
+            <button className="gallery-arrow gallery-arrow--left" onClick={e=>{e.stopPropagation();prevImage()}} aria-label="Vorheriges Bild"><ChevronLeft size={22}/></button>
+            <button className="gallery-arrow gallery-arrow--right" onClick={e=>{e.stopPropagation();nextImage()}} aria-label="Nächstes Bild"><ChevronRight size={22}/></button>
+            <span className="gallery-counter">{galleryIndex+1} / {gallery.length}</span>
+          </>}
+          <span className="zoom-hint">Mit der Maus über das Bild zum Zoomen</span>
         </div>
+        {gallery.length>1&&<div className="gallery-thumbs">
+          {gallery.map((src,i)=><button key={i} className={i===galleryIndex?'active':''} onClick={()=>selectImage(i)}>
+            <img src={src} alt=""/>
+          </button>)}
+        </div>}
       </div>
       <div className="detail-info">
         <span className="detail-brand">FRÄSKERN · {product.series}</span>
