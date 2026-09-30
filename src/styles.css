@@ -377,3 +377,27 @@ footer{background:var(--ink);color:#fff;padding:48px 0 20px}
   .detail-main-image.is-zoomed img{transform:none!important}
   .zoom-hint{display:none}
 }
+
+/* Professional cleanup pass */
+.material-grid button{
+  grid-template-columns:1fr auto;
+  height:60px;
+  padding:0 16px;
+  background:#152630;
+}
+.material-grid button b{display:none!important}
+.material-grid button span{
+  font-size:11px;
+  font-weight:700;
+}
+.material-grid button svg{color:#7f9dab}
+.product-bottom{
+  justify-content:flex-end;
+  padding-top:5px;
+}
+.product-cta{
+  font-size:10px;
+}
+.purchase-box{
+  padding-top:20px;
+}
