@@ -590,3 +590,249 @@ footer{padding:34px 0 18px}
   font:700 42px/1.05 Inter,sans-serif;
   letter-spacing:-.025em;
 }
+
+
+/* Competitor-benchmarked visual system: lighter, calmer, more product-led */
+:root{
+  --max:1420px;
+  --ink:#101b22;
+  --ink-2:#1b2b34;
+  --blue:#087bb8;
+  --blue-2:#18a0dc;
+  --steel:#667982;
+  --line:#d9e2e6;
+  --ice:#f5f7f8;
+}
+body{
+  color:#101b22;
+  background:#fff;
+}
+.container{
+  width:min(var(--max),calc(100% - 64px));
+}
+.header-main{
+  min-height:78px;
+  grid-template-columns:215px minmax(420px,1fr) auto;
+  gap:34px;
+}
+.master-logo-frame--header{
+  width:205px;
+  height:58px;
+}
+.master-logo-frame--header .master-logo{
+  width:211px;
+}
+.search-box{
+  height:44px;
+  background:#fff;
+  border-color:#cfd9de;
+}
+.search-box>button{
+  width:44px;
+}
+.header-cart{
+  height:44px;
+  background:#0d1921;
+  padding:0 17px;
+}
+.main-nav{
+  background:#fff;
+}
+.main-nav nav{
+  height:40px;
+  gap:34px;
+}
+.main-nav button{
+  font-size:9px;
+  padding:12px 0;
+  letter-spacing:.01em;
+}
+
+/* Hero becomes one strong branded visual rather than a split panel */
+.hero--shop{
+  height:455px;
+  background:#0a151d;
+}
+.hero-photo-bg{
+  inset:0;
+}
+.hero-photo-bg img{
+  object-position:70% 52%;
+  filter:saturate(.85) contrast(1.03);
+}
+.hero-overlay{
+  background:
+    linear-gradient(90deg,
+      rgba(7,18,26,.98) 0%,
+      rgba(7,18,26,.94) 26%,
+      rgba(7,18,26,.78) 43%,
+      rgba(7,18,26,.32) 64%,
+      rgba(7,18,26,.05) 84%);
+}
+.hero-copy{
+  width:520px;
+}
+.hero-copy h1{
+  font:800 66px/.91 "Barlow Condensed",sans-serif;
+}
+.hero-copy p{
+  max-width:460px;
+  color:#d6e0e5;
+  font-size:13px;
+  line-height:1.55;
+}
+.eyebrow-light{
+  color:#7fd0f4;
+}
+
+/* Category area: clean white product navigation */
+.home-categories{
+  padding:44px 0 40px;
+}
+.section-head-row{
+  align-items:center;
+}
+.section-head h2{
+  font:700 28px/1.15 Inter,sans-serif;
+  letter-spacing:-.02em;
+}
+.category-grid{
+  border-color:#dbe3e7;
+}
+.category-card{
+  min-height:220px;
+}
+.category-card:hover{
+  box-shadow:inset 0 -2px 0 var(--blue);
+  background:#fbfcfc;
+}
+.category-image{
+  height:145px;
+  background:#fff;
+  border-bottom:1px solid #edf1f3;
+}
+.category-copy{
+  padding:15px 35px 15px 15px;
+}
+.category-copy strong{
+  font:700 17px/1.25 Inter,sans-serif;
+}
+.category-copy small{
+  margin-top:5px;
+  display:block;
+  color:#7c8d95;
+}
+
+/* Material selector becomes a quiet utility strip */
+.quickfinder-section{
+  background:#f5f7f8;
+  border-top:1px solid #e3e9ec;
+  border-bottom:1px solid #e3e9ec;
+}
+.quickfinder{
+  background:transparent;
+  grid-template-columns:210px 1fr;
+  padding:24px 0;
+}
+.quickfinder-label{
+  font-size:8px;
+  color:#70838d;
+  margin-bottom:6px;
+}
+.quickfinder-copy h2{
+  font:600 20px/1.2 Inter,sans-serif;
+}
+.material-grid button{
+  background:#fff;
+  height:46px;
+  border-color:#d6e0e5;
+  color:#23363f;
+}
+.material-grid button:hover{
+  background:#fff;
+  border-color:#7eb7d4;
+  box-shadow:0 2px 8px rgba(16,43,58,.05);
+}
+.material-grid span{
+  font-size:10px;
+}
+
+/* Product area resembles a professional catalogue/shop grid */
+.featured-section{
+  background:#fff;
+  padding:48px 0 64px;
+  border-top:0;
+}
+.featured-grid,.collection-grid{
+  gap:18px;
+}
+.product-card{
+  border-color:#d8e1e5;
+  box-shadow:none;
+}
+.product-card:hover{
+  transform:none;
+  border-color:#aebec6;
+  box-shadow:0 8px 24px rgba(18,38,50,.06);
+}
+.product-image{
+  height:225px;
+  background:#f7f8f8;
+  border-bottom:1px solid #e5ebee;
+}
+.series-badge{
+  top:11px;
+  left:11px;
+  padding:5px 7px;
+  border-color:#cfd9de;
+  color:#364951;
+}
+.product-body{
+  padding:16px;
+}
+.product-kicker{
+  color:#6e818a;
+}
+.product-body h3{
+  min-height:44px;
+  font:700 17px/1.28 Inter,sans-serif;
+}
+.product-facts{
+  margin-top:4px;
+}
+.product-facts span{
+  background:#f1f4f5;
+  color:#40545e;
+}
+.product-bottom{
+  justify-content:flex-start;
+}
+.product-cta{
+  color:#087bb8;
+  font-weight:700;
+}
+
+/* Footer: restrained industrial dark band */
+footer{
+  background:#101b22;
+  padding:38px 0 18px;
+}
+.footer-grid{
+  gap:90px;
+}
+.footer-brand p{
+  color:#9aaab2;
+}
+.footer-grid button,.footer-grid span{
+  color:#9aabb3;
+}
+.footer-bottom{
+  border-top-color:#2a3a43;
+  color:#73858e;
+}
+
+@media(max-width:900px){
+  .container{width:min(var(--max),calc(100% - 30px))}
+  .hero--shop{height:440px}
+  .quickfinder{grid-template-columns:1fr}
+}
