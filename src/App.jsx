@@ -1,14 +1,25 @@
 import { useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight, Search, ShoppingCart, Trash2, X } from 'lucide-react'
+import {
+  ArrowLeft, ArrowRight, BadgeCheck, Check, ChevronDown, ChevronLeft, ChevronRight,
+  Gauge, Layers3, Minus, Plus, Ruler, Search, ShoppingCart, SlidersHorizontal, Trash2
+} from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
 
 const categories = [
-  {label:'Schaftfräser', value:'Schaftfräser'},
-  {label:'Kugelfräser', value:'Kugelfräser'},
-  {label:'Torusfräser', value:'Torusfräser'},
-  {label:'Aluminiumfräser', value:'Aluminiumfräser'},
-  {label:'Schruppfräser', value:'Schruppfräser'},
+  {label:'Schaftfräser', value:'Schaftfräser', note:'Universal & Performance'},
+  {label:'Kugelfräser', value:'Kugelfräser', note:'3D & Kontur'},
+  {label:'Torusfräser', value:'Torusfräser', note:'Eckenradius'},
+  {label:'Aluminiumfräser', value:'Aluminiumfräser', note:'NE-Metalle'},
+  {label:'Schruppfräser', value:'Schruppfräser', note:'Hoher Materialabtrag'},
+]
+
+const materialShortcuts = [
+  {label:'Stahl', code:'P'},
+  {label:'Edelstahl', code:'M'},
+  {label:'Aluminium', code:'N'},
+  {label:'Guss', code:'K'},
+  {label:'Hochfeste Stähle', code:'H'},
 ]
 
 function formatVariant(v){
@@ -20,54 +31,124 @@ function formatVariant(v){
 
 function Header({query,setQuery,onSearch,onHome,onCollection,onCart,cartCount}){
   return <header className="site-header">
-    <div className="info-bar">VHM-Fräser · Technische Daten klar aufbereitet · Faire Kalkulation</div>
+    <div className="topline">
+      <div className="container topline-inner">
+        <span>FRÄSKERN · CUTTING TOOLS</span>
+        <span>VHM-Fräser für professionelle Zerspanung</span>
+      </div>
+    </div>
+
     <div className="header-main container">
-      <button className="logo-button" onClick={onHome} aria-label="Startseite">
+      <button className="logo-button" onClick={onHome} aria-label="FRÄSKERN Startseite">
         <span className="master-logo-frame master-logo-frame--header">
           <img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo"/>
         </span>
       </button>
+
       <form className="search-box" onSubmit={e=>{e.preventDefault();onSearch()}}>
         <Search size={18}/>
-        <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Produkt suchen, z. B. HRC65, Alu, Kugelfräser …"/>
-        <button aria-label="Suchen"><Search size={17}/></button>
+        <input
+          value={query}
+          onChange={e=>setQuery(e.target.value)}
+          placeholder="Fräser, Serie, Werkstoff oder Beschichtung suchen"
+        />
+        <button aria-label="Suchen"><Search size={18}/></button>
       </form>
-      <button className="header-cart" onClick={onCart}><ShoppingCart size={18}/> Warenkorb <b>{cartCount}</b></button>
+
+      <button className="header-cart" onClick={onCart}>
+        <ShoppingCart size={19}/>
+        <span>Warenkorb</span>
+        <b>{cartCount}</b>
+      </button>
     </div>
+
     <div className="main-nav">
       <nav className="container">
-        <button onClick={()=>onCollection('Alle')}>Alle Fräser</button>
+        <button className="nav-strong" onClick={()=>onCollection('Alle')}>Alle Fräser</button>
         {categories.map(c=><button key={c.value} onClick={()=>onCollection(c.value)}>{c.label}</button>)}
-        <button onClick={()=>onCollection('Alle')}>Technische Auswahl</button>
+        <button className="nav-tech" onClick={()=>onCollection('Alle','Alle')}>Technische Auswahl</button>
       </nav>
     </div>
   </header>
 }
 
 function Home({openCollection,openProduct}){
-  const featured=products.slice(0,6)
+  const featured=products.slice(0,4)
+
   return <>
     <section className="hero hero--shop">
-      <div className="hero-photo-bg"><img src="https://images.pexels.com/photos/10406128/pexels-photo-10406128.jpeg?cs=srgb&fm=jpg" alt=""/></div>
+      <div className="hero-photo-bg">
+        <img src="https://images.pexels.com/photos/10406128/pexels-photo-10406128.jpeg?cs=srgb&fm=jpg" alt="CNC-Bearbeitung"/>
+      </div>
       <div className="hero-overlay"/>
       <div className="hero-shop-inner container">
         <div className="hero-copy">
-          <span className="kicker kicker--light">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
+          <span className="eyebrow eyebrow-light">VHM-FRÄSER · PROFESSIONELLE ZERSPANUNG</span>
           <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
-          <p>VHM-Fräser für Stahl, Guss, Edelstahl, Aluminium und hochfeste Werkstoffe. Direkt vergleichen, Abmessung wählen und technisch sauber bestellen.</p>
-          <button className="primary-btn" onClick={()=>openCollection('Alle')}>Fräser entdecken <ArrowRight size={18}/></button>
+          <p>Konzentriertes Fräser-Sortiment mit klaren technischen Daten und direkt wählbaren Abmessungen.</p>
+          <div className="hero-actions">
+            <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Alle Fräser <ArrowRight size={18}/></button>
+            <button className="btn btn-ghost" onClick={()=>document.querySelector('#quickfinder')?.scrollIntoView({behavior:'smooth'})}>Nach Werkstoff wählen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="proofbar">
+      <div className="container proofbar-grid">
+        <div><BadgeCheck size={19}/><span><strong>VHM im Fokus</strong><small>konzentriertes Sortiment</small></span></div>
+        <div><Ruler size={19}/><span><strong>Abmessungen klar</strong><small>Ø, Lc, Ds und Gesamtlänge</small></span></div>
+        <div><Layers3 size={19}/><span><strong>Varianten sichtbar</strong><small>direkt am Produkt</small></span></div>
+        <div><Gauge size={19}/><span><strong>Anwendung zuerst</strong><small>Werkstoff & Geometrie</small></span></div>
+      </div>
+    </section>
+
+    <section className="quickfinder-section" id="quickfinder">
+      <div className="container quickfinder">
+        <div className="quickfinder-copy">
+          <span className="eyebrow">SCHNELL ZUM FRÄSER</span>
+          <h2>Welchen Werkstoff bearbeitest du?</h2>
+          <p>Werkstoff auswählen und direkt die dafür hinterlegten Produktserien anzeigen.</p>
+        </div>
+        <div className="material-grid">
+          {materialShortcuts.map(m=>
+            <button key={m.label} onClick={()=>openCollection('Alle',m.label)}>
+              <b>{m.code}</b>
+              <span>{m.label}</span>
+              <ArrowRight size={17}/>
+            </button>
+          )}
         </div>
       </div>
     </section>
 
     <section className="home-categories container">
-      <div className="section-head"><span className="kicker">KATEGORIEN</span><h2>Fräser nach Bauform.</h2></div>
+      <div className="section-head section-head-row">
+        <div>
+          <span className="eyebrow">SORTIMENT</span>
+          <h2>Fräser nach Bauform</h2>
+        </div>
+        <button className="text-link" onClick={()=>openCollection('Alle')}>Gesamtes Sortiment <ArrowRight size={16}/></button>
+      </div>
+
       <div className="category-grid">
         {categories.map(cat=>{
           const item=products.find(p=>p.shape===cat.value)
+          const count=products.filter(p=>p.shape===cat.value).length
           return <button className="category-card" key={cat.value} onClick={()=>openCollection(cat.value)}>
-            <div className={`category-image ${item?.brandMask?'product-photo-box':''}`}><div className={`contained-product-art ${item?.brandMask?'brand-mask-art':''}`} style={{backgroundImage:`url("${item?.image}")`}} role="img" aria-label={cat.label}/></div>
-            <div className="category-copy"><strong>{cat.label}</strong><span>{products.filter(p=>p.shape===cat.value).length} Produktserien</span></div>
+            <div className={`category-image ${item?.brandMask?'product-photo-box':''}`}>
+              <div
+                className={`contained-product-art ${item?.brandMask?'brand-mask-art':''}`}
+                style={{backgroundImage:`url("${item?.image}")`}}
+                role="img"
+                aria-label={cat.label}
+              />
+            </div>
+            <div className="category-copy">
+              <span className="category-note">{cat.note}</span>
+              <strong>{cat.label}</strong>
+              <small>{count} Produktserie{count===1?'':'n'}</small>
+            </div>
             <ArrowRight size={18}/>
           </button>
         })}
@@ -76,17 +157,31 @@ function Home({openCollection,openProduct}){
 
     <section className="featured-section">
       <div className="container">
-        <div className="section-head row"><div><span className="kicker">AUSGEWÄHLTE FRÄSER</span><h2>Direkt ins Produkt.</h2></div><button className="text-link" onClick={()=>openCollection('Alle')}>Alle Fräser <ArrowRight size={16}/></button></div>
+        <div className="section-head section-head-row">
+          <div>
+            <span className="eyebrow">DIREKT BESTELLBAR VORBEREITET</span>
+            <h2>Ausgewählte Fräser</h2>
+          </div>
+          <button className="text-link" onClick={()=>openCollection('Alle')}>Alle Produkte <ArrowRight size={16}/></button>
+        </div>
         <div className="featured-grid">
           {featured.map(p=><ProductCard key={p.id} product={p} onOpen={()=>openProduct(p)}/>)}
         </div>
       </div>
     </section>
 
-    <section className="benefit-strip container">
-      <div><strong>Varianten direkt wählbar</strong><span>Durchmesser, Schneidenlänge, Schaft und Gesamtlänge.</span></div>
-      <div><strong>Technische Daten am Produkt</strong><span>Keine Suche in PDFs nötig.</span></div>
-      <div><strong>Nur Fräser zum Start</strong><span>Klarer Fokus statt überladenem Vollsortiment.</span></div>
+    <section className="positioning-section">
+      <div className="container positioning-grid">
+        <div>
+          <span className="eyebrow eyebrow-light">FRÄSKERN PRINZIP</span>
+          <h2>Weniger Katalog.<br/>Mehr Klarheit.</h2>
+        </div>
+        <div className="positioning-points">
+          <div><b>01</b><span><strong>Passende Bauform finden</strong><small>Schaft, Kugel, Torus, Alu oder Schruppen.</small></span></div>
+          <div><b>02</b><span><strong>Technik vergleichen</strong><small>Beschichtung, Schneidenzahl und Werkstoffe direkt sichtbar.</small></span></div>
+          <div><b>03</b><span><strong>Abmessung wählen</strong><small>Konkrete Varianten erst auf der Produktseite auswählen.</small></span></div>
+        </div>
+      </div>
     </section>
   </>
 }
@@ -96,29 +191,47 @@ function ProductCard({product,onOpen}){
     <button className="product-card-click" onClick={onOpen}>
       <div className={`product-image ${product.brandMask?'product-photo-box':''}`}>
         <span className="series-badge">{product.series}</span>
-        <div className={`contained-product-art contained-product-art--card ${product.brandMask?'brand-mask-art':''}`} style={{backgroundImage:`url("${product.image}")`}} role="img" aria-label={product.name}/>
+        <div
+          className={`contained-product-art contained-product-art--card ${product.brandMask?'brand-mask-art':''}`}
+          style={{backgroundImage:`url("${product.image}")`}}
+          role="img"
+          aria-label={product.name}
+        />
       </div>
       <div className="product-body">
-        <span className="product-meta">{product.shape} · {product.flutes}Z</span>
+        <div className="product-topline">
+          <span>{product.shape}</span>
+          <span>{product.flutes} Schneiden</span>
+        </div>
         <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <div className="product-tags"><span>{product.coating}</span><span>{product.variants.length} Varianten</span></div>
-        <div className="product-materials">{product.materials.join(' · ')}</div>
-        <div className="product-bottom"><strong>Preis folgt</strong><span>Produkt ansehen <ArrowRight size={15}/></span></div>
+        <div className="product-spec-row">
+          <span>{product.coating}</span>
+          <span>{product.variants.length} Varianten</span>
+        </div>
+        <div className="product-materials">
+          <small>Geeignet für</small>
+          <strong>{product.materials.join(' · ')}</strong>
+        </div>
+        <div className="product-bottom">
+          <span className="price-prep"><small>Preis</small><strong>in Vorbereitung</strong></span>
+          <span className="product-cta">Details <ArrowRight size={16}/></span>
+        </div>
       </div>
     </button>
   </article>
 }
 
-function Collection({query,setQuery,shape,setShape,openProduct}){
+function Collection({query,setQuery,shape,setShape,initialMaterial,openProduct}){
   const [series,setSeries]=useState('Alle')
-  const [material,setMaterial]=useState('Alle')
+  const [material,setMaterial]=useState(initialMaterial || 'Alle')
   const [coating,setCoating]=useState('Alle')
+  const [flutes,setFlutes]=useState('Alle')
   const [sort,setSort]=useState('standard')
 
   const seriesOptions=['Alle',...new Set(products.map(p=>p.series))]
   const materialOptions=['Alle',...new Set(products.flatMap(p=>p.materials))]
   const coatingOptions=['Alle',...new Set(products.map(p=>p.coating))]
+  const fluteOptions=['Alle',...new Set(products.map(p=>String(p.flutes)))]
 
   const result=useMemo(()=>{
     const q=query.trim().toLowerCase()
@@ -129,25 +242,55 @@ function Collection({query,setQuery,shape,setShape,openProduct}){
         && (series==='Alle'||p.series===series)
         && (material==='Alle'||p.materials.includes(material))
         && (coating==='Alle'||p.coating===coating)
+        && (flutes==='Alle'||String(p.flutes)===flutes)
     })
     if(sort==='name') return [...list].sort((a,b)=>a.name.localeCompare(b.name,'de'))
     if(sort==='variants') return [...list].sort((a,b)=>b.variants.length-a.variants.length)
     return list
-  },[query,shape,series,material,coating,sort])
+  },[query,shape,series,material,coating,flutes,sort])
 
-  const reset=()=>{setQuery('');setShape('Alle');setSeries('Alle');setMaterial('Alle');setCoating('Alle')}
+  const reset=()=>{
+    setQuery('')
+    setShape('Alle')
+    setSeries('Alle')
+    setMaterial('Alle')
+    setCoating('Alle')
+    setFlutes('Alle')
+  }
+
+  const activeFilters=[
+    shape!=='Alle'&&shape,
+    material!=='Alle'&&material,
+    series!=='Alle'&&series,
+    coating!=='Alle'&&coating,
+    flutes!=='Alle'&&`${flutes} Schneiden`
+  ].filter(Boolean)
 
   return <div className="collection-page">
-    <div className="collection-hero container">
-      <div><span className="kicker">FRÄSWERKZEUGE</span><h1>{shape==='Alle'?'Alle VHM-Fräser':shape}</h1></div>
-      <p>Produktserien auswählen, technisch vergleichen und anschließend die konkrete Abmessung bestimmen.</p>
+    <div className="collection-titlebar">
+      <div className="container">
+        <span className="eyebrow">FRÄSWERKZEUGE</span>
+        <div className="collection-title-row">
+          <h1>{shape==='Alle'?'VHM-Fräser':shape}</h1>
+          <p>Nach Anwendung filtern, Produktserie öffnen und konkrete Abmessung auswählen.</p>
+        </div>
+      </div>
     </div>
 
-    <div className="collection-toolbar container">
-      <span>{result.length} Produktserien</span>
-      <label>Sortieren nach
+    <div className="collection-controls container">
+      <div className="result-meta">
+        <strong>{result.length}</strong>
+        <span>Produktserie{result.length===1?'':'n'}</span>
+        {activeFilters.length>0&&<div className="active-filter-row">
+          {activeFilters.map(x=><span key={x}>{x}</span>)}
+          <button onClick={reset}>zurücksetzen</button>
+        </div>}
+      </div>
+
+      <label className="sort-control">
+        <span>Sortierung</span>
         <select value={sort} onChange={e=>setSort(e.target.value)}>
-          <option value="standard">Standard</option>
+          <option value="standard">Empfohlen</option>
           <option value="name">Name A–Z</option>
           <option value="variants">Meiste Varianten</option>
         </select>
@@ -156,18 +299,47 @@ function Collection({query,setQuery,shape,setShape,openProduct}){
 
     <div className="collection-layout container">
       <aside className="filter-panel">
-        <div className="filter-title"><strong>Filtern</strong><button onClick={reset}>Alle entfernen</button></div>
-        <label>Bauform<select value={shape} onChange={e=>setShape(e.target.value)}><option>Alle</option>{categories.map(c=><option key={c.value}>{c.value}</option>)}</select></label>
-        <label>Serie<select value={series} onChange={e=>setSeries(e.target.value)}>{seriesOptions.map(x=><option key={x}>{x}</option>)}</select></label>
-        <label>Beschichtung<select value={coating} onChange={e=>setCoating(e.target.value)}>{coatingOptions.map(x=><option key={x}>{x}</option>)}</select></label>
-        <label>Werkstoff<select value={material} onChange={e=>setMaterial(e.target.value)}>{materialOptions.map(x=><option key={x}>{x}</option>)}</select></label>
+        <div className="filter-title">
+          <span><SlidersHorizontal size={17}/> Filter</span>
+          <button onClick={reset}>Alle löschen</button>
+        </div>
+
+        <FilterSelect label="Bauform" value={shape} onChange={setShape} options={['Alle',...categories.map(c=>c.value)]}/>
+        <FilterSelect label="Werkstoff" value={material} onChange={setMaterial} options={materialOptions}/>
+        <FilterSelect label="Serie" value={series} onChange={setSeries} options={seriesOptions}/>
+        <FilterSelect label="Beschichtung" value={coating} onChange={setCoating} options={coatingOptions}/>
+        <FilterSelect label="Schneiden" value={flutes} onChange={setFlutes} options={fluteOptions} format={x=>x==='Alle'?'Alle':`${x} Schneiden`}/>
+
+        <div className="filter-help">
+          <strong>Nicht sicher?</strong>
+          <p>Starte mit dem Werkstoff. Danach lassen sich Bauform und Serie eingrenzen.</p>
+        </div>
       </aside>
+
       <section className="collection-products">
-        {result.length ? <div className="collection-grid">{result.map(p=><ProductCard key={p.id} product={p} onOpen={()=>openProduct(p)}/>)}</div>
-        : <div className="empty"><strong>Keine Produkte gefunden.</strong><button onClick={reset}>Filter zurücksetzen</button></div>}
+        {result.length
+          ? <div className="collection-grid">{result.map(p=><ProductCard key={p.id} product={p} onOpen={()=>openProduct(p)}/>)}</div>
+          : <div className="empty">
+              <Search size={28}/>
+              <strong>Keine passende Produktserie gefunden.</strong>
+              <p>Ändere die Filter oder setze die Auswahl zurück.</p>
+              <button onClick={reset}>Filter zurücksetzen</button>
+            </div>}
       </section>
     </div>
   </div>
+}
+
+function FilterSelect({label,value,onChange,options,format=x=>x}){
+  return <label className="filter-field">
+    <span>{label}</span>
+    <div className="filter-select-wrap">
+      <select value={value} onChange={e=>onChange(e.target.value)}>
+        {options.map(x=><option key={x} value={x}>{format(x)}</option>)}
+      </select>
+      <ChevronDown size={15}/>
+    </div>
+  </label>
 }
 
 function ProductDetail({product,onBack,addToCart}){
@@ -175,6 +347,8 @@ function ProductDetail({product,onBack,addToCart}){
   const [zoomed,setZoomed]=useState(false)
   const [zoomPos,setZoomPos]=useState({x:50,y:50})
   const [galleryIndex,setGalleryIndex]=useState(0)
+  const [qty,setQty]=useState(1)
+
   const v=product.variants[variantIndex]
   const gallery=[...new Set([product.image,product.detailImage].filter(Boolean))]
   const currentImage=gallery[galleryIndex] || product.image
@@ -190,12 +364,15 @@ function ProductDetail({product,onBack,addToCart}){
     setZoomed(false)
     setZoomPos({x:50,y:50})
   }
-  const prevImage=()=>selectImage((galleryIndex-1+gallery.length)%gallery.length)
-  const nextImage=()=>selectImage((galleryIndex+1)%gallery.length)
 
-  return <div className="product-page container">
-    <button className="back-link" onClick={onBack}><ArrowLeft size={16}/> Zurück zu den Fräsern</button>
-    <div className="product-detail-grid">
+  return <div className="product-page">
+    <div className="container breadcrumbs">
+      <button onClick={onBack}><ArrowLeft size={14}/> Fräser</button>
+      <span>/</span><span>{product.shape}</span>
+      <span>/</span><strong>{product.series}</strong>
+    </div>
+
+    <div className="container product-detail-grid">
       <div className="detail-gallery">
         <div
           className={`detail-main-image ${zoomed?'is-zoomed':''} ${product.brandMask?'brand-mask-detail':''}`}
@@ -203,102 +380,236 @@ function ProductDetail({product,onBack,addToCart}){
           onMouseLeave={()=>{setZoomed(false);setZoomPos({x:50,y:50})}}
           onMouseMove={moveZoom}
         >
-          <img
-            src={currentImage}
-            alt={product.name}
-            style={{transformOrigin:`${zoomPos.x}% ${zoomPos.y}%`}}
-          />
+          <img src={currentImage} alt={product.name} style={{transformOrigin:`${zoomPos.x}% ${zoomPos.y}%`}}/>
           {gallery.length>1&&<>
-            <button className="gallery-arrow gallery-arrow--left" onClick={e=>{e.stopPropagation();prevImage()}} aria-label="Vorheriges Bild"><ChevronLeft size={22}/></button>
-            <button className="gallery-arrow gallery-arrow--right" onClick={e=>{e.stopPropagation();nextImage()}} aria-label="Nächstes Bild"><ChevronRight size={22}/></button>
+            <button className="gallery-arrow gallery-arrow--left" onClick={e=>{e.stopPropagation();selectImage((galleryIndex-1+gallery.length)%gallery.length)}}><ChevronLeft size={21}/></button>
+            <button className="gallery-arrow gallery-arrow--right" onClick={e=>{e.stopPropagation();selectImage((galleryIndex+1)%gallery.length)}}><ChevronRight size={21}/></button>
             <span className="gallery-counter">{galleryIndex+1} / {gallery.length}</span>
           </>}
-          <span className="zoom-hint">Mit der Maus über das Bild zum Zoomen</span>
+          <span className="zoom-hint">Zum Vergrößern mit der Maus über das Bild fahren</span>
         </div>
+
         {gallery.length>1&&<div className="gallery-thumbs">
           {gallery.map((src,i)=><button key={i} className={i===galleryIndex?'active':''} onClick={()=>selectImage(i)}>
             <img src={src} alt=""/>
           </button>)}
         </div>}
       </div>
-      <div className="detail-info">
-        <span className="detail-brand">FRÄSKERN · {product.series}</span>
+
+      <aside className="detail-info">
+        <div className="detail-series-row">
+          <span>{product.series}</span>
+          <span>{product.flutes}Z</span>
+          <span>{product.coating}</span>
+        </div>
+
         <h1>{product.name}</h1>
-        <div className="detail-sub">{product.shape} · {product.flutes} Schneiden · {product.coating}</div>
-        <div className="price-line"><strong>Preis folgt</strong><span>inkl. MwSt. nach finaler Kalkulation</span></div>
+        <p className="detail-lead">{product.description}</p>
 
-        <label className="variant-label">Abmessung
-          <div className="select-wrap">
-            <select value={variantIndex} onChange={e=>setVariantIndex(Number(e.target.value))}>
-              {product.variants.map((x,i)=><option key={i} value={i}>{formatVariant(x)}</option>)}
-            </select><ChevronDown size={18}/>
+        <div className="detail-materials">
+          <small>Werkstoffe</small>
+          <strong>{product.materials.join(' · ')}</strong>
+        </div>
+
+        <div className="purchase-box">
+          <div className="purchase-price">
+            <small>Preis</small>
+            <strong>in Vorbereitung</strong>
           </div>
-        </label>
 
-        <div className="availability-note"><Check size={16}/><span>Variante im Katalog hinterlegt</span></div>
-        <button className="add-to-cart" onClick={()=>addToCart(product,v)}><ShoppingCart size={18}/> In den Warenkorb</button>
+          <label className="variant-label">
+            <span>Abmessung wählen</span>
+            <div className="select-wrap">
+              <select value={variantIndex} onChange={e=>setVariantIndex(Number(e.target.value))}>
+                {product.variants.map((x,i)=><option key={i} value={i}>{formatVariant(x)}</option>)}
+              </select>
+              <ChevronDown size={17}/>
+            </div>
+          </label>
 
-        <div className="detail-boxes">
-          <div><strong>Qualität & Anwendung</strong><span>{product.materials.join(' · ')}</span></div>
-          <div><strong>Beschichtung</strong><span>{product.coating}</span></div>
+          <div className="selected-specs">
+            <div><small>Dc</small><strong>Ø {v.diameter} mm</strong></div>
+            {v.radius&&<div><small>R</small><strong>{v.radius} mm</strong></div>}
+            <div><small>Lc</small><strong>{v.cuttingLength} mm</strong></div>
+            <div><small>Ds</small><strong>Ø {v.shank} mm</strong></div>
+            <div><small>L</small><strong>{v.overall} mm</strong></div>
+          </div>
+
+          <div className="buy-row">
+            <div className="qty-control">
+              <button onClick={()=>setQty(Math.max(1,qty-1))}><Minus size={15}/></button>
+              <span>{qty}</span>
+              <button onClick={()=>setQty(qty+1)}><Plus size={15}/></button>
+            </div>
+            <button className="add-to-cart" onClick={()=>addToCart(product,v,qty)}>
+              <ShoppingCart size={18}/> In den Warenkorb
+            </button>
+          </div>
+
+          <div className="catalog-status"><Check size={15}/><span>Abmessung aus dem Produktkatalog hinterlegt</span></div>
+        </div>
+
+        <div className="detail-benefits">
+          <div><Ruler size={17}/><span><strong>Technische Daten direkt sichtbar</strong><small>ohne separate PDF-Suche</small></span></div>
+          <div><Layers3 size={17}/><span><strong>{product.variants.length} Varianten</strong><small>in dieser Produktserie</small></span></div>
+        </div>
+      </aside>
+    </div>
+
+    <section className="product-tech-section">
+      <div className="container tech-layout">
+        <div>
+          <span className="eyebrow">TECHNISCHE DATEN</span>
+          <h2>Ausgewählte Abmessung</h2>
+          <p>Die Werte ändern sich direkt mit der gewählten Variante.</p>
+        </div>
+
+        <div className="tech-table">
+          <div><span>Schneiden-Ø Dc</span><strong>Ø {v.diameter} mm</strong></div>
+          {v.radius&&<div><span>Eckenradius R</span><strong>{v.radius} mm</strong></div>}
+          <div><span>Schneidenlänge Lc</span><strong>{v.cuttingLength} mm</strong></div>
+          <div><span>Schaft-Ø Ds</span><strong>Ø {v.shank} mm</strong></div>
+          <div><span>Gesamtlänge L</span><strong>{v.overall} mm</strong></div>
+          <div><span>Schneiden</span><strong>{product.flutes}</strong></div>
+          <div><span>Beschichtung</span><strong>{product.coating}</strong></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div className="product-description">
-      <h2>Beschreibung</h2><p>{product.description}</p>
-      <h2>Abmessungen</h2>
-      <div className="dimensions-table">
-        <div className="tr head"><span>Schneiden-Ø Dc</span>{v.radius&&<span>Radius</span>}<span>Schneidenlänge Lc</span><span>Schaft-Ø Ds</span><span>Gesamtlänge L</span></div>
-        <div className="tr"><span>Ø {v.diameter} mm</span>{v.radius&&<span>R {v.radius} mm</span>}<span>{v.cuttingLength} mm</span><span>Ø {v.shank} mm</span><span>{v.overall} mm</span></div>
+    <section className="all-variants-section container">
+      <div className="section-head">
+        <span className="eyebrow">VARIANTEN</span>
+        <h2>Alle Abmessungen dieser Serie</h2>
       </div>
-      <h2>Alle verfügbaren Abmessungen</h2>
-      <div className="all-variants">
-        {product.variants.map((x,i)=><button key={i} className={i===variantIndex?'active':''} onClick={()=>setVariantIndex(i)}>{formatVariant(x)}</button>)}
+      <div className="variant-table">
+        <div className="variant-table-head">
+          <span>Dc</span>{v.radius&&<span>R</span>}<span>Lc</span><span>Ds</span><span>L</span><span></span>
+        </div>
+        {product.variants.map((x,i)=><button key={i} className={i===variantIndex?'active':''} onClick={()=>setVariantIndex(i)}>
+          <span>Ø {x.diameter} mm</span>
+          {v.radius&&<span>{x.radius ? `R ${x.radius} mm` : '—'}</span>}
+          <span>{x.cuttingLength} mm</span>
+          <span>Ø {x.shank} mm</span>
+          <span>{x.overall} mm</span>
+          <strong>{i===variantIndex?'Ausgewählt':'Wählen'}</strong>
+        </button>)}
       </div>
-    </div>
+    </section>
   </div>
 }
 
 function CartPage({cart,setCart,onCollection}){
+  const totalQty=cart.reduce((sum,item)=>sum+(item.qty||1),0)
+
   return <div className="cart-page container">
-    <h1>Warenkorb</h1>
-    {!cart.length ? <div className="empty-cart"><ShoppingCart size={42}/><strong>Dein Warenkorb ist leer.</strong><button onClick={()=>onCollection('Alle')}>Fräser ansehen</button></div> :
-    <>
-      <div className="cart-list">
-        {cart.map((item,i)=><div className="cart-row" key={i}>
-          <img src={item.product.image} alt=""/>
-          <div><strong>{item.product.name}</strong><span>{formatVariant(item.variant)}</span></div>
-          <span className="cart-price">Preis folgt</span>
-          <button onClick={()=>setCart(cart.filter((_,idx)=>idx!==i))}><Trash2 size={18}/></button>
-        </div>)}
-      </div>
-      <div className="cart-summary"><strong>{cart.length} Position{cart.length===1?'':'en'}</strong><span>Preise und Checkout werden später über Shopify verbunden.</span></div>
-    </>}
+    <div className="cart-title-row">
+      <div><span className="eyebrow">WARENKORB</span><h1>{totalQty} Position{totalQty===1?'':'en'}</h1></div>
+      <button className="text-link" onClick={()=>onCollection('Alle')}>Weiter einkaufen <ArrowRight size={16}/></button>
+    </div>
+
+    {!cart.length
+      ? <div className="empty-cart"><ShoppingCart size={38}/><strong>Der Warenkorb ist leer.</strong><p>Wähle zuerst einen Fräser und eine Abmessung.</p><button onClick={()=>onCollection('Alle')}>Fräser ansehen</button></div>
+      : <>
+        <div className="cart-list">
+          {cart.map((item,i)=><div className="cart-row" key={i}>
+            <img src={item.product.image} alt=""/>
+            <div className="cart-product-copy">
+              <small>{item.product.series} · {item.product.shape}</small>
+              <strong>{item.product.name}</strong>
+              <span>{formatVariant(item.variant)}</span>
+            </div>
+            <span className="cart-qty">Menge {item.qty||1}</span>
+            <span className="cart-price">Preis in Vorbereitung</span>
+            <button className="cart-remove" onClick={()=>setCart(cart.filter((_,idx)=>idx!==i))}><Trash2 size={17}/></button>
+          </div>)}
+        </div>
+        <div className="cart-summary">
+          <strong>Shop-Checkout wird im nächsten Schritt angebunden.</strong>
+          <span>Produkte, Varianten und Warenkorbstruktur sind bereits vorbereitet.</span>
+        </div>
+      </>}
   </div>
+}
+
+function Footer({onCollection}){
+  return <footer>
+    <div className="container footer-grid">
+      <div className="footer-brand">
+        <span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo"/></span>
+        <p>VHM-Fräser für professionelle Zerspanung. Technisch klar. Fair kalkuliert.</p>
+      </div>
+      <div>
+        <strong>Sortiment</strong>
+        <button onClick={()=>onCollection('Alle')}>Alle Fräser</button>
+        <button onClick={()=>onCollection('Schaftfräser')}>Schaftfräser</button>
+        <button onClick={()=>onCollection('Kugelfräser')}>Kugelfräser</button>
+        <button onClick={()=>onCollection('Aluminiumfräser')}>Aluminiumfräser</button>
+      </div>
+      <div>
+        <strong>Auswahl</strong>
+        <span>Werkstoff</span>
+        <span>Bauform</span>
+        <span>Beschichtung</span>
+        <span>Abmessungen</span>
+      </div>
+      <div>
+        <strong>FRÄSKERN</strong>
+        <span>Cutting Tools</span>
+        <span>Fokus: VHM-Fräser</span>
+        <span>Shop im Aufbau</span>
+      </div>
+    </div>
+    <div className="container footer-bottom">FRÄSKERN · CUTTING TOOLS</div>
+  </footer>
 }
 
 export default function App(){
   const [page,setPage]=useState('home')
   const [query,setQuery]=useState('')
   const [shape,setShape]=useState('Alle')
+  const [materialPreset,setMaterialPreset]=useState('Alle')
   const [selectedProduct,setSelectedProduct]=useState(null)
   const [cart,setCart]=useState([])
 
-  const goHome=()=>{setPage('home');window.scrollTo({top:0,behavior:'smooth'})}
-  const openCollection=(value='Alle')=>{setShape(value);setPage('collection');window.scrollTo({top:0,behavior:'smooth'})}
-  const openProduct=p=>{setSelectedProduct(p);setPage('product');window.scrollTo({top:0,behavior:'smooth'})}
-  const doSearch=()=>{setShape('Alle');setPage('collection');window.scrollTo({top:0,behavior:'smooth'})}
-  const addToCart=(product,variant)=>{setCart(prev=>[...prev,{product,variant}])}
+  const top=()=>window.scrollTo({top:0,behavior:'smooth'})
+  const goHome=()=>{setPage('home');top()}
+  const openCollection=(value='Alle',material='Alle')=>{
+    setShape(value)
+    setMaterialPreset(material)
+    setPage('collection')
+    top()
+  }
+  const openProduct=p=>{setSelectedProduct(p);setPage('product');top()}
+  const doSearch=()=>{setShape('Alle');setMaterialPreset('Alle');setPage('collection');top()}
+  const addToCart=(product,variant,qty=1)=>setCart(prev=>[...prev,{product,variant,qty}])
+  const cartCount=cart.reduce((sum,item)=>sum+(item.qty||1),0)
 
   return <div>
-    <Header query={query} setQuery={setQuery} onSearch={doSearch} onHome={goHome} onCollection={openCollection} onCart={()=>{setPage('cart');window.scrollTo({top:0,behavior:'smooth'})}} cartCount={cart.length}/>
+    <Header
+      query={query}
+      setQuery={setQuery}
+      onSearch={doSearch}
+      onHome={goHome}
+      onCollection={openCollection}
+      onCart={()=>{setPage('cart');top()}}
+      cartCount={cartCount}
+    />
+
     <main>
       {page==='home'&&<Home openCollection={openCollection} openProduct={openProduct}/>}
-      {page==='collection'&&<Collection query={query} setQuery={setQuery} shape={shape} setShape={setShape} openProduct={openProduct}/>}
+      {page==='collection'&&<Collection
+        key={`${shape}-${materialPreset}`}
+        query={query}
+        setQuery={setQuery}
+        shape={shape}
+        setShape={setShape}
+        initialMaterial={materialPreset}
+        openProduct={openProduct}
+      />}
       {page==='product'&&selectedProduct&&<ProductDetail product={selectedProduct} onBack={()=>openCollection(shape)} addToCart={addToCart}/>}
       {page==='cart'&&<CartPage cart={cart} setCart={setCart} onCollection={openCollection}/>}
     </main>
-    <footer><div className="container footer-inner"><span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo"/></span><p>FRÄSKERN · VHM-Fräser für professionelle Zerspanung</p></div></footer>
+
+    <Footer onCollection={openCollection}/>
   </div>
 }
