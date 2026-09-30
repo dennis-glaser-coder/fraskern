@@ -1162,3 +1162,14 @@ footer{
 .hero-copy{
   max-width:500px;
 }
+
+
+/* Hero: slightly wider view of the new machining photo */
+.hero-photo-bg{
+  inset:0 0 0 12%;
+}
+.hero-photo-bg img{
+  object-position:45% 45%;
+  transform:scaleX(-1) scale(1);
+  animation:none;
+}
