@@ -1,5 +1,6 @@
 import { ArrowRight, BadgeCheck, Gauge, PackageCheck, Search, ShoppingCart } from 'lucide-react'
 import { products } from './data/products.js'
+import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
 
 const materials = ['Stahl', 'Edelstahl', 'Aluminium', 'Guss', 'Kunststoff', 'Gehärtet']
 
@@ -29,9 +30,10 @@ export default function App() {
     <div className="site-shell">
       <div className="topbar">Versandkostenfrei ab 75 € · Lagerware schnell verfügbar · Faire Preise für professionelle Werkzeuge</div>
       <header className="header container">
-        <a className="brand" href="#top" aria-label="FRÄSKERN Startseite">
-          <div className="brand-mark" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
-          <div><span className="brand-name">FRÄSKERN</span><span className="brand-sub">CUTTING TOOLS</span></div>
+        <a className="brand brand--master" href="#top" aria-label="FRÄSKERN Startseite">
+          <span className="master-logo-frame master-logo-frame--header">
+            <img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" />
+          </span>
         </a>
         <nav className="nav">
           <a href="#produkte">Werkzeuge</a><a href="#finder">Werkzeugfinder</a><a href="#wissen">Qualität</a>
@@ -77,7 +79,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer><div className="container footer-inner"><div className="brand brand--footer"><div className="brand-mark small"><i/><i/><i/><i/><i/><i/></div><div><span className="brand-name">FRÄSKERN</span><span className="brand-sub">CUTTING TOOLS</span></div></div><p>Frontend-Prototyp · Checkout noch nicht aktiv</p></div></footer>
+      <footer><div className="container footer-inner"><a className="brand brand--footer" href="#top" aria-label="FRÄSKERN Startseite"><span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" /></span></a><p>Frontend-Prototyp · Checkout noch nicht aktiv</p></div></footer>
     </div>
   )
 }
