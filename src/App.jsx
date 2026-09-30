@@ -90,6 +90,11 @@ function Home({openCollection,openProduct}){
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Fräser entdecken <ArrowRight size={18}/></button>
           </div>
+          <div className="hero-tech-meta">
+            <span><b>VHM</b><small>Vollhartmetall</small></span>
+            <span><b>2–4Z</b><small>Schneiden</small></span>
+            <span><b>HRC45–65</b><small>Werkzeugserien</small></span>
+          </div>
         </div>
       </div>
     </section>
