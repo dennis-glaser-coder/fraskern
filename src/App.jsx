@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Gauge, Search, ShoppingCart, PackageCheck } from 'lucide-react'
 import { products } from './data/products.js'
 import fraeskernLogo from '../fraeskern_logo_master_blau_stahl.png'
 
@@ -12,30 +12,10 @@ const productImages = {
 }
 
 const categories = [
-  {
-    code: '01',
-    name: 'Universalfräser',
-    text: 'VHM-Schaftfräser für Stahl und Guss – robust, präzise und für den täglichen Einsatz.',
-    image: productImages.universal,
-  },
-  {
-    code: '02',
-    name: 'Hochleistungsfräser',
-    text: 'Beschichtete VHM-Fräser für hochfeste Werkstoffe und anspruchsvolle Bearbeitung.',
-    image: productImages.hard,
-  },
-  {
-    code: '03',
-    name: 'Aluminiumfräser',
-    text: 'Scharfe Geometrien und große Spanräume für Aluminium und NE-Metalle.',
-    image: productImages.alu,
-  },
-  {
-    code: '04',
-    name: 'Schruppfräser',
-    text: 'Schruppgeometrie für hohen Materialabtrag bei Stahl und Guss.',
-    image: productImages.rough,
-  },
+  { code:'01', name:'Universalfräser', short:'Vielseitig. Präzise. Effizient.', text:'VHM-Schaftfräser für Stahl und Guss.', image:productImages.universal },
+  { code:'02', name:'Hochleistungsfräser', short:'Für maximale Performance.', text:'Für hochfeste Werkstoffe und anspruchsvolle Bearbeitung.', image:productImages.hard },
+  { code:'03', name:'Aluminiumfräser', short:'Optimiert für NE-Metalle.', text:'Scharfe Geometrien und große Spanräume.', image:productImages.alu },
+  { code:'04', name:'Schruppfräser', short:'Für hohe Zerspanvolumen.', text:'Schruppgeometrie für hohen Materialabtrag.', image:productImages.rough },
 ]
 
 function ProductCard({ product }) {
@@ -69,83 +49,87 @@ function ProductCard({ product }) {
 export default function App() {
   return (
     <div className="site-shell">
-      <header className="header container">
-        <a className="brand brand--master" href="#top" aria-label="FRÄSKERN Startseite">
-          <span className="master-logo-frame master-logo-frame--header">
-            <img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" />
-          </span>
-        </a>
+      <header className="header-shell">
+        <div className="header-main container">
+          <a className="brand brand--master" href="#top" aria-label="FRÄSKERN Startseite">
+            <span className="master-logo-frame master-logo-frame--header">
+              <img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo" />
+            </span>
+          </a>
 
-        <div className="header-search">
-          <Search size={17}/>
-          <span>Fräser, Durchmesser oder Werkstoff suchen …</span>
+          <div className="header-search">
+            <Search size={18}/>
+            <span>Fräser, Durchmesser oder Werkstoff suchen …</span>
+            <button aria-label="Suche starten"><Search size={17}/></button>
+          </div>
+
+          <div className="header-actions">
+            <button className="cart-btn"><ShoppingCart size={18}/> Warenkorb</button>
+          </div>
         </div>
 
-        <nav className="nav">
-          <a href="#kategorien">Fräser</a>
-          <a href="#produkte">Produkte</a>
-          <a href="#finder">Fräserfinder</a>
-          <a href="#wissen">Qualität</a>
-        </nav>
-
-        <div className="header-actions">
-          <button className="cart-btn"><ShoppingCart size={18}/> Warenkorb</button>
+        <div className="header-nav">
+          <nav className="nav container">
+            <a href="#kategorien">Fräser</a>
+            <a href="#produkte">Produkte</a>
+            <a href="#finder">Fräserfinder</a>
+            <a href="#wissen">Qualität</a>
+            <a href="#wissen">Service</a>
+          </nav>
         </div>
       </header>
 
       <main id="top">
-        <section className="hero">
+        <section className="hero hero--dark">
           <div className="hero-grid container">
             <div className="hero-copy">
-              <span className="kicker">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
+              <span className="kicker kicker--light">VHM-FRÄSER FÜR PROFESSIONELLE ZERSPANUNG</span>
               <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
-              <p>Hochwertige VHM-Fräser für professionelle Anwendungen. Klare Geometrien, nachvollziehbare technische Daten und eine faire Kalkulation.</p>
+              <p>Hochwertige VHM-Fräser für professionelle Anwendungen. Klar ausgewählt, technisch sauber beschrieben und fair kalkuliert.</p>
+
               <div className="hero-actions">
                 <a className="btn btn-primary hero-cta" href="#kategorien">Fräser entdecken <ArrowRight size={18}/></a>
               </div>
-              <div className="hero-facts">
-                <span><BadgeCheck size={17}/> VHM-Fräser im Fokus</span>
-                <span><Gauge size={17}/> Technische Daten klar aufbereitet</span>
-                <span className="hero-fact-price">Fair kalkuliert</span>
+
+              <div className="hero-facts hero-facts--dark">
+                <span><BadgeCheck size={18}/> Hochwertige Werkzeugqualität</span>
+                <span><PackageCheck size={18}/> Klar kuratiertes Sortiment</span>
+                <span><Gauge size={18}/> Technische Daten transparent</span>
               </div>
             </div>
 
-            <div className="hero-visual hero-visual--catalog">
-              <div className="catalog-hero-card">
-                <img src={productImages.hard} alt="Beschichteter VHM-Hochleistungsfräser" />
-              </div>
-              <div className="spec-rail">
-                <div><small>SORTIMENT</small><strong>VHM-Fräser</strong></div>
-                <div><small>GEOMETRIEN</small><strong>2Z / 3Z / 4Z+</strong></div>
-                <div><small>WERKSTOFFE</small><strong>P · M · K · N · H</strong></div>
-                <div><small>FOKUS</small><strong>Präzision</strong></div>
+            <div className="hero-media" aria-label="VHM-Fräser Produktdarstellung">
+              <div className="hero-media__glow"/>
+              <img src={productImages.hard} alt="Beschichtete VHM-Fräser" className="hero-media__image" />
+              <div className="hero-media__label">
+                <small>FRÄSKERN</small>
+                <strong>VHM · 4Z · HRC</strong>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="category-section container" id="kategorien">
-          <div className="section-heading category-heading">
-            <div>
-              <span className="kicker">FRÄSER-SORTIMENT</span>
-              <h2>Für Material und Anwendung.</h2>
-            </div>
-            <p>VHM-Fräser für Stahl, Edelstahl, Aluminium, Guss und hochfeste Werkstoffe – klar nach Anwendung und Werkstoff gegliedert.</p>
-          </div>
-
-          <div className="category-grid category-grid--mills">
-            {categories.map(category => (
-              <a className="category-card" href="#produkte" key={category.name}>
+        <section className="category-strip container" id="kategorien">
+          {categories.map(category => (
+            <a className="category-tile" href="#produkte" key={category.name}>
+              <div className="category-tile__image">
+                <img src={category.image} alt={category.name} />
+              </div>
+              <div className="category-tile__body">
                 <span className="category-code">{category.code}</span>
-                <div className="category-artwork-wrap category-artwork-wrap--photo">
-                  <img src={category.image} alt={category.name} />
-                </div>
                 <h3>{category.name}</h3>
-                <p>{category.text}</p>
-                <span className="category-link">Fräser ansehen <ArrowRight size={15}/></span>
-              </a>
-            ))}
-          </div>
+                <p>{category.short}</p>
+                <ArrowRight size={19}/>
+              </div>
+            </a>
+          ))}
+        </section>
+
+        <section className="trust-strip container">
+          <div><BadgeCheck size={25}/><span><strong>VHM-Qualität</strong><small>Für professionelle Anwendungen</small></span></div>
+          <div><PackageCheck size={25}/><span><strong>Klares Sortiment</strong><small>Fräser statt Vollsortiment</small></span></div>
+          <div><Gauge size={25}/><span><strong>Technische Daten</strong><small>Für sichere Auswahl</small></span></div>
+          <div><Search size={25}/><span><strong>Fräserfinder</strong><small>Werkstoff zuerst auswählen</small></span></div>
         </section>
 
         <section className="products-section container" id="produkte">
@@ -156,6 +140,7 @@ export default function App() {
             </div>
             <span className="catalog-note">Technische Varianten werden aktuell aufbereitet.</span>
           </div>
+
           <div className="product-grid product-grid--mills">
             {products.map(product => <ProductCard key={product.id} product={product}/>)}
           </div>
@@ -168,6 +153,7 @@ export default function App() {
               <h2>Vom Werkstoff zum passenden Fräser.</h2>
               <p>Werkstoff auswählen und anschließend Geometrie, Bearbeitung und Durchmesser eingrenzen.</p>
             </div>
+
             <div className="material-grid">
               {materials.map((material, i) => (
                 <button key={material} className={i===0 ? 'material active' : 'material'}>
@@ -175,6 +161,7 @@ export default function App() {
                 </button>
               ))}
             </div>
+
             <button className="btn btn-primary finder-next">Auswahl starten <ArrowRight size={18}/></button>
           </div>
         </section>
