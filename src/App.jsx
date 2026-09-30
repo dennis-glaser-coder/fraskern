@@ -85,7 +85,7 @@ function Home({openCollection,openProduct}){
         <div className="hero-copy">
           <span className="eyebrow eyebrow-light">VHM-FRÄSER · PROFESSIONELLE ZERSPANUNG</span>
           <h1>Präzision zum<br/><span>fairen Preis.</span></h1>
-          <p>Konzentriertes Fräser-Sortiment mit klaren technischen Daten und direkt wählbaren Abmessungen.</p>
+          <p>Hochwertige VHM-Fräser für die professionelle Zerspanung – technisch sauber beschrieben und fair kalkuliert.</p>
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={()=>openCollection('Alle')}>Alle Fräser <ArrowRight size={18}/></button>
             <button className="btn btn-ghost" onClick={()=>document.querySelector('#quickfinder')?.scrollIntoView({behavior:'smooth'})}>Nach Werkstoff wählen</button>
@@ -106,9 +106,9 @@ function Home({openCollection,openProduct}){
     <section className="quickfinder-section" id="quickfinder">
       <div className="container quickfinder">
         <div className="quickfinder-copy">
-          <span className="eyebrow">SCHNELL ZUM FRÄSER</span>
-          <h2>Welchen Werkstoff bearbeitest du?</h2>
-          <p>Werkstoff auswählen und direkt die dafür hinterlegten Produktserien anzeigen.</p>
+          <span className="eyebrow">FRÄSERAUSWAHL</span>
+          <h2>Passender Fräser für deinen Werkstoff</h2>
+          <p>Nach Werkstoff filtern und geeignete Fräser vergleichen.</p>
         </div>
         <div className="material-grid">
           {materialShortcuts.map(m=>
@@ -159,8 +159,8 @@ function Home({openCollection,openProduct}){
       <div className="container">
         <div className="section-head section-head-row">
           <div>
-            <span className="eyebrow">DIREKT BESTELLBAR VORBEREITET</span>
-            <h2>Ausgewählte Fräser</h2>
+            <span className="eyebrow">VHM-FRÄSER</span>
+            <h2>Für die tägliche Fertigung</h2>
           </div>
           <button className="text-link" onClick={()=>openCollection('Alle')}>Alle Produkte <ArrowRight size={16}/></button>
         </div>
