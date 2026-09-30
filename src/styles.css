@@ -1276,3 +1276,59 @@ img,svg{max-width:100%}
   .cart-row img{width:64px;height:64px}
   .footer-grid{grid-template-columns:minmax(0,1fr)}
 }
+
+
+/* MOBILE: absolutely no horizontal page/nav panning */
+html,
+body,
+#root{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+.site-header,
+main,
+footer,
+.hero--shop,
+.home-categories,
+.quickfinder-section,
+.featured-section,
+.collection-page,
+.product-page,
+.cart-page{
+  max-width:100%;
+}
+
+@media(max-width:650px){
+  .main-nav{
+    overflow:visible;
+  }
+
+  .main-nav nav{
+    width:calc(100% - 22px);
+    height:auto;
+    min-height:42px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    gap:0 18px;
+    overflow:visible;
+    padding:5px 0;
+  }
+
+  .main-nav button{
+    flex:0 0 auto;
+    padding:8px 0;
+    font-size:9px;
+  }
+
+  .section-head-row{
+    flex-wrap:wrap;
+  }
+
+  .section-head-row .text-link{
+    max-width:100%;
+    white-space:normal;
+  }
+}
