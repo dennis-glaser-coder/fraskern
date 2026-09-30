@@ -1,46 +1,42 @@
-import heroCatalog from '../catalog/hero.js'
-import universalCatalog from '../catalog/universal.js'
-import roughingCatalog from '../catalog/roughing.js'
-
 export const products = [
   {
     id: 'fk-universal-4z',
     name: 'FRÄSKERN Universal 4Z',
-    subtitle: 'VHM-Schaftfräser · Universalserie',
+    subtitle: 'VHM-Schaftfräser · Universal',
     flutes: '4 Schneiden',
     coating: 'beschichtet',
     materials: ['Stahl', 'Guss'],
     badge: 'UNIVERSAL',
-    image: universalCatalog,
+    image: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E5%B0%8F%E5%BE%84%E5%B9%B3%E5%88%80.png',
   },
   {
     id: 'fk-hard-4z',
     name: 'FRÄSKERN Hard 4Z',
-    subtitle: 'VHM-Hochleistungsfräser · HRC-Serie',
+    subtitle: 'VHM-Hochleistungsfräser · HRC',
     flutes: '4 Schneiden',
     coating: 'Hochleistungsbeschichtung',
     materials: ['hochfeste Stähle', 'Edelstahl'],
     badge: 'HRC',
-    image: heroCatalog,
+    image: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A865%E5%B9%B3%E5%88%80-1.png',
   },
   {
     id: 'fk-alu',
     name: 'FRÄSKERN Alu',
-    subtitle: 'VHM-Fräser · Aluminiumserie',
+    subtitle: 'VHM-Fräser · Aluminium',
     flutes: '2 / 3 Schneiden',
     coating: 'polierte Schneiden',
     materials: ['Aluminium', 'NE-Metalle'],
     badge: 'ALU',
-    image: universalCatalog,
+    image: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%93%9D%E7%94%A8%E4%B8%83%E5%BD%A9%E7%90%83%E5%88%80-1.png',
   },
   {
     id: 'fk-rough',
     name: 'FRÄSKERN Rough',
     subtitle: 'VHM-Schruppfräser',
     flutes: 'Schruppgeometrie',
-    coating: 'TiSiN-Serie',
+    coating: 'beschichtet',
     materials: ['Stahl', 'Guss'],
     badge: 'SCHRUPPEN',
-    image: roughingCatalog,
+    image: 'https://hdktools.com/wp-content/uploads/2025/02/%E4%B8%BB%E9%A1%B5%E4%BA%A7%E5%93%81%E8%BD%AE%E6%92%AD%E2%80%94%E9%92%A2%E7%94%A8%E7%B2%97%E7%9A%AE%E5%88%80.png',
   },
 ]
