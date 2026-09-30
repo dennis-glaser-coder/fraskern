@@ -453,3 +453,292 @@ footer{background:var(--ink);color:#fff;padding:30px 0}
     background:linear-gradient(180deg,rgba(7,18,26,.96) 0%,rgba(7,18,26,.91) 60%,rgba(7,18,26,.56) 100%) !important;
   }
 }
+
+
+/* Benchmark-led material-first homepage structure */
+.material-section{
+  padding:68px 0 72px;
+}
+.material-heading,
+.family-heading,
+.series-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:48px;
+  margin-bottom:28px;
+}
+.material-heading h2,
+.family-heading h2,
+.series-heading h2{
+  font-size:52px;
+}
+.material-heading>p,
+.family-heading>p,
+.series-heading>p{
+  max-width:440px;
+  margin:0 0 6px;
+  color:var(--steel);
+  font-size:13px;
+  line-height:1.65;
+}
+.material-cards{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--line);
+  background:#fff;
+}
+.material-card{
+  min-height:150px;
+  border:0;
+  border-right:1px solid var(--line);
+  background:#fff;
+  padding:20px;
+  text-align:left;
+  position:relative;
+  transition:.2s ease;
+}
+.material-card:last-child{border-right:0}
+.material-card:hover,
+.material-card.active{
+  background:#f3f8fb;
+  box-shadow:inset 0 -3px 0 var(--blue);
+}
+.material-card__code{
+  display:inline-grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  background:#e7eef2;
+  color:#405561;
+  font-weight:800;
+  margin-bottom:20px;
+}
+.material-card.active .material-card__code{
+  background:var(--blue);
+  color:#fff;
+}
+.material-card strong{
+  display:block;
+  font:700 24px "Barlow Condensed",sans-serif;
+  margin-bottom:4px;
+}
+.material-card small{
+  display:block;
+  max-width:160px;
+  color:var(--steel);
+  line-height:1.45;
+  font-size:10px;
+}
+.material-card>svg{
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  color:var(--blue);
+}
+
+.families-section{
+  background:#f4f7f8;
+  border-top:1px solid #e5ecef;
+  border-bottom:1px solid #e1e8eb;
+  padding:66px 0 74px;
+}
+.category-strip--embedded{
+  margin:0;
+  padding:0;
+}
+.category-strip--embedded .category-tile{
+  box-shadow:0 12px 28px rgba(12,28,38,.08);
+}
+
+.series-section{
+  padding:72px 0 82px;
+}
+.series-list{
+  border-top:1px solid var(--line);
+}
+.series-row{
+  min-height:150px;
+  display:grid;
+  grid-template-columns:170px 1.3fr 1fr auto;
+  align-items:center;
+  gap:26px;
+  border-bottom:1px solid var(--line);
+  padding:18px 0;
+}
+.series-row__image{
+  height:112px;
+  background:#eef3f5;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.series-row__image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:8px;
+}
+.series-row__main h3{
+  font:700 30px "Barlow Condensed",sans-serif;
+  margin:4px 0 5px;
+}
+.series-row__main p{
+  margin:0;
+  font-size:11px;
+  color:var(--steel);
+}
+.series-row__specs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.series-row__specs span{
+  background:#eef3f5;
+  padding:7px 9px;
+  font-size:10px;
+  font-weight:700;
+}
+.series-row__link{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--blue);
+  white-space:nowrap;
+}
+
+.finder-card--guided{
+  grid-template-columns:1.05fr 1.25fr 1.1fr .9fr;
+  align-items:start;
+}
+.finder-intro h2{
+  font:700 40px/.98 "Barlow Condensed",sans-serif;
+  margin:0 0 10px;
+}
+.finder-intro p{
+  color:#9ba8b0;
+  font-size:12px;
+  line-height:1.55;
+  margin:0;
+}
+.finder-control>small{
+  display:block;
+  color:#7f919d;
+  font-size:9px;
+  letter-spacing:.14em;
+  margin-bottom:9px;
+}
+.finder-options{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+}
+.finder-option{
+  min-height:42px;
+  background:#1c2a34;
+  color:#e2e9ed;
+  border:1px solid #34454f;
+  text-align:left;
+  padding:9px 10px;
+  border-radius:2px;
+  font-size:11px;
+}
+.finder-option b{
+  display:inline-grid;
+  place-items:center;
+  min-width:22px;
+  height:22px;
+  margin-right:7px;
+  background:#314550;
+}
+.finder-option.active{
+  background:#17394c;
+  border-color:#2d91c4;
+}
+.finder-option.active b{
+  background:var(--blue);
+}
+.finder-result{
+  background:#f7fafb;
+  color:var(--ink);
+  padding:18px;
+  min-height:100%;
+}
+.finder-result>span{
+  display:block;
+  font-size:8px;
+  letter-spacing:.14em;
+  color:#6f818c;
+  margin-bottom:8px;
+}
+.finder-result strong{
+  display:block;
+  font:700 26px "Barlow Condensed",sans-serif;
+  margin-bottom:7px;
+}
+.finder-result p{
+  font-size:10px;
+  line-height:1.5;
+  color:#6b7b85;
+  margin:0 0 14px;
+}
+.finder-result a{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:800;
+}
+
+@media(max-width:1100px){
+  .material-cards{grid-template-columns:repeat(3,1fr)}
+  .material-card:nth-child(3){border-right:0}
+  .material-card:nth-child(n+4){border-top:1px solid var(--line)}
+  .finder-card--guided{grid-template-columns:1fr 1fr}
+  .finder-result{min-height:auto}
+}
+@media(max-width:850px){
+  .material-heading,.family-heading,.series-heading{
+    display:block;
+  }
+  .material-heading>p,.family-heading>p,.series-heading>p{
+    margin-top:14px;
+  }
+  .material-cards{grid-template-columns:repeat(2,1fr)}
+  .material-card:nth-child(n){border-right:1px solid var(--line)}
+  .material-card:nth-child(2n){border-right:0}
+  .material-card:nth-child(n+3){border-top:1px solid var(--line)}
+  .series-row{
+    grid-template-columns:130px 1fr;
+  }
+  .series-row__specs,
+  .series-row__link{
+    grid-column:2;
+  }
+  .finder-card--guided{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .material-section,.families-section,.series-section{padding:52px 0}
+  .material-heading h2,.family-heading h2,.series-heading h2{font-size:42px}
+  .material-cards{grid-template-columns:1fr}
+  .material-card{
+    border-right:0 !important;
+    border-top:1px solid var(--line);
+    min-height:130px;
+  }
+  .material-card:first-child{border-top:0}
+  .series-row{
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:18px 0 22px;
+  }
+  .series-row__image{height:180px}
+  .series-row__specs,
+  .series-row__link{
+    grid-column:1;
+  }
+  .finder-options{grid-template-columns:1fr}
+}
