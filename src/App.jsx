@@ -23,6 +23,21 @@ const materialShortcuts = [
   'Hochfeste Stähle',
 ]
 
+const seriesSystem = {
+  HRC45:{brand:'KERN 45', tech:'HRC45', label:'UNIVERSAL', facts:'Stahl · Guss', tone:'45'},
+  HRC55:{brand:'KERN 55', tech:'HRC55', label:'PERFORMANCE', facts:'Stahl · Guss', tone:'55'},
+  HRC65:{brand:'KERN 65', tech:'HRC65', label:'HARD', facts:'Hochfeste Stähle', tone:'65'},
+  AL:{brand:'KERN N', tech:'NE', label:'ALUMINIUM', facts:'Aluminium · NE-Metalle', tone:'n'},
+}
+
+const seriesInfo=series=>seriesSystem[series] || {brand:series,tech:series,label:'SERIE',facts:'',tone:'default'}
+
+function BrandMark({className=''}) {
+  return <span className={`brand-mark ${className}`} aria-hidden="true">
+    <img src={fraeskernLogo} alt=""/>
+  </span>
+}
+
 function formatVariant(v){
   const out=[`Ø ${v.diameter} mm`]
   if(v.radius) out.push(`R ${v.radius} mm`)
@@ -83,6 +98,7 @@ function Home({openCollection,openProduct}){
         <img src={heroImage} alt="CNC-Fräsbearbeitung mit Kühlschmierstoff"/>
       </div>
       <div className="hero-overlay"/>
+      <BrandMark className="brand-mark--hero"/>
       <div className="hero-shop-inner container">
         <div className="hero-copy">
           <span className="eyebrow eyebrow-light">FRÄSKERN · VHM-FRÄSER</span>
@@ -95,8 +111,31 @@ function Home({openCollection,openProduct}){
       </div>
     </section>
 
-
-
+    <section className="series-showcase" aria-label="FRÄSKERN Werkzeugserien">
+      <div className="container series-showcase-inner">
+        <div className="series-showcase-label">
+          <span>FRÄSKERN SERIES</span>
+          <strong>Werkzeuglinien nach Einsatzbereich</strong>
+        </div>
+        <div className="series-showcase-grid">
+          {Object.entries(seriesSystem).map(([key,line])=>
+            <button
+              key={key}
+              className={`series-tile series-tile--${line.tone}`}
+              onClick={()=>openCollection('Alle','Alle',key)}
+            >
+              <BrandMark className="brand-mark--series"/>
+              <span className="series-tile-copy">
+                <small>{line.label}</small>
+                <strong>{line.brand}</strong>
+                <em>{line.tech} · {line.facts}</em>
+              </span>
+              <ArrowRight size={16}/>
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
 
     <section className="home-categories container">
       <div className="section-head section-head-row">
@@ -164,10 +203,14 @@ function Home({openCollection,openProduct}){
 }
 
 function ProductCard({product,onOpen}){
-  return <article className="product-card">
+  const line=seriesInfo(product.series)
+  return <article className={`product-card product-card--series-${line.tone}`}>
     <button className="product-card-click" onClick={onOpen}>
       <div className={`product-image ${product.brandMask?'product-photo-box':''}`}>
-        <span className="series-badge">{product.series}</span>
+        <span className={`series-badge series-badge--${line.tone}`}>
+          <BrandMark className="brand-mark--badge"/>
+          <span><b>{line.brand}</b><small>{line.tech}</small></span>
+        </span>
         <div
           className={`contained-product-art contained-product-art--card ${product.brandMask?'brand-mask-art':''}`}
           style={{backgroundImage:`url("${product.image}")`}}
@@ -195,8 +238,8 @@ function ProductCard({product,onOpen}){
   </article>
 }
 
-function Collection({query,setQuery,shape,setShape,initialMaterial,openProduct}){
-  const [series,setSeries]=useState('Alle')
+function Collection({query,setQuery,shape,setShape,initialMaterial,initialSeries,openProduct}){
+  const [series,setSeries]=useState(initialSeries || 'Alle')
   const [material,setMaterial]=useState(initialMaterial || 'Alle')
   const [coating,setCoating]=useState('Alle')
   const [flutes,setFlutes]=useState('Alle')
@@ -210,7 +253,8 @@ function Collection({query,setQuery,shape,setShape,initialMaterial,openProduct})
   const result=useMemo(()=>{
     const q=query.trim().toLowerCase()
     const list=products.filter(p=>{
-      const hay=[p.name,p.series,p.shape,p.coating,...p.materials].join(' ').toLowerCase()
+      const line=seriesInfo(p.series)
+      const hay=[p.name,p.series,line.brand,line.label,p.shape,p.coating,...p.materials].join(' ').toLowerCase()
       return (!q||hay.includes(q))
         && (shape==='Alle'||p.shape===shape)
         && (series==='Alle'||p.series===series)
@@ -280,7 +324,7 @@ function Collection({query,setQuery,shape,setShape,initialMaterial,openProduct})
 
         <FilterSelect label="Bauform" value={shape} onChange={setShape} options={['Alle',...categories.map(c=>c.value)]}/>
         <FilterSelect label="Werkstoff" value={material} onChange={setMaterial} options={materialOptions}/>
-        <FilterSelect label="Serie" value={series} onChange={setSeries} options={seriesOptions}/>
+        <FilterSelect label="Serie" value={series} onChange={setSeries} options={seriesOptions} format={x=>x==='Alle'?'Alle':seriesInfo(x).brand}/>
         <FilterSelect label="Beschichtung" value={coating} onChange={setCoating} options={coatingOptions}/>
         <FilterSelect label="Schneiden" value={flutes} onChange={setFlutes} options={fluteOptions} format={x=>x==='Alle'?'Alle':`${x} Schneiden`}/>
 
@@ -324,6 +368,7 @@ function ProductDetail({product,onBack,addToCart}){
   const [qty,setQty]=useState(1)
 
   const v=product.variants[variantIndex]
+  const line=seriesInfo(product.series)
   const gallery=[...new Set([product.image,product.detailImage].filter(Boolean))]
   const currentImage=gallery[galleryIndex] || product.image
 
@@ -343,7 +388,7 @@ function ProductDetail({product,onBack,addToCart}){
     <div className="container breadcrumbs">
       <button onClick={onBack}><ArrowLeft size={14}/> Fräser</button>
       <span>/</span><span>{product.shape}</span>
-      <span>/</span><strong>{product.series}</strong>
+      <span>/</span><strong>{seriesInfo(product.series).brand}</strong>
     </div>
 
     <div className="container product-detail-grid">
@@ -371,8 +416,10 @@ function ProductDetail({product,onBack,addToCart}){
       </div>
 
       <aside className="detail-info">
-        <div className="detail-series-row">
-          <span>{product.series}</span>
+        <div className={`detail-series-row detail-series-row--${line.tone}`}>
+          <BrandMark className="brand-mark--detail"/>
+          <span className="detail-brand-series">{line.brand}</span>
+          <span>{line.tech}</span>
           <span>{product.flutes}Z</span>
           <span>{product.coating}</span>
         </div>
@@ -502,6 +549,7 @@ function CartPage({cart,setCart,onCollection}){
 
 function Footer({onCollection}){
   return <footer>
+    <BrandMark className="brand-mark--footer-bg"/>
     <div className="container footer-grid">
       <div className="footer-brand">
         <span className="master-logo-frame master-logo-frame--footer"><img src={fraeskernLogo} alt="FRÄSKERN Cutting Tools" className="master-logo"/></span>
@@ -529,19 +577,21 @@ export default function App(){
   const [query,setQuery]=useState('')
   const [shape,setShape]=useState('Alle')
   const [materialPreset,setMaterialPreset]=useState('Alle')
+  const [seriesPreset,setSeriesPreset]=useState('Alle')
   const [selectedProduct,setSelectedProduct]=useState(null)
   const [cart,setCart]=useState([])
 
   const top=()=>window.scrollTo({top:0,behavior:'smooth'})
   const goHome=()=>{setPage('home');top()}
-  const openCollection=(value='Alle',material='Alle')=>{
+  const openCollection=(value='Alle',material='Alle',series='Alle')=>{
     setShape(value)
     setMaterialPreset(material)
+    setSeriesPreset(series)
     setPage('collection')
     top()
   }
   const openProduct=p=>{setSelectedProduct(p);setPage('product');top()}
-  const doSearch=()=>{setShape('Alle');setMaterialPreset('Alle');setPage('collection');top()}
+  const doSearch=()=>{setShape('Alle');setMaterialPreset('Alle');setSeriesPreset('Alle');setPage('collection');top()}
   const addToCart=(product,variant,qty=1)=>setCart(prev=>[...prev,{product,variant,qty}])
   const cartCount=cart.reduce((sum,item)=>sum+(item.qty||1),0)
 
@@ -559,12 +609,13 @@ export default function App(){
     <main>
       {page==='home'&&<Home openCollection={openCollection} openProduct={openProduct}/>}
       {page==='collection'&&<Collection
-        key={`${shape}-${materialPreset}`}
+        key={`${shape}-${materialPreset}-${seriesPreset}`}
         query={query}
         setQuery={setQuery}
         shape={shape}
         setShape={setShape}
         initialMaterial={materialPreset}
+        initialSeries={seriesPreset}
         openProduct={openProduct}
       />}
       {page==='product'&&selectedProduct&&<ProductDetail product={selectedProduct} onBack={()=>openCollection(shape)} addToCart={addToCart}/>}
