@@ -1662,3 +1662,126 @@ footer{
     left:-100px;
   }
 }
+
+
+/* BRAND REFINEMENT — one master signet, quieter series hierarchy */
+.series-showcase{
+  background:#0d1921;
+}
+.series-showcase-inner{
+  grid-template-columns:230px minmax(0,1fr);
+}
+.series-showcase-label{
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  padding:14px 18px 14px 0;
+}
+.series-showcase-label-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.series-showcase-label-copy>span{
+  color:#57c4ef;
+  font-size:8px;
+  line-height:1;
+  letter-spacing:.18em;
+  font-weight:900;
+  margin-bottom:6px;
+}
+.series-showcase-label-copy>strong{
+  color:#b9c7ce;
+  font-size:9px;
+  line-height:1.3;
+  font-weight:600;
+}
+.brand-mark--series-master{
+  width:38px;
+  opacity:.92;
+  filter:brightness(1.08) contrast(1.02);
+}
+.series-showcase-grid{
+  background:rgba(255,255,255,.01);
+}
+.series-tile{
+  min-height:72px;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:8px;
+  padding:10px 14px;
+}
+.series-tile::before{
+  height:2px;
+  opacity:.8;
+}
+.series-tile-copy small{
+  font-size:6px;
+  margin-bottom:4px;
+  color:#708894;
+}
+.series-tile-copy strong{
+  font-size:21px;
+}
+.series-tile-copy em{
+  margin-top:4px;
+  font-size:6px;
+  color:#8399a4;
+}
+
+/* Product cards carry the series name, not another copy of the logo */
+.series-badge{
+  min-width:0;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:5px;
+  padding:6px 8px;
+  background:rgba(255,255,255,.96);
+}
+.series-badge b{
+  font-size:8px;
+}
+.series-badge small{
+  font-size:6px;
+  padding-left:5px;
+  border-left:1px solid #c9d4d9;
+}
+.brand-mark--badge{
+  display:none!important;
+}
+
+/* The four highlighted cards now read as four product families */
+.featured-section .product-card::before{
+  height:2px;
+}
+
+@media(max-width:1050px){
+  .series-showcase-label{
+    flex-direction:row;
+    justify-content:flex-start;
+  }
+}
+
+@media(max-width:760px){
+  .series-showcase-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .series-showcase-label-copy>span{
+    margin-bottom:5px;
+  }
+  .series-showcase-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .series-tile{
+    min-height:68px;
+  }
+}
+
+@media(max-width:420px){
+  .series-showcase-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+}
