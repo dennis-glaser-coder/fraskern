@@ -1332,3 +1332,333 @@ footer,
     white-space:normal;
   }
 }
+
+
+/* =========================================================
+   FRÄSKERN BRAND SYSTEM
+   Signet + proprietary series identity across the storefront
+   ========================================================= */
+
+.brand-mark{
+  position:relative;
+  display:block;
+  width:68px;
+  aspect-ratio:.94;
+  overflow:hidden;
+  flex:0 0 auto;
+  pointer-events:none;
+}
+.brand-mark>img{
+  position:absolute;
+  width:455%;
+  max-width:none;
+  height:auto;
+  left:-17%;
+  top:-159%;
+  display:block;
+}
+
+/* Hero: the signet becomes part of the visual language */
+.brand-mark--hero{
+  position:absolute;
+  z-index:2;
+  width:360px;
+  left:clamp(-115px,-4vw,-38px);
+  top:50%;
+  transform:translateY(-50%) rotate(-7deg);
+  opacity:.105;
+  filter:grayscale(.25) brightness(1.45) contrast(1.2);
+}
+.hero-copy{
+  z-index:4;
+}
+.hero-copy::before{
+  z-index:2;
+}
+
+/* Series rail directly below the hero */
+.series-showcase{
+  position:relative;
+  z-index:5;
+  background:
+    linear-gradient(115deg,rgba(28,163,219,.06),transparent 34%),
+    #0c1921;
+  border-top:1px solid rgba(59,178,226,.65);
+  border-bottom:1px solid #22343e;
+  color:#fff;
+  overflow:hidden;
+}
+.series-showcase-inner{
+  display:grid;
+  grid-template-columns:190px minmax(0,1fr);
+  align-items:stretch;
+}
+.series-showcase-label{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:18px 22px 18px 0;
+  border-right:1px solid rgba(255,255,255,.10);
+}
+.series-showcase-label span{
+  color:#57c4ef;
+  font-size:8px;
+  line-height:1;
+  letter-spacing:.18em;
+  font-weight:900;
+  margin-bottom:7px;
+}
+.series-showcase-label strong{
+  color:#b9c7ce;
+  font-size:10px;
+  line-height:1.35;
+  font-weight:600;
+}
+.series-showcase-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.series-tile{
+  position:relative;
+  min-width:0;
+  min-height:92px;
+  border:0;
+  border-right:1px solid rgba(255,255,255,.10);
+  background:transparent;
+  color:#fff;
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) auto;
+  align-items:center;
+  gap:10px;
+  padding:13px 14px;
+  text-align:left;
+  cursor:pointer;
+  overflow:hidden;
+  transition:background .2s ease,transform .2s ease;
+}
+.series-tile:last-child{border-right:0}
+.series-tile::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+  opacity:.95;
+}
+.series-tile--45::before{background:linear-gradient(90deg,#617f91,#a7bbc5)}
+.series-tile--55::before{background:linear-gradient(90deg,#0e6f9f,#2fb0e3)}
+.series-tile--65::before{background:linear-gradient(90deg,#adb8be,#f3f7f8)}
+.series-tile--n::before{background:linear-gradient(90deg,#0e8ebc,#50d2df)}
+.series-tile:hover{
+  background:rgba(255,255,255,.045);
+}
+.series-tile:hover>svg{
+  transform:translateX(3px);
+  color:#5dc7ef;
+}
+.series-tile>svg{
+  color:#67808c;
+  transition:transform .18s ease,color .18s ease;
+}
+.brand-mark--series{
+  width:46px;
+  opacity:.95;
+  filter:brightness(1.16) contrast(1.03);
+}
+.series-tile-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.series-tile-copy small{
+  color:#718b98;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.13em;
+  line-height:1;
+  margin-bottom:5px;
+}
+.series-tile-copy strong{
+  color:#fff;
+  font:800 24px/.94 "Barlow Condensed",sans-serif;
+  letter-spacing:.015em;
+}
+.series-tile-copy em{
+  margin-top:5px;
+  color:#91a6b0;
+  font-size:7px;
+  line-height:1.2;
+  font-style:normal;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Product identity: signet and series code replace generic labels */
+.product-card{
+  position:relative;
+}
+.product-card::before{
+  content:"";
+  position:absolute;
+  z-index:12;
+  left:-1px;
+  right:-1px;
+  top:-1px;
+  height:3px;
+  pointer-events:none;
+}
+.product-card--series-45::before{background:linear-gradient(90deg,#617f91,#a7bbc5)}
+.product-card--series-55::before{background:linear-gradient(90deg,#0e6f9f,#2fb0e3)}
+.product-card--series-65::before{background:linear-gradient(90deg,#adb8be,#eef3f5)}
+.product-card--series-n::before{background:linear-gradient(90deg,#0e8ebc,#50d2df)}
+.series-badge{
+  min-width:88px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 8px 5px 5px;
+  background:rgba(255,255,255,.95);
+  border:1px solid #ccd7dc;
+  backdrop-filter:blur(5px);
+}
+.series-badge>span{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1px;
+}
+.series-badge b{
+  color:#10222c;
+  font-size:8px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.015em;
+  white-space:nowrap;
+}
+.series-badge small{
+  color:#71838d;
+  font-size:6px;
+  line-height:1;
+  font-weight:700;
+}
+.brand-mark--badge{
+  width:22px;
+}
+.series-badge--55{border-top-color:#2099ce}
+.series-badge--65{border-top-color:#aebbc1}
+.series-badge--n{border-top-color:#21a9c9}
+
+/* Detail page keeps the same brand hierarchy */
+.detail-series-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding-left:0;
+}
+.brand-mark--detail{
+  width:28px;
+}
+.detail-brand-series{
+  color:#0e2733!important;
+  font-weight:900!important;
+  letter-spacing:.015em;
+}
+.detail-series-row--45{border-bottom-color:#7c9aaa}
+.detail-series-row--55{border-bottom-color:#228fbd}
+.detail-series-row--65{border-bottom-color:#b8c3c8}
+.detail-series-row--n{border-bottom-color:#22aac4}
+
+/* Footer watermark makes the brand close the page too */
+footer{
+  position:relative;
+  overflow:hidden;
+}
+.brand-mark--footer-bg{
+  position:absolute;
+  width:310px;
+  right:-70px;
+  top:50%;
+  transform:translateY(-53%) rotate(8deg);
+  opacity:.055;
+  filter:grayscale(1) brightness(2);
+}
+.footer-grid,
+.footer-bottom{
+  position:relative;
+  z-index:2;
+}
+
+@media(max-width:1050px){
+  .series-showcase-inner{
+    grid-template-columns:1fr;
+  }
+  .series-showcase-label{
+    padding:14px 0 12px;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.10);
+  }
+  .series-showcase-label{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .series-showcase-label span{margin-bottom:0}
+}
+
+@media(max-width:760px){
+  .brand-mark--hero{
+    width:265px;
+    left:-105px;
+    opacity:.09;
+  }
+  .series-showcase-inner{
+    width:calc(100% - 22px);
+  }
+  .series-showcase-label{
+    display:block;
+  }
+  .series-showcase-label span{
+    display:block;
+    margin-bottom:5px;
+  }
+  .series-showcase-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    border-left:1px solid rgba(255,255,255,.08);
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .series-tile{
+    min-height:84px;
+    grid-template-columns:38px minmax(0,1fr) auto;
+    gap:8px;
+    padding:11px 10px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .series-tile:nth-child(2n){border-right:0}
+  .brand-mark--series{width:37px}
+  .series-tile-copy strong{font-size:21px}
+  .series-tile-copy em{
+    font-size:6px;
+    white-space:normal;
+  }
+  .brand-mark--footer-bg{
+    width:220px;
+    right:-85px;
+  }
+}
+
+@media(max-width:420px){
+  .series-showcase-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .series-tile{
+    border-right:0;
+  }
+  .brand-mark--hero{
+    width:225px;
+    left:-100px;
+  }
+}
