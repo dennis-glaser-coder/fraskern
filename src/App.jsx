@@ -90,7 +90,9 @@ function Header({query,setQuery,onSearch,onHome,onCollection,onCart,cartCount}){
 }
 
 function Home({openCollection,openProduct}){
-  const featured=products.slice(0,4)
+  const featured=['HRC45','HRC55','HRC65','AL']
+    .map(series=>products.find(p=>p.series===series))
+    .filter(Boolean)
 
   return <>
     <section className="hero hero--shop">
@@ -114,8 +116,11 @@ function Home({openCollection,openProduct}){
     <section className="series-showcase" aria-label="FRÄSKERN Werkzeugserien">
       <div className="container series-showcase-inner">
         <div className="series-showcase-label">
-          <span>FRÄSKERN SERIES</span>
-          <strong>Werkzeuglinien nach Einsatzbereich</strong>
+          <BrandMark className="brand-mark--series-master"/>
+          <span className="series-showcase-label-copy">
+            <span>FRÄSKERN SERIES</span>
+            <strong>Werkzeuglinien nach Einsatzbereich</strong>
+          </span>
         </div>
         <div className="series-showcase-grid">
           {Object.entries(seriesSystem).map(([key,line])=>
@@ -124,7 +129,6 @@ function Home({openCollection,openProduct}){
               className={`series-tile series-tile--${line.tone}`}
               onClick={()=>openCollection('Alle','Alle',key)}
             >
-              <BrandMark className="brand-mark--series"/>
               <span className="series-tile-copy">
                 <small>{line.label}</small>
                 <strong>{line.brand}</strong>
@@ -189,7 +193,7 @@ function Home({openCollection,openProduct}){
       <div className="container">
         <div className="section-head section-head-row">
           <div>
-            <h2>VHM-Fräser</h2>
+            <h2>Werkzeugserien</h2>
           </div>
           <button className="text-link" onClick={()=>openCollection('Alle')}>Alle Produkte <ArrowRight size={16}/></button>
         </div>
@@ -208,8 +212,8 @@ function ProductCard({product,onOpen}){
     <button className="product-card-click" onClick={onOpen}>
       <div className={`product-image ${product.brandMask?'product-photo-box':''}`}>
         <span className={`series-badge series-badge--${line.tone}`}>
-          <BrandMark className="brand-mark--badge"/>
-          <span><b>{line.brand}</b><small>{line.tech}</small></span>
+          <b>{line.brand}</b>
+          <small>{line.tech}</small>
         </span>
         <div
           className={`contained-product-art contained-product-art--card ${product.brandMask?'brand-mask-art':''}`}
